@@ -1,0 +1,7 @@
+*.elay
+AntiqueRadio/bin/
+AntiqueRadio/obj/
+*.depend
+module
+STM32_Cube/
+
