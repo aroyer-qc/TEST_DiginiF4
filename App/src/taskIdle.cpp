@@ -100,6 +100,10 @@ void TaskIdle(void)
 {
     int Count = 0;
     uint16_t Value;
+    uint8_t Test[3];
+
+    Test[0] = 0xA5;
+    Test[1] = 0x69;
 
     // --------------------------------------------------------------------------------------------
     // Low level main control loop
@@ -124,5 +128,7 @@ void TaskIdle(void)
 
         // VFD part test
         VFD.Send();
+
+        VFD.Set(13, &Test[0], 10);
     }
 }
