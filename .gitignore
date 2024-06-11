@@ -6,3 +6,4 @@ TEST_DiginiF4/obj/
 module
 STM32_Cube/
 
+/Test_DiginiF4/*.eds
