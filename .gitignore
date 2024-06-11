@@ -1,6 +1,7 @@
 *.elay
-AntiqueRadio/bin/
-AntiqueRadio/obj/
+*.eds
+TEST_DiginiF4/bin/
+TEST_DiginiF4/obj/
 *.depend
 module
 STM32_Cube/
