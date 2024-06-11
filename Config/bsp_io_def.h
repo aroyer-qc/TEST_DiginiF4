@@ -65,7 +65,7 @@
 /* Output IO's -------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_LED_RED,           GPIOD,      14,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
     X_IO( IO_LED_GREEN,         GPIOD,      12,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-    X_IO( IO_LED_BLUE,          GPIOD,      15,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_LED_BLUE,          GPIOC,      15,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
 /* SPI IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_SPI1_CLK,          GPIOA,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)           \
     X_IO( IO_SPI1_MOSI,         GPIOA,      7,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)           \
@@ -75,7 +75,7 @@
     X_IO( IO_SPI3_MOSI,         GPIOB,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
 /* PWM Output --------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_VFD_BLANK,         GPIOD,      15,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF2_TIM4)           \
-    X_IO( IO_VFD_LOAD,          GPIOA,      4,      IO_MODE_OUTPUT   ,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_VFD_LOAD,          GPIOG,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
 
 
 // Note(s) the pin IO_CALIB_OUT_DEBUG is only use in some debug case and must not be initialized on permanent base

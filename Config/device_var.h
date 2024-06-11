@@ -58,14 +58,14 @@ class VFD_Driver                    VFD(&VFD_Config);
 #endif
 
 #ifdef __CLASS_DIGIT_IV_11__
-extern class IV_11_DigitDriver      IV_11;
+extern class IV_11_DigitDriver      IV11;
 #ifdef LIB_IV_11_GLOBAL
-const uint16_t                      IV_11_Info[IV11_NUMBER_OF_TUBE] =
+const uint16_t                      IV11_Info[IV11_NUMBER_OF_TUBE] =
 {   // Bit offset in serial bit stream;
     0, 9, 20, 29, 40, 49
 };
 
-class IV_11_DigitDriver             IV11(&VFD, &IV_11_Info[0], IV11_NUMBER_OF_TUBE);
+class IV_11_DigitDriver             IV11(&VFD, &IV11_Info[0], IV11_NUMBER_OF_TUBE);
 
 #endif
 #endif

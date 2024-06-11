@@ -121,20 +121,32 @@ void TaskIdle(void)
             IO_SetPinLow(IO_LED_BLUE);
         }
 
-        DAC43508.WriteDAC(1, Value);
+      //  DAC43508.WriteDAC(1, Value);
 
         Count++;
         if (Count >= 256) Count = 0;
 
         // VFD part test
-        VFD.Send();
+        //VFD.Send();
 
-        VFD.Set(13, &Test[0], 10);
-        VFD.Set(14, &Test[0], 10);
-        VFD.Set(15, &Test[0], 10);
-        VFD.Set(16, &Test[0], 10);
-        VFD.Set(17, &Test[0], 10);
-        VFD.Set(18, &Test[0], 10);
-        VFD.Set(13, &Test[0], 10);
+        //VFD.Set(13, &Test[0], 10);
+        //VFD.Set(14, &Test[0], 10);
+        //VFD.Set(15, &Test[0], 10);
+        //VFD.Set(16, &Test[0], 10);
+        //VFD.Set(17, &Test[0], 10);
+        //VFD.Set(18, &Test[0], 10);
+        //VFD.Set(13, &Test[0], 10);
+
+         IV11.Write('1', 0, false);
+        IV11.Write('2', 1, false);
+        IV11.Write('3', 2, true);
+        IV11.Write('4', 3, false);
+        IV11.Write('5', 4, false);
+        IV11.Write('6', 5, true);
+        IV11.Write('7', 6, false);     // should failed..
+
+
+        IV11.Send();
+
     }
 }
