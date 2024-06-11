@@ -37,16 +37,13 @@
 #ifdef __CLASS_DAC_X3508__
 extern class DAC_X3508_Driver       DAC43508;
 #ifdef LIB_DAC_x3508_GLOBAL
-class DAC_X3508_Driver              DAC43508;
+class DAC_X3508_Driver              DAC43508(&mySPI_ForDAC, IO_SPI1_CS);
 #endif
 #endif
 
 #ifdef __CLASS_VFD__
 extern class VFD_Driver             VFD;
-extern const VFD_Config_t           VFD_Config;
 #ifdef LIB_VFD_GLOBAL
-class VFD_Driver                    VFD;
-
 const VFD_Config_t                  VFD_Config =
 {
     &mySPI_ForVFD,
@@ -54,6 +51,8 @@ const VFD_Config_t                  VFD_Config =
     60,                 // Number of bits
     IO_VFD_LOAD,        // IO for LOAD input into Serial shift
 };
+
+class VFD_Driver                    VFD(&VFD_Config);
 
 #endif
 #endif
