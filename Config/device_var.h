@@ -47,7 +47,7 @@ extern const VFD_Config_t           VFD_Config;
 #ifdef LIB_VFD_GLOBAL
 class VFD_Driver                    VFD;
 
-extern const VFD_Config_t           VFD_Config =
+const VFD_Config_t                  VFD_Config =
 {
     &mySPI_ForVFD,
     &myPWM_VFD_Blank,
@@ -59,9 +59,15 @@ extern const VFD_Config_t           VFD_Config =
 #endif
 
 #ifdef __CLASS_DIGIT_IV_11__
-extern class IV_11_DigitDriver      IV11;
+extern class IV_11_DigitDriver      IV_11;
 #ifdef LIB_IV_11_GLOBAL
-class IV_11_DigitDriver             IV11;
+const uint16_t                      IV_11_Info[IV11_NUMBER_OF_TUBE] =
+{   // Bit offset in serial bit stream;
+    0, 9, 20, 29, 40, 49
+};
+
+class IV_11_DigitDriver             IV11(&VFD, &IV_11_Info[0], IV11_NUMBER_OF_TUBE);
+
 #endif
 #endif
 

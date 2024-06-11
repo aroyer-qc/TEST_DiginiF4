@@ -130,5 +130,11 @@ void TaskIdle(void)
         VFD.Send();
 
         VFD.Set(13, &Test[0], 10);
+        VFD.Set(14, &Test[0], 10);
+        VFD.Set(15, &Test[0], 10);
+        VFD.Set(16, &Test[0], 10);
+        VFD.Set(17, &Test[0], 10);
+        VFD.Set(18, &Test[0], 10);
+        VFD.Set(13, &Test[0], 10);
     }
 }
