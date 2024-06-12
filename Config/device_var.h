@@ -35,9 +35,9 @@
 //-------------------------------------------------------------------------------------------------
 
 #ifdef __CLASS_DAC_X3508__
-extern class DAC_X3508_Driver       DAC43508;
+//extern class DAC_X3508_Driver       DAC43508;
 #ifdef LIB_DAC_x3508_GLOBAL
-class DAC_X3508_Driver              DAC43508(&mySPI_ForDAC, IO_SPI1_CS);
+//class DAC_X3508_Driver              DAC43508(&mySPI_ForDAC, IO_SPI1_CS);
 #endif
 #endif
 

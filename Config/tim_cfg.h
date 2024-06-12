@@ -32,9 +32,9 @@
 #define TIM_USE_PWM_FEATURE_CFG                         DEF_ENABLED
 
 #define TIM_DRIVER_SUPPORT_TIM1_CFG                     DEF_DISABLED
-#define TIM_DRIVER_SUPPORT_TIM2_CFG                     DEF_DISABLED
+#define TIM_DRIVER_SUPPORT_TIM2_CFG                     DEF_ENABLED
 #define TIM_DRIVER_SUPPORT_TIM3_CFG                     DEF_DISABLED
-#define TIM_DRIVER_SUPPORT_TIM4_CFG                     DEF_ENABLED
+#define TIM_DRIVER_SUPPORT_TIM4_CFG                     DEF_DISABLED
 #define TIM_DRIVER_SUPPORT_TIM5_CFG                     DEF_DISABLED
 #define TIM_DRIVER_SUPPORT_TIM6_CFG                     DEF_DISABLED
 #define TIM_DRIVER_SUPPORT_TIM7_CFG                     DEF_DISABLED
@@ -62,7 +62,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-#define VFD_TIMER                     TIM_DRIVER_ID_4
+#define VFD_TIMER                     TIM_DRIVER_ID_2
 #define VFD_MODE                      TIM_OP_MODE_REPETITIVE_DOWN_COUNT
 #define VFD_PRESCALER                 1000
 #define VFD_RELOAD                    100

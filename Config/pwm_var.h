@@ -39,7 +39,7 @@ const PWM_Info_t PWM_Info[NB_OF_PWM_CHANNEL] =
     {
         IO_VFD_BLANK,                           // IO of the channel
         VFD_TIMER,                              // ID of the timer for this channel
-        TIM_CHANNEL_4,                          // Channel on the timer
+        TIM_CHANNEL_1,                          // Channel on the timer
         0,                                      // Initial duty of the PWM
     },
 };

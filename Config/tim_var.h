@@ -57,9 +57,9 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         &RCC->APB1ENR,                          // Register
         TIM2_IRQn,                              // IRQn_Channel
         7,                                      // PreempPrio
-        TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
-        example 1000,          					// Prescaler
-        example 100,	 	                    // Reload
+        VFD_MODE,                               // See note for 7th parameter
+        VFD_PRESCALER,        					// Prescaler
+        VFD_RELOAD,	 	                        // Reload
     },
   #endif
 
@@ -83,9 +83,9 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         &RCC->APB1ENR,                          // Register
         ISR_IRQn_NONE, //TIM4_IRQn,                              // IRQn_Channel
         7,                                      // PreempPrio
-        VFD_MODE,                               // See note for 7th parameter
-        VFD_PRESCALER,        					// Prescaler
-        VFD_RELOAD,	 	                        // Reload
+        TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
+        example 1000,          					// Prescaler
+        example 100,	 	                    // Reload
     },
   #endif
 

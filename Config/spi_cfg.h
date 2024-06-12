@@ -32,7 +32,7 @@
 
 #define SPI_DRIVER_SUPPORT_SPI1_CFG         DEF_ENABLED
 #define SPI_DRIVER_SUPPORT_SPI2_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI3_CFG         DEF_ENABLED
+#define SPI_DRIVER_SUPPORT_SPI3_CFG         DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
 

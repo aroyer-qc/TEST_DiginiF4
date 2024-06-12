@@ -85,15 +85,14 @@ SystemState_e BSP_PostOS_Initialize(void)
     SystemState_e State = SYS_READY;
 
     // DAC
-    mySPI_ForDAC.Initialize();
-    DAC43508.Initialize();
+   // mySPI_ForDAC.Initialize();
+   // DAC43508.Initialize();
 
     // VFD
     mySPI_ForVFD.Initialize();              // SPI Driver for the data
     myTIM_VFD.Initialize();                 // Timer Driver on top of PWM for blank line
     myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
     VFD.Initialize();                       // Then initialize the VFD driver
-
     State = DIGINI_PostInitialize();
 
     return State;

@@ -137,7 +137,7 @@ void TaskIdle(void)
         //VFD.Set(18, &Test[0], 10);
         //VFD.Set(13, &Test[0], 10);
 
-         IV11.Write('1', 0, false);
+        IV11.Write('1', 0, false);
         IV11.Write('2', 1, false);
         IV11.Write('3', 2, true);
         IV11.Write('4', 3, false);

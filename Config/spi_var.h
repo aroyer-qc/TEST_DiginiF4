@@ -169,12 +169,12 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
   #endif
 };
 
-class SPI_Driver mySPI_ForDAC(DRIVER_SPI1_ID);
-class SPI_Driver mySPI_ForVFD(DRIVER_SPI3_ID);
+//class SPI_Driver mySPI_ForDAC(DRIVER_SPI1_ID);
+class SPI_Driver mySPI_ForVFD(DRIVER_SPI1_ID);
 
 #else // SPI_DRIVER_GLOBAL
 
-extern class SPI_Driver     mySPI_ForDAC;
+//extern class SPI_Driver     mySPI_ForDAC;
 extern class SPI_Driver     mySPI_ForVFD;
 
 #endif // SPI_DRIVER_GLOBAL

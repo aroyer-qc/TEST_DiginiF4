@@ -55,7 +55,7 @@ NOS_ISR(DMA2_Stream3_IRQHandler)
 	SPI_Driver::DMA_TX_IRQ_Handler(DRIVER_SPI1_ID);
 }
 
-
+#if 0
 NOS_ISR(DMA1_Stream0_IRQHandler)
 {
 	SPI_Driver::DMA_RX_IRQ_Handler(DRIVER_SPI3_ID);
@@ -65,6 +65,7 @@ NOS_ISR(DMA1_Stream5_IRQHandler)
 {
 	SPI_Driver::DMA_TX_IRQ_Handler(DRIVER_SPI3_ID);
 }
+#endif
 
 //-------------------------------------------------------------------------------------------------
 //
@@ -78,7 +79,8 @@ NOS_ISR(DMA1_Stream5_IRQHandler)
 #if (USE_SPI_DRIVER == DEF_ENABLED)
 NOS_ISR(SPI1_IRQHandler)
 {
-    mySPI_ForDAC.IRQHandler();
+    //mySPI_ForDAC.IRQHandler();
+    mySPI_ForVFD.IRQHandler();
 }
 
 #endif
