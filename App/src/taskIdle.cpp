@@ -33,6 +33,7 @@
 #undef  TASK_IDLE_GLOBAL
 #include "bsp.h"
 #include "./Digini/lib_digini.h"
+#include "Task_comm.h"
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)
@@ -105,20 +106,27 @@ void TaskIdle(void)
     Test[0] = 0xA5;
     Test[1] = 0x69;
 
+    pTaskCOMM->Initialize();
+
+
     // --------------------------------------------------------------------------------------------
     // Low level main control loop
     while(1)
     {
+        pTaskCOMM->Process();
+
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
         Value = sine_wave[Count];
 
         if((Count & 0x01) == 0x00)
         {
-            IO_SetPinHigh(IO_LED_BLUE);
+            ISR_SetPendingIRQ(ETH_IRQn);
+
+//            IO_SetPinHigh(IO_LED_BLUE);
         }
         else
         {
-            IO_SetPinLow(IO_LED_BLUE);
+             if(Count == 128) IO_SetPinLow(IO_LED_BLUE);
         }
 
       //  DAC43508.WriteDAC(1, Value);
@@ -137,16 +145,23 @@ void TaskIdle(void)
         //VFD.Set(18, &Test[0], 10);
         //VFD.Set(13, &Test[0], 10);
 
-        IV11.Write('1', 0, false);
-        IV11.Write('2', 1, false);
-        IV11.Write('3', 2, true);
-        IV11.Write('4', 3, false);
-        IV11.Write('5', 4, false);
-        IV11.Write('6', 5, true);
-        IV11.Write('7', 6, false);     // should failed..
+        //IV11.Write('1', 0, false);
+        //IV11.Write('2', 1, false);
+        //IV11.Write('3', 2, true);
+        //IV11.Write('4', 3, false);
+        //IV11.Write('5', 4, false);
+        //IV11.Write('6', 5, true);
+        //IV11.Write('7', 6, false);     // should failed..
 
 
-        IV11.Send();
+        //IV11.Send();
 
+
+      //  pTaskCOMM->Process();                       // Should move this to own task! so option to run as a task or this as a process
+      #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
+        //pTaskNetwork->Process();
+      #endif
+
+        //nOS_Yield();
     }
 }

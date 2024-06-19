@@ -45,6 +45,7 @@ extern "C"
 //
 //-------------------------------------------------------------------------------------------------
 
+#if 0
 NOS_ISR(DMA2_Stream0_IRQHandler)
 {
 	SPI_Driver::DMA_RX_IRQ_Handler(DRIVER_SPI1_ID);
@@ -55,7 +56,6 @@ NOS_ISR(DMA2_Stream3_IRQHandler)
 	SPI_Driver::DMA_TX_IRQ_Handler(DRIVER_SPI1_ID);
 }
 
-#if 0
 NOS_ISR(DMA1_Stream0_IRQHandler)
 {
 	SPI_Driver::DMA_RX_IRQ_Handler(DRIVER_SPI3_ID);
@@ -84,6 +84,21 @@ NOS_ISR(SPI1_IRQHandler)
 }
 
 #endif
+
+//-------------------------------------------------------------------------------------------------
+//
+//  UU  UU  AAAA  RRRRR  TTTTTT
+//  UU  UU AA  AA RR  RR   TT
+//  UU  UU AAAAAA RRRRR    TT
+//  UU  UU AA  AA RR RR    TT
+//   UUUU  AA  AA RR  RR   TT
+//
+//-------------------------------------------------------------------------------------------------
+
+NOS_ISR(USART3_IRQHandler)
+{
+    myUART_Terminal.IRQ_Handler();
+}
 
 //-------------------------------------------------------------------------------------------------
 

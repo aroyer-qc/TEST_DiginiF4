@@ -1,10 +1,10 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File :  spi_cfg.h
+//  File :  cli_var.h
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2022 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -24,15 +24,20 @@
 //
 //-------------------------------------------------------------------------------------------------
 
-//#pragma once
+#pragma once
 
 //-------------------------------------------------------------------------------------------------
-// Define(s)
+// variable(s)
 //-------------------------------------------------------------------------------------------------
 
-#define SPI_DRIVER_SUPPORT_SPI1_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI2_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI3_CFG         DEF_DISABLED
+#ifdef CLI_GLOBAL
+
+class CommandLine myCommandLine;
+
+#else
+    
+extern class CommandLine myCommandLine;
+
+#endif // CLI_GLOBAL
 
 //-------------------------------------------------------------------------------------------------
-

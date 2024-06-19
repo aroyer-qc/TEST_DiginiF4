@@ -61,21 +61,45 @@
 //-------------------------------------------------------------------------------------------------
 
 #define IO_DEF(X_IO) \
-/*        ENUM ID of the IO,    IO Port,    IO Pin, Mode,               Pin type,              IO Speed,                 Pin Option           */\
-/* Output IO's -------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_RED,           GPIOD,      14,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-    X_IO( IO_LED_GREEN,         GPIOD,      12,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-    X_IO( IO_LED_BLUE,          GPIOD,      15,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-/* SPI IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_SPI1_CLK,          GPIOA,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)           \
-    X_IO( IO_SPI1_MOSI,         GPIOA,      7,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)           \
-    X_IO( IO_SPI1_CS,           GPIOB,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       1)                     \
-/* SPI IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_SPI3_CLK,          GPIOB,      3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
-    X_IO( IO_SPI3_MOSI,         GPIOB,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
-/* PWM Output --------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_VFD_BLANK,         GPIOA,      0,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM2)           \
-    X_IO( IO_VFD_LOAD,          GPIOG,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+/*        ENUM ID of the IO,     IO Port,    IO Pin, Mode,               Pin type,              IO Speed,                 Pin Option           */\
+/* Output IO's --------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_LED_RED,            GPIOB,      14,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_LED_GREEN,          GPIOB,      0,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_LED_BLUE,           GPIOB,      7,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        1)                     \
+/* SPI IO's -----------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_SPI3_CLK,           GPIOB,      3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
+    X_IO( IO_SPI3_MOSI,          GPIOB,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
+/* UART IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_UART3_RX,           GPIOD,      9,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
+    X_IO( IO_UART3_TX,           GPIOD,      8,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
+/* PWM Output ---------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_VFD_BLANK,          GPIOA,      0,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM2)           \
+    X_IO( IO_VFD_LOAD,           GPIOG,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+/* Ethernet -----------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_ETH_REF_CLK,        GPIOA,      1,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_MDIO,           GPIOA,      2,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_MDC,            GPIOC,      1,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_CRS_DV,         GPIOA,      7,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_RXD0,           GPIOC,      4,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_RXD1,           GPIOC,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_TX_EN,          GPIOG,      11,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_TXD0,           GPIOG,      13,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+    X_IO( IO_ETH_TXD1,           GPIOB,      13,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF11_ETH)           \
+/* MCO ----------------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_MCO_2,              GPIOC,      9,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF0_MCO)            \
+
+//-------------------------------------------------------------------------------------------------
+
+#define IO_ETH_RX_ER        IO_NOT_DEFINED          // no RX error pin support
+#define IO_ETH_EXT_LED      IO_LED_BLUE
+
+
+/* SPI IO's -----------------------------------------------------------------------------------------------------------------------------------*/\
+//    X_IO( IO_SPI1_CLK,           GPIOA,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)
+//    X_IO( IO_SPI1_MOSI,          GPIOA,      7,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI1)
+//    X_IO( IO_SPI1_CS,            GPIOB,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       1)
+
+
 
 
 // Note(s) the pin IO_CALIB_OUT_DEBUG is only use in some debug case and must not be initialized on permanent base

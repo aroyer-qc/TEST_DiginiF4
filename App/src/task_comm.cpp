@@ -1,10 +1,10 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File :  spi_cfg.h
+//  File : task_grbl.cpp
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2023 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -23,16 +23,61 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //-------------------------------------------------------------------------------------------------
-
-//#pragma once
-
-//-------------------------------------------------------------------------------------------------
-// Define(s)
+//
+//  This is the idle task
+//
 //-------------------------------------------------------------------------------------------------
 
-#define SPI_DRIVER_SUPPORT_SPI1_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI2_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI3_CFG         DEF_DISABLED
-
+//-------------------------------------------------------------------------------------------------
+// Include file(s)
 //-------------------------------------------------------------------------------------------------
 
+#define TASK_COMM_GLOBAL
+#include "task_comm.h"
+#undef  TASK_COMM_GLOBAL
+#include "./Digini/lib_digini.h"
+
+//-------------------------------------------------------------------------------------------------
+//
+//  Name:           Initialize
+//
+//  Parameter(s):   void
+//  Return:         nOS_Error
+//
+//  Description:    Initialize
+//
+//  Note(s):
+//
+//-------------------------------------------------------------------------------------------------
+nOS_Error ClassTaskCOMM::Initialize(void)
+{
+    nOS_Error Error = NOS_OK;
+
+    // Uart console Command Line and VT100 terminal
+    myConsole.Initialize(&myUART_Terminal);
+    myCommandLine.Initialize(&myConsole);
+    myConsole.GiveControlToChildProcess(&myCommandLine);          // Hijack the console!
+  #if (DIGINI_USE_VT100_MENU == DEF_ENABLED)
+    myVT100.Initialize(&myConsole);
+  #endif
+    return Error;
+}
+
+//-------------------------------------------------------------------------------------------------
+//
+//  Name:           Process
+//
+//  Parameter(s):   void
+//  Return:         void
+//
+//  Description:    main() loop of COMM
+//
+//  Note(s):
+//
+//-------------------------------------------------------------------------------------------------
+void ClassTaskCOMM::Process(void)
+{
+    myConsole.Process();
+}
+
+//-------------------------------------------------------------------------------------------------

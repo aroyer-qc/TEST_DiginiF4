@@ -1,6 +1,6 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File : bsp.cpp
+//  File : task_network.h
 //
 //-------------------------------------------------------------------------------------------------
 //
@@ -24,89 +24,95 @@
 //
 //-------------------------------------------------------------------------------------------------
 
-//------ Note(s) ----------------------------------------------------------------------------------
-//
-//  BSP - Board support package for STM32F4-DISCO
-//
-//  this board has 128K RAM in CPU
-//                 64K CCRAM in CPU
-//
-//-------------------------------------------------------------------------------------------------
+#pragma once
 
 //-------------------------------------------------------------------------------------------------
 // Include file(s)
 //-------------------------------------------------------------------------------------------------
 
-#define BSP_GLOBAL
-#include "bsp.h"
-#undef  BSP_GLOBAL
-//#include "device_var.h"     // that should not be neccessary
-#if (USE_ETH_DRIVER == DEF_ENABLED) && (DIGINI_USE_ETHERNET == DEF_ENABLED)
-#include "Task_network.h"
-//IP_Manager myIP_Manager;
+#include "./Digini/lib_digini.h"
+
+//-------------------------------------------------------------------------------------------------
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED)
+
+//-------------------------------------------------------------------------------------------------
+// Global Macro
+//-------------------------------------------------------------------------------------------------
+
+#ifdef TASK_NETWORK_GLOBAL
+    #define TASK_NETWORK_EXTERN
+#else
+    #define TASK_NETWORK_EXTERN extern
+#endif
+
+//-------------------------------------------------------------------------------------------------
+// Define(s)
+//-------------------------------------------------------------------------------------------------
+
+//#define TASK_WEBSERVER_STACK_SIZE            500
+//#define TASK_WEBSERVER_PRIO                  6
+
+#define TASK_NETWORK_STACK_SIZE              1024
+#define TASK_NETWORK_PRIO                    4
+
+//-------------------------------------------------------------------------------------------------
+// Class definition(s)
+//-------------------------------------------------------------------------------------------------
+
+class ClassNetwork
+{
+  public:
+
+
+    // Task
+    void            Network                     (void);
+//    void            WebServer                   (void);
+
+
+
+    nOS_Error       Initialize                  (void);
+
+
+  private:
+
+    void            WebServer_Serve             (void);
+    void            WebServer_DynamicPage       (void);
+
+    //void            TCP_EchoServer_Initialize   (void);
+    //rr_t           TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
+
+//    static nOS_Thread      m_WebServerHandle;
+    //static nOS_Stack       m_WebServerStack     [TASK_WEBSERVER_STACK_SIZE];
+    static nOS_Thread      m_NetworkHandle;
+    static nOS_Stack       m_NetworkStack       [TASK_NETWORK_STACK_SIZE];
+    //struct netconn*        m_WebServerConn;
+//    struct netconn*        m_WebServerNewConn;
+
+
+
+
+};
+
+//-------------------------------------------------------------------------------------------------
+// Global variable(s) and constant(s)
+//-------------------------------------------------------------------------------------------------
+
+TASK_NETWORK_EXTERN class ClassNetwork  TaskNetwork;
+
+#ifdef TASK_NETWORK_GLOBAL
+                 class ClassNetwork* pTaskNetwork = &TaskNetwork;
+#else
+    extern       class ClassNetwork* pTaskNetwork;
+#endif
+
+//-------------------------------------------------------------------------------------------------
+// Function prototype(s)
+//-------------------------------------------------------------------------------------------------
+
+//extern "C" void TaskWebServer_Wrapper       (void* pvParameters);
+extern "C" void TaskNetwork_Wrapper         (void* pvParameters);
+
+//-------------------------------------------------------------------------------------------------
+
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)
-
-//-------------------------------------------------------------------------------------------------
-// Local Function(s)
-//-------------------------------------------------------------------------------------------------
-
-//-------------------------------------------------------------------------------------------------
-//
-//  Name:           BSP_Initialize
-//  Parameter(s):   void
-//  Return:         void
-//
-//  Description:    This function should be called by your application before anything else
-//
-//  Note(s):
-//
-//-------------------------------------------------------------------------------------------------
-void BSP_Initialize(void)
-{
-    SysTick_Config(SYSTEM_CORE_CLOCK / CFG_SYSTICK_RATE);
-
-    ISR_Initialize();
-
-    IO_PinInit(IO_LED_RED);
-    IO_PinInit(IO_LED_GREEN);
-    // IO_PinInit(IO_LED_BLUE);  transfert to ETH for now
-    IO_PinInit(IO_MCO_2);        // Output the MCO for clock validation
-    DIGINI_Initialize();
-}
-
-//-------------------------------------------------------------------------------------------------
-//
-//  Name:           BSP_PostOS_Initialize
-//  Parameter(s):   void
-//  Return:         SystemState_e       SystemState
-//
-//  Description:    This function should be called by your application After OS has being started
-//
-//  Note(s):        Example: class or driver using Semaphore
-//
-//-------------------------------------------------------------------------------------------------
-SystemState_e BSP_PostOS_Initialize(void)
-{
-    SystemState_e State = SYS_READY;
-
-    // DAC
-   // mySPI_ForDAC.Initialize();
-   // DAC43508.Initialize();
-
-    // VFD
-   // mySPI_ForVFD.Initialize();              // SPI Driver for the data
-   // myTIM_VFD.Initialize();                 // Timer Driver on top of PWM for blank line
-   // myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
-   // VFD.Initialize();                       // Then initialize the VFD driver
-    State = DIGINI_PostInitialize();
-  #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
-
-
-    pTaskNetwork->Initialize();
-  #endif
-
-    return State;
-}
-
-//-------------------------------------------------------------------------------------------------
-

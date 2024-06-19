@@ -53,19 +53,19 @@
 //-------------------------------------------------------------------------------------------------
 // Static memory allocation
 //
-#define DIGINI_USE_LABEL                                DEF_DISABLED
+#define DIGINI_USE_LABEL                                DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // Use Console/VT100/CmdLine
 //
-#define DIGINI_USE_CONSOLE                              DEF_DISABLED
-#define DIGINI_USE_CMD_LINE                             DEF_DISABLED
-#define DIGINI_USE_VT100_MENU                           DEF_DISABLED
+#define DIGINI_USE_CONSOLE                              DEF_ENABLED
+#define DIGINI_USE_CMD_LINE                             DEF_ENABLED
+#define DIGINI_USE_VT100_MENU                           DEF_ENABLED     // need label
 
 //-------------------------------------------------------------------------------------------------
 // Ethernet
 //
-#define DIGINI_USE_ETHERNET                             DEF_DISABLED
+#define DIGINI_USE_ETHERNET                             DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // EEPROM support
@@ -75,11 +75,10 @@
 //-------------------------------------------------------------------------------------------------
 // FAT FS Peripheral support
 //
-
 #define DIGINI_USE_FATFS                                DEF_DISABLED
 
-#define DIGINI_FATFS_USE_SPI_FLASH_CHIP                 DEF_DISABLED         			// to be added to peripheral list
-#define DIGINI_FATFS_USE_QSPI                           DEF_DISABLED        			// to be added to peripheral list
+#define DIGINI_FATFS_USE_SPI_FLASH_CHIP                 DEF_DISABLED  // to be added to peripheral list
+#define DIGINI_FATFS_USE_QSPI                           DEF_DISABLED  // to be added to peripheral list
 #define DIGINI_FATFS_USE_SDIO_SD_CARD                   DEF_DISABLED
 #define DIGINI_FATFS_USE_SPI_SD_CARD                    DEF_DISABLED
 #define DIGINI_FATFS_USE_USB_KEY                        DEF_DISABLED
@@ -88,13 +87,12 @@
 //-------------------------------------------------------------------------------------------------
 // GRAFX Configuration
 //
-
 #define DIGINI_USE_GRAFX                                DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
 // CRC Configuration
 //
-#define DIGINI_USE_CRC                                  DEF_DISABLED
+#define DIGINI_USE_CRC                                  DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // MPU Configuration
@@ -104,7 +102,7 @@
 //-------------------------------------------------------------------------------------------------
 //
 // Note: If it is DEF_ENABLED then you need also need to  "NOS_CONFIG_DEBUG  1"    in nOSConfig.h
-#define DIGINI_USE_STACKTISTIC                          DEF_DISABLED                 // Allow debugging of the stack, per code or using VT100 terminal
+#define DIGINI_USE_STACKTISTIC                          DEF_ENABLED                 // Allow debugging of the stack, per code or using VT100 terminal
 #define DIGINI_STACKTISTIC_NUMBER_OF_STACK              10
 #define DIGINI_STACKTISTIC_WATER_MARK_CODE              0xFFFFFFFFUL                // This is for nOS. Depend on the value put in stack by OS. FreeRTOS it's 0xA5
 

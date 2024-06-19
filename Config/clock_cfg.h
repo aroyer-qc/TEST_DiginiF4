@@ -41,7 +41,7 @@
 
 // User clock selection
 #define CFG_SYS_CLOCK_MUX                           CFG_RCC_CFGR_SW_PLL         // CFG_RCC_CFGR_SW_HSI, CFG_RCC_CFGR_SW_HSE or CFG_RCC_CFGR_SW_PLL
-#define CFG_SYS_PLL_MUX                             CFG_RCC_PLLCFGR_PLLSRC_HSE  // CFG_RCC_PLLCFGR_PLLSRC_HSI or CFG_RCC_PLLCFGR_PLLSRC_HSE
+#define CFG_RCC_PLLCFGR_PLLSRC                      CFG_RCC_PLLCFGR_PLLSRC_HSE  // CFG_RCC_PLLCFGR_PLLSRC_HSI or CFG_RCC_PLLCFGR_PLLSRC_HSE
 #define CFG_SYSTEM_CLOCK_NUMBER_OF_RETRY            1000
 
 // For 168 MHz HCLK on HSI
@@ -62,5 +62,8 @@
 #define CFG_AHB_CLK_DIVIDER                         CFG_RCC_CFGR_HPRE_DIV1      // (AHB Prescaler) CFG_RCC_CFGR_HPRE_DIVx -> 1,2,4,8,16,64,128,256,512
 #define CFG_APB1_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE1_DIV4     // CFG_RCC_CFGR_PPRE1_DIVx -> 1,2,4,8,16
 #define CFG_APB2_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE2_DIV2     // CFG_RCC_CFGR_PPRE2_DIVx -> 1,2,4,8,16
+
+#define CFG_MCO_1                                   (CFG_RCC_CFGR_MCO1_PLL | CFG_RCC_CFGR_MCO1PRE_DIV5)
+#define CFG_MCO_2                                   (CFG_RCC_CFGR_MCO2_PLL | CFG_RCC_CFGR_MCO2PRE_DIV5)
 
 //-------------------------------------------------------------------------------------------------

@@ -35,7 +35,7 @@
 
 const PWM_Info_t PWM_Info[NB_OF_PWM_CHANNEL] =
 {
-    // PWM_STRIP_RED
+    // PWM_VFD_OUTPUT
     {
         IO_VFD_BLANK,                           // IO of the channel
         VFD_TIMER,                              // ID of the timer for this channel
@@ -43,6 +43,7 @@ const PWM_Info_t PWM_Info[NB_OF_PWM_CHANNEL] =
         0,                                      // Initial duty of the PWM
     },
 };
+
 //use it in the x-macro mode
 class PWM_Driver myPWM_VFD_Blank (PWM_VFD_OUTPUT, &myTIM_VFD);
 

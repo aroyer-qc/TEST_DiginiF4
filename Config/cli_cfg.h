@@ -1,10 +1,10 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File : bsp.h
+//  File :  cli_cfg.h
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2021 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -27,34 +27,26 @@
 #pragma once
 
 //-------------------------------------------------------------------------------------------------
-// Include file(s)
+// Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#include "./Digini/lib_digini.h"
+#define CLI_USE_AT_PREFIX_ON_COMMAND        DEF_DISABLED              // Add 'AT' prefix in front of any command
+#define CLI_USE_PASSWORD                    DEF_DISABLED              // Command password support
+#define CLI_USE_EXTENDED_ERROR              DEF_ENABLED               // CLI return a more informative error
+#define CLI_STRING_SIZE                     32
+#define CLI_NUMBER_OF_SUPPORTED_PARAM       4
+#define CLI_NUMBER_OF_SECOND_FOR_STARTUP    10000                     // Startup will last 10 Seconds
+#define CLI_CMD_TIME_OUT                    5000                      // User has 5 seconds between character input while inputing an CLI command
 
-//-------------------------------------------------------------------------------------------------
-// Global Macro
-//-------------------------------------------------------------------------------------------------
+#if 0   // no custom command yet
+// Number of parameter can be expanded, as needed
+#define X_CLI_USER_CMD_DEF(X_CLI_CMD)   \
+/*              ENUM_ID,        String,       Function,     Cmd Type,    Number,    Param1 -          Min1,    max1   Param2 -       Min2,   max2,     Param3 -          Min3,   max3,     Param4 -      Min4,   max4  */\
+    X_CLI_CMD ( CLI_TEST1,      "T1",         CmdTEST1,     CLI_CMD_RW,  0,         0,                0,       0,     0,             0,      0,        0,                0,      0,        0,            0,      0)     \
+    X_CLI_CMD ( CLI_TEST2,      "T2",         CmdTEST2,     CLI_CMD_RW,  3,         BASE_DECIMAL,     0,       1,     BASE_DECIMAL,  0,      200,      BASE_DECIMAL,     10,     32000,    0,            0,      0)     \
+    X_CLI_CMD ( CLI_TEST3,      "T3",         CmdTEST3,     CLI_CMD_RW,  4,         BASE_DECIMAL,     0,       3,     BASE_DECIMAL,  -300,   300,      BASE_HEXADECIMAL, 0x0000, 0xFFFF,   BASE_STRING,  0,      0)     \
 
-#ifdef BSP_GLOBAL
-    #define BSP_EXTERN
-#else
-    #define BSP_EXTERN extern
 #endif
-
-//-------------------------------------------------------------------------------------------------
-// Global variable(s) and constant(s)
-//-------------------------------------------------------------------------------------------------
-
-BSP_EXTERN CON_DebugLevel_e BSP_GlobalDebugLevel;
-
-//-------------------------------------------------------------------------------------------------
-// Function prototype(s)
-//-------------------------------------------------------------------------------------------------
-
-void                BSP_Initialize          (void);
-void                BSP_IRQ_Init            (void);
-SystemState_e       BSP_PostOS_Initialize   (void);
 
 //-------------------------------------------------------------------------------------------------
 

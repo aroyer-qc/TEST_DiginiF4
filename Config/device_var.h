@@ -26,7 +26,7 @@
 //
 //  This is the place for any device driver not related to CPU peripheral.
 //
-//  There is exception: Ethernet, EEprom, FatFs, LWIP
+//  There is exception: EEprom, FatFs, LWIP
 //
 //-------------------------------------------------------------------------------------------------
 
@@ -69,5 +69,19 @@ class IV_11_DigitDriver             IV11(&VFD, &IV11_Info[0], IV11_NUMBER_OF_TUB
 
 #endif
 #endif
+
+#ifdef __CLASS_PHY_LAN8742A__
+extern class PHY_LAN8742A_Driver    PHY_Driver;
+#ifdef LIB_PHY_8742A_GLOBAL
+const PHY_Config_t                  PHY_Config =
+{
+    &myEthernet,                    // Ethernet driver
+    0,                              // PHY_Address
+};
+
+class PHY_LAN8742A_Driver           PHY_Driver(&PHY_Config);
+#endif
+#endif
+
 
 //-------------------------------------------------------------------------------------------------

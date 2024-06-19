@@ -1,10 +1,10 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File :  spi_cfg.h
+//  File : task_comm.h
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2023 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -24,15 +24,48 @@
 //
 //-------------------------------------------------------------------------------------------------
 
-//#pragma once
+#pragma once
 
 //-------------------------------------------------------------------------------------------------
-// Define(s)
+// Include file(s)
 //-------------------------------------------------------------------------------------------------
 
-#define SPI_DRIVER_SUPPORT_SPI1_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI2_CFG         DEF_DISABLED
-#define SPI_DRIVER_SUPPORT_SPI3_CFG         DEF_DISABLED
+#include "nOS.h"
 
 //-------------------------------------------------------------------------------------------------
+// Global Macro
+//-------------------------------------------------------------------------------------------------
 
+#ifdef TASK_COMM_GLOBAL
+    #define TASK_COMM_EXTERN
+#else
+    #define TASK_COMM_EXTERN extern
+#endif
+
+//-------------------------------------------------------------------------------------------------
+// Class definition(s)
+//-------------------------------------------------------------------------------------------------
+
+class ClassTaskCOMM
+{
+  public:
+
+    nOS_Error       Initialize         (void);
+    void            Process            (void);
+};
+
+//-------------------------------------------------------------------------------------------------
+// Global variable(s) and constant(s)
+//-------------------------------------------------------------------------------------------------
+
+// Only one instance for now
+
+TASK_COMM_EXTERN class ClassTaskCOMM  TaskCOMM;
+
+#ifdef TASK_COMM_GLOBAL
+                 class ClassTaskCOMM* pTaskCOMM = &TaskCOMM;
+#else
+    extern       class ClassTaskCOMM* pTaskCOMM;
+#endif
+
+//-------------------------------------------------------------------------------------------------
