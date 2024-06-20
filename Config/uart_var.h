@@ -99,7 +99,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         USART3_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CONFIG_N_8_1 | UART_OVER_8 | UART_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
