@@ -30,11 +30,17 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define UART_ISR_RX_BYTE_CFG                    DEF_DISABLED
-#define UART_ISR_RX_ERROR_CFG                   DEF_ENABLED
-#define UART_ISR_RX_IDLE_CFG                    DEF_ENABLED
-#define UART_ISR_TX_EMPTY_CFG                   DEF_DISABLED
-#define UART_ISR_TX_COMPLETED_CFG               DEF_ENABLED
+#define UART_DRIVER_USE_CALLBACK_CFG            DEF_DISABLED
+
+// Enable Status 
+#define UART_DRIVER_RX_PARITY_ERROR_CFG         DEF_DISABLED
+#define UART_DRIVER_RX_FRAMING_ERROR_CFG        DEF_DISABLED
+#define UART_DRIVER_RX_NOISE_DETECTED_CFG       DEF_DISABLED
+#define UART_DRIVER_RX_OVERRUN_ERROR_CFG        DEF_DISABLED
+#define UART_DRIVER_RX_IDLE_CFG                 DEF_ENABLED
+#define UART_DRIVER_RX_NOT_EMPTY_CFG            DEF_DISABLED
+#define UART_DRIVER_TX_COMPLETED_CFG            DEF_ENABLED
+#define UART_DRIVER_TX_EMPTY_CFG                DEF_DISABLED
 
 #define UART_DRIVER_SUPPORT_UART1_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_UART2_CFG           DEF_DISABLED
