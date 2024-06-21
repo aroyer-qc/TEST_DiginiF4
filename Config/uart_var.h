@@ -69,7 +69,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB2ENR,              // Register
         USART1_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1 | UART_OVER_8 | UART_ENABLE_RX_TX),
+        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -84,7 +84,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         USART2_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -99,7 +99,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         USART3_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1 | UART_OVER_8 | UART_ENABLE_RX_TX),
+        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -114,7 +114,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         UART4_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -129,7 +129,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         UART5_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -144,7 +144,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB2ENR,              // Register
         USART6_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -159,7 +159,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         UART7_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -174,7 +174,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         UART8_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CONFIG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
     },
@@ -224,7 +224,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream5,                                   // RX_DMA_TypeDef
             DMA1_Stream5_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_4, // Configuration + DMA_Channel TX
@@ -246,7 +246,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream1,                                   // RX_DMA_TypeDef
             DMA1_Stream1_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_4, // Configuration + DMA_Channel TX
@@ -274,7 +274,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream2,                                   // RX_DMA_TypeDef
             DMA1_Stream2_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_4, // Configuration + DMA_Channel TX
@@ -296,7 +296,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream0,                                   // RX_DMA_TypeDef
             DMA1_Stream0_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_4, // Configuration + DMA_Channel TX
@@ -324,7 +324,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
          // DMA2_Stream2,                                   // RX_DMA_TypeDef
             DMA2_Stream2_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_5, // Configuration + DMA_Channel TX
@@ -352,7 +352,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream3,                                   // RX_DMA_TypeDef
             DMA1_Stream3_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_5, // Configuration + DMA_Channel TX
@@ -374,7 +374,7 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
             DMA1_Stream6,                                   // RX_DMA_TypeDef
             DMA1_Stream6_IRQn,                              // RX_IRQn
         },
-        
+
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_5, // Configuration + DMA_Channel TX
