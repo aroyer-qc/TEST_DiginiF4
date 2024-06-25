@@ -30,9 +30,7 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define UART_DRIVER_USE_CALLBACK_CFG            DEF_DISABLED
-
-// Enable Status 
+// Enable Status will (this enable the callback)
 #define UART_DRIVER_RX_PARITY_ERROR_CFG         DEF_DISABLED
 #define UART_DRIVER_RX_FRAMING_ERROR_CFG        DEF_DISABLED
 #define UART_DRIVER_RX_NOISE_DETECTED_CFG       DEF_DISABLED

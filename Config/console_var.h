@@ -35,9 +35,9 @@
 class Console myConsole;
 
 #else
-    
+
 extern class Console myConsole;
 
-#endif // CLI_CONSOLE
+#endif // CONSOLE_GLOBAL
 
 //-------------------------------------------------------------------------------------------------
