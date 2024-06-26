@@ -49,14 +49,24 @@
 //
 #define DIGINI_USE_DATABASE                             DEF_DISABLED
 
-
 //-------------------------------------------------------------------------------------------------
 // Static memory allocation
 //
 #define DIGINI_USE_LABEL                                DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
-// Use Console/VT100/CmdLine
+// COMM support (Console, CLI, VT100)
+//
+#define DIGINI_USE_COMM_MODULE                          DEF_ENABLED
+#define DIGINI_USE_COMM_UART                            &myUART_Terminal
+#define DIGINI_USE_COMM_AS_A_TASK                       DEF_DISABLED         // Otherwise it is a process that need to be incluse in your choice of task
+
+// Only set this if DIGINI_USE_COMM_AS_A_TASK is DEF_ENABLED
+#define TASK_COMM_PRIO                                  7
+#define TASK_COMM_STACK_SIZE                            256
+
+//-------------------------------------------------------------------------------------------------
+// COMM support module
 //
 #define DIGINI_USE_CONSOLE                              DEF_ENABLED
 #define DIGINI_USE_CMD_LINE                             DEF_ENABLED
@@ -66,6 +76,12 @@
 // Ethernet
 //
 #define DIGINI_USE_ETHERNET                             DEF_ENABLED
+
+//-------------------------------------------------------------------------------------------------
+// High level Peripheral
+//
+//#define DIGINI_USE_SPI_DEVICE
+#define DIGINI_SD_CARD_DETECT_IO                        DETECT_SD_CARD
 
 //-------------------------------------------------------------------------------------------------
 // EEPROM support
