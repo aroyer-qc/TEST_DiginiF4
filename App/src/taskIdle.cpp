@@ -33,7 +33,6 @@
 #undef  TASK_IDLE_GLOBAL
 #include "bsp.h"
 #include "./Digini/lib_digini.h"
-#include "Task_comm.h"
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)
@@ -106,14 +105,17 @@ void TaskIdle(void)
     Test[0] = 0xA5;
     Test[1] = 0x69;
 
+  #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED)
     pTaskCOMM->Initialize();
-
+  #endif
 
     // --------------------------------------------------------------------------------------------
     // Low level main control loop
     while(1)
     {
+      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_ENABLED)
         pTaskCOMM->Process();
+      #endif
 
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
         Value = sine_wave[Count];
