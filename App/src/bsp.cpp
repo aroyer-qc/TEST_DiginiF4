@@ -40,8 +40,8 @@
 #define BSP_GLOBAL
 #include "bsp.h"
 #undef  BSP_GLOBAL
-//#include "device_var.h"     // that should not be neccessary
-#if (USE_ETH_DRIVER == DEF_ENABLED) && (DIGINI_USE_ETHERNET == DEF_ENABLED)
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED)
 #include "Task_network.h"
 //IP_Manager myIP_Manager;
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)
@@ -99,11 +99,6 @@ SystemState_e BSP_PostOS_Initialize(void)
    // myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
    // VFD.Initialize();                       // Then initialize the VFD driver
     State = DIGINI_PostInitialize();
-  #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
-
-
-    pTaskNetwork->Initialize();
-  #endif
 
     return State;
 }

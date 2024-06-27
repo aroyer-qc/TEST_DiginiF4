@@ -221,16 +221,12 @@ nOS_Error ClassNetwork::Initialize(void)
 //    myIP_Manager.Initialize(ETH_IF_GRBL, &MAC);
 
 
-
-
-
-
     myEthernet.Initialize(nullptr);
-myEthernet.SetMacAddress(&MAC);
-myEthernet.Start();
+
+    myEthernet.SetMacAddress(&MAC);
+    myEthernet.Start();
     PHY_Driver.Initialize();
 
-/*
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
                              this,
@@ -241,8 +237,10 @@ myEthernet.Start();
                              , nullptr
                            #endif
                             );
+
+
     // Webserver task
-*/
+
     /*Error = nOS_ThreadCreate(&m_WebServerHandle,
                              TaskWebServer_Wrapper,
                              this,
@@ -296,7 +294,13 @@ void ClassNetwork::Network(void)
 
 
 for(;;)
-{ nOS_Sleep(100);}
+{
+
+    nOS_Sleep(100);
+
+
+}
+
 
 #if 0  // need to reenable LWIP_NETCONN    1
     // Create a new connection identifier.

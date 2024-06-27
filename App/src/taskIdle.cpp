@@ -105,6 +105,11 @@ void TaskIdle(void)
     Test[0] = 0xA5;
     Test[1] = 0x69;
 
+
+  #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
+    pTaskNetwork->Initialize();
+  #endif
+
   #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED)
     pTaskCOMM->Initialize();
   #endif
@@ -113,7 +118,7 @@ void TaskIdle(void)
     // Low level main control loop
     while(1)
     {
-      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_ENABLED)
+      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_DISABLED)
         pTaskCOMM->Process();
       #endif
 
@@ -122,13 +127,11 @@ void TaskIdle(void)
 
         if((Count & 0x01) == 0x00)
         {
-            ISR_SetPendingIRQ(ETH_IRQn);
-
-//            IO_SetPinHigh(IO_LED_BLUE);
+            // IO_SetPinHigh(IO_LED_BLUE);
         }
         else
         {
-             if(Count == 128) IO_SetPinLow(IO_LED_BLUE);
+             // if(Count == 128) IO_SetPinLow(IO_LED_BLUE);
         }
 
       //  DAC43508.WriteDAC(1, Value);
@@ -157,13 +160,10 @@ void TaskIdle(void)
 
 
         //IV11.Send();
-
-
-      //  pTaskCOMM->Process();                       // Should move this to own task! so option to run as a task or this as a process
       #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
         //pTaskNetwork->Process();
       #endif
 
-        //nOS_Yield();
+        nOS_Yield();
     }
 }

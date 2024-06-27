@@ -30,6 +30,8 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
+#define CON_USE_COMM_UART                       &myUART_Terminal
+
 #define CON_CHILD_PROCESS_PUSH_POP_LEVEL        2   // Cascading Number of child process .
 
 // This define if enabled will trap every line starting with CON_TRAP_COMMENT_CHARACTER so the peer
