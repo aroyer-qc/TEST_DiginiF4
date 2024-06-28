@@ -34,7 +34,7 @@
 
 #define TASK_NETWORK_GLOBAL
 #include "task_network.h"
-#undef TASK_NETWORK_GLOBAL
+#undef  TASK_NETWORK_GLOBAL
 
 //-------------------------------------------------------------------------------------------------
 // Private variable(s) and constant(s)
@@ -214,7 +214,7 @@ nOS_Error ClassNetwork::Initialize(void)
 {
     nOS_Error Error;
 
-   // Diag("Initializing ClassNetwork\n");
+    myConsole.PrintSerialLog(CON_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
     // to debug
     IP_MAC_Address_t MAC = {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5};
@@ -227,6 +227,7 @@ nOS_Error ClassNetwork::Initialize(void)
     myEthernet.Start();
     PHY_Driver.Initialize();
 
+/*
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
                              this,
@@ -237,7 +238,7 @@ nOS_Error ClassNetwork::Initialize(void)
                              , nullptr
                            #endif
                             );
-
+*/
 
     // Webserver task
 
@@ -256,7 +257,7 @@ nOS_Error ClassNetwork::Initialize(void)
     //TCP_EchoServerInitialize();
 
   #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-memset(&m_NetworkStack[0], 0xFF, TASK_NETWORK_STACK_SIZE * 4);
+     memset(&m_NetworkStack[0], 0xFF, TASK_NETWORK_STACK_SIZE * 4);
 //memset(&m_WebServerStack[0], 0xFF, TASK_WEBSERVER_STACK_SIZE * 4);
 
     myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");

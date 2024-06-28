@@ -33,6 +33,7 @@
 #undef  TASK_IDLE_GLOBAL
 #include "bsp.h"
 #include "./Digini/lib_digini.h"
+#include "task_network.h"
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)

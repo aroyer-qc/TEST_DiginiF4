@@ -145,6 +145,7 @@
 		<Unit filename="..\Config\digini_cfg.h" />
 		<Unit filename="..\Config\dma_var.h" />
 		<Unit filename="..\Config\driver_cfg.h" />
+		<Unit filename="..\Config\ip_cfg.h" />
 		<Unit filename="..\Config\nOSConfig.h" />
 		<Unit filename="..\Config\project_def.h" />
 		<Unit filename="..\Config\pwm_cfg.h" />
@@ -167,6 +168,7 @@
 		<Unit filename="..\Module\Digini\Comm\Comm\src\lib_comm.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="..\Module\Digini\Comm\Console\inc\lib_console.h" />
 		<Unit filename="..\Module\Digini\Comm\Console\src\lib_console.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -197,7 +199,11 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\Module\Digini\NanoIP\inc\Interface\lib_class_ethernet_phy_interface.h" />
+		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_ethernetif.h" />
 		<Unit filename="..\Module\Digini\NanoIP\src\Device\lib_class_PHY_LAN8742A.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_ethernetif.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_DACx3508.h" />

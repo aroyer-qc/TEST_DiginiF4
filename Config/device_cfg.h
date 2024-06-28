@@ -40,8 +40,5 @@
 //#include "./Digini/Peripheral/inc/device/lib_class_spi_DACX3508.h"
 //#include "./Digini/Peripheral/inc/device/lib_class_spi_VFD.h"
 //#include "./Digini/Peripheral/inc/device/lib_class_spi_IV_11.h"
-#include "./Digini/NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
-
-
 
 //-------------------------------------------------------------------------------------------------
