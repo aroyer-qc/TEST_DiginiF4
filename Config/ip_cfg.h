@@ -34,7 +34,7 @@
 // Driver
 
 // Include file for the ETH PHY Driver
-#define PHY_DRIVER_INCLUDE                      "./Digini/NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
+#define PHY_DRIVER_INCLUDE                      "./NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
 
 
 
@@ -56,14 +56,14 @@
 //-------------------------------------------------------------------------------------------------
 // Protocol supported by the application
 
-#define IP_USE_ARP 							    DEF_ENABLED
-#define IP_USE_DHCP							    DEF_ENABLED     // Need UDP
-#define IP_USE_ICMP							    DEF_ENABLED
+#define IP_USE_ARP 							    DEF_DISABLED//DEF_ENABLED
+#define IP_USE_DHCP							    DEF_DISABLED//DEF_ENABLED     // Need UDP
+#define IP_USE_ICMP							    DEF_DISABLED//DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
 #define IP_USE_TCP 							    DEF_DISABLED
-#define IP_USE_UDP 							    DEF_ENABLED
+#define IP_USE_UDP 							    DEF_DISABLED//DEF_ENABLED
 
 //---------------------------------------------------------
 // External server URL
@@ -74,82 +74,37 @@
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
 
-#define IP_NUMBER_OF_INTERFACE                  1
-
 //       not shure it is needed
-//#define IP_INTERFACE_SUPPORT_PHY                DEF_ENABLED                 // Code generated for support of PHY controller (MAC is Build-in the CPU)
-//#define #define IP_INTERFACE_SUPPORT_HEC                DEF_DISABLED                // Code generated for support of HEC (Harwired Ethernet Controller)  EX. Wiznet W5100S
-//#define #define IP_INTERFACE_SUPPORT_MAC                DEF_DISABLED                // Code generated for support of MAC and PHY chip SPI and other
+#define IP_INTERFACE_SUPPORT_EXTERNAL_PHY       DEF_ENABLED                 // Code generated for support of PHY controller (MAC is Build-in the CPU)
+#define IP_INTERFACE_SUPPORT_HEC                DEF_DISABLED                // Code generated for support of HEC (Hardwired Ethernet Controller)  EX. Wiznet W5100S
+#define IP_INTERFACE_SUPPORT_EXT_MAC_AND_PHY    DEF_DISABLED                // Code generated for support of MAC and PHY chip SPI and other
 
 // If IP Interface use host name
 #define IP_USE_HOSTNAME                         DEF_ENABLED
 
-// For each interface create the data structure for it. Note: include only element of structure that need to be included according to the configuration above
+#define IP_IF_WIRED_PROTOCOL                    (IP_FLAG_USE_ARP | IP_FLAG_USE_DHCP | IP_FLAG_USE_ICMP | IP_FLAG_USE_TCP | IP_FLAG_USE_UDP)
 
-//#define ETH_INTERFACE_ENUM  { ETH_IF_GRBL, ETH_IF_TEST };
+// MAC address configuration using GUID of the CPU.
+#define MAC_ADDR0                               (((char*)0x1FFF7A10)[0])
+#define MAC_ADDR1                               (((char*)0x1FFF7A10)[2])
+#define MAC_ADDR2                               (((char*)0x1FFF7A10)[4])
+#define MAC_ADDR3                               (((char*)0x1FFF7A10)[6])
+#define MAC_ADDR4                               (((char*)0x1FFF7A10)[8])
+#define MAC_ADDR5                               (((char*)0x1FFF7A10)[10])
 
-// Interface 1
-#define ETH_IF_GRBL_CONFIG  {                                                                                                                                                     \
-                                "GRBL",                                                                                      /* HostName                                       */ \
-                                (IP_FLAG_USE_ARP | IP_FLAG_USE_DHCP | IP_FLAG_USE_ICMP | IP_FLAG_USE_TCP | IP_FLAG_USE_UDP), /* Create support for these protocol in interface */ \
-                                IP_ADDRESS(192,168,0,254),                                                                   /* Default Static Address                         */ \
-                                IP_ADDRESS(192,168,0,1),                                                                     /* Default Gateway                                */ \
-                                IP_ADDRESS(255,255,255,0),                                                                   /* Default Subnet Mask                            */ \
-                                IP_ADDRESS(192,168,0,1),                                                                     /* Default Static DNS                             */ \
-                            },
-
-// Interface 2
-#define ETH_IF_TEST_CONFIG  {                                                               \
-                                "TEST",                         /* HostName              */ \
-                                (IP_FLAG_USE_TCP | IP_FLAG_USE_UDP),                        \
-                                IP_ADDRESS(192,168,0,253),      /* Default Static Address*/ \
-                                IP_ADDRESS(192,168,0,1),        /* Default Gateway       */ \
-                                IP_ADDRESS(255,255,255,0),      /* Default Subnet Mask   */ \
-                                IP_ADDRESS(192,168,0,1),        /* Default Static DNS    */ \
-                            },
-
-// Interface List
-//#define ETH_IF_CONFIG_LIST  ETH_IF_GRBL_CONFIG ## ETH_IF_TEST_CONFIG
+#define IP_MAC_ADDRESS_WIRED                    {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5}
 
 
-
-
+// This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
+//                    use the internal MAC & PHY (IP_INTERFACE_SUPPORT_EXTERNAL_PHY == DEF_ENABLED)
+#define IF_ETH_DEF(X_IF) \
+/*        ENUM ID of the ETH IF  Hostname            Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver  */ \
+/* Interface 1 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
+    X_IF( IF_WIRED,              (char*)("TEST IP"), IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver) \
 
 
 
 /*
-
-// MAC address configuration using GUID of the CPU.
-#define MAC_ADDR0	                            (((char *)0x1FF0F420)[0])
-#define MAC_ADDR1	                            (((char *)0x1FF0F420)[2])
-#define MAC_ADDR2	                            (((char *)0x1FF0F420)[4])
-#define MAC_ADDR3	                            (((char *)0x1FF0F420)[6])
-#define MAC_ADDR4	                            (((char *)0x1FF0F420)[8])
-#define MAC_ADDR5	                            (((char *)0x1FF0F420)[10])
-
-#define netifGUARD_BLOCK_TIME			        250
-#define ETHERNET_FRAME_SIZE                     1514
-#define BLOCK_TIME_WAITING_FOR_INPUT            250             // mSec
-
-#define TASK_ETHERNET_IF_STACK_SIZE             512
-#define TASK_ETHERNET_IF_PRIO                   4
-
-// Define those to better describe your network interface.
-#define IFNAME0 'd'
-#define IFNAME1 'g'
-#define IF_NAME "dg0"
-
-//-------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
 
 //--- Socket allocation -----------------------------------
 // in this stack socket can be allocated statically.

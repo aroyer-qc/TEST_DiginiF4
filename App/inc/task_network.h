@@ -71,7 +71,7 @@ class ClassNetwork
 
 
 
-    nOS_Error       Initialize                  (void);
+    SystemState_e   Initialize                  (void);
 
 
   private:
@@ -89,7 +89,7 @@ class ClassNetwork
     //struct netconn*        m_WebServerConn;
 //    struct netconn*        m_WebServerNewConn;
 
-
+    class ETH_IF_Driver    m_IF_Driver;
 
 
 };

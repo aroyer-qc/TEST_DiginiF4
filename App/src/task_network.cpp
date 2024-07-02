@@ -193,41 +193,15 @@ extern "C" void TaskNetwork_Wrapper(void* pvParameters)
 //
 //-------------------------------------------------------------------------------------------------
 
-// MAC address configuration using GUID of the CPU.
-//#define MAC_ADDR0	                            (((char *)0x1FF0F420)[0])
-//#define MAC_ADDR1	                            (((char *)0x1FF0F420)[2])
-//#define MAC_ADDR2	                            (((char *)0x1FF0F420)[4])
-//#define MAC_ADDR3	                            (((char *)0x1FF0F420)[6])
-//#define MAC_ADDR4	                            (((char *)0x1FF0F420)[8])
-//#define MAC_ADDR5	                            (((char *)0x1FF0F420)[10])
 
-#define MAC_ADDR0	                            1
-#define MAC_ADDR1	                            2
-#define MAC_ADDR2	                            3
-#define MAC_ADDR3	                            4
-#define MAC_ADDR4	                            5
-#define MAC_ADDR5	                            6
-
-
-
-nOS_Error ClassNetwork::Initialize(void)
+SystemState_e ClassNetwork::Initialize(void)
 {
-    nOS_Error Error;
+    nOS_Error Error = NOS_OK;
 
-    myConsole.PrintSerialLog(CON_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
+    DEBUG_PrintSerialLog(CON_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
-    // to debug
-    IP_MAC_Address_t MAC = {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5};
-//    myIP_Manager.Initialize(ETH_IF_GRBL, &MAC);
+    myWiredIP.Initialize(IF_WIRED);
 
-
-    myEthernet.Initialize(nullptr);
-
-    myEthernet.SetMacAddress(&MAC);
-    myEthernet.Start();
-    PHY_Driver.Initialize();
-
-/*
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
                              this,
@@ -238,7 +212,6 @@ nOS_Error ClassNetwork::Initialize(void)
                              , nullptr
                            #endif
                             );
-*/
 
     // Webserver task
 
@@ -266,7 +239,7 @@ nOS_Error ClassNetwork::Initialize(void)
 
 
     //Error = nOS_FlagCreate(&this->m_Flag, 0);
-    return Error;
+    return (Error != NOS_OK) ? SYS_ERROR : SYS_READY;  // TODO  improve error handling
 }
 
 
@@ -289,7 +262,7 @@ void ClassNetwork::Network(void)
    // err_t           err;
    // err_t           accept_err;
    // struct netbuf*  buf;
-    void*           data;
+  //  void*           data;
   //  u16_t           len;
    // err_t           recv_err;
 
