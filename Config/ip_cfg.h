@@ -74,11 +74,6 @@
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
 
-//       not shure it is needed
-#define IP_INTERFACE_SUPPORT_EXTERNAL_PHY       DEF_ENABLED                 // Code generated for support of PHY controller (MAC is Build-in the CPU)
-#define IP_INTERFACE_SUPPORT_HEC                DEF_DISABLED                // Code generated for support of HEC (Hardwired Ethernet Controller)  EX. Wiznet W5100S
-#define IP_INTERFACE_SUPPORT_EXT_MAC_AND_PHY    DEF_DISABLED                // Code generated for support of MAC and PHY chip SPI and other
-
 // If IP Interface use host name
 #define IP_USE_HOSTNAME                         DEF_ENABLED
 
@@ -96,11 +91,10 @@
 
 
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
-//                    use the internal MAC & PHY (IP_INTERFACE_SUPPORT_EXTERNAL_PHY == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
-/*        ENUM ID of the ETH IF  Hostname            Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver  */ \
-/* Interface 1 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
-    X_IF( IF_WIRED,              (char*)("TEST IP"), IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver) \
+/*        ENUM ID of the ETH IF  Hostname            Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
+/* Interface 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
+    X_IF( IF_WIRED,              (char*)("TEST IP"), IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
 
 
 
