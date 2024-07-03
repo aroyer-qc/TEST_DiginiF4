@@ -57,7 +57,7 @@
 //-------------------------------------------------------------------------------------------------
 // COMM support (Console, CLI, VT100)
 //
-#define DIGINI_USE_COMM_MODULE                          DEF_ENABLED
+#define DIGINI_USE_COMM_MODULE                          DEF_DISABLED
 #define DIGINI_USE_COMM_AS_A_TASK                       DEF_DISABLED         // Otherwise it is a process that need to be incluse in your choice of task
 
 // Only set this if DIGINI_USE_COMM_AS_A_TASK is DEF_ENABLED
@@ -67,7 +67,7 @@
 //-------------------------------------------------------------------------------------------------
 // COMM support module
 //
-#define DIGINI_USE_CONSOLE                              DEF_ENABLED
+#define DIGINI_USE_CONSOLE                              DEF_DISABLED
 #define DIGINI_USE_CMD_LINE                             DEF_DISABLED
 #define DIGINI_USE_VT100_MENU                           DEF_DISABLED     // need label
 
