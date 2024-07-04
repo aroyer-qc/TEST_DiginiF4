@@ -84,7 +84,7 @@
 			<Add symbol="x__FPU_PRESENT=1" />
 			<Add symbol="xUSE_USB_FS" />
 			<Add symbol="STM32F4xx" />
-			<Add symbol="STM32F40_41xxx" />
+			<Add symbol="STM32F429_439xx" />
 			<Add directory="..\Config" />
 			<Add directory="..\Module" />
 		</Compiler>

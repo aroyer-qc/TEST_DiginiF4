@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32f407xx.s
+  * @file      startup_stm32f429xx.s
   * @author    MCD Application Team
   * @brief     STM32F407xx Devices vector table for GCC based toolchains.
   *            This module performs:
@@ -205,7 +205,7 @@ g_pfnVectors:
   .word     TIM8_TRG_COM_TIM14_IRQHandler     /* TIM8 Trigger and Commutation and TIM14 */
   .word     TIM8_CC_IRQHandler                /* TIM8 Capture Compare         */
   .word     DMA1_Stream7_IRQHandler           /* DMA1 Stream7                 */
-  .word     FSMC_IRQHandler                   /* FSMC                         */
+  .word     FMC_IRQHandler                    /* FMC                          */
   .word     SDIO_IRQHandler                   /* SDIO                         */
   .word     TIM5_IRQHandler                   /* TIM5                         */
   .word     SPI3_IRQHandler                   /* SPI3                         */
@@ -236,9 +236,18 @@ g_pfnVectors:
   .word     OTG_HS_WKUP_IRQHandler            /* USB OTG HS Wakeup through EXTI */
   .word     OTG_HS_IRQHandler                 /* USB OTG HS                   */
   .word     DCMI_IRQHandler                   /* DCMI                         */
-  .word     0                                 /* CRYP crypto                  */
+  .word     0                                 /*                              */
   .word     HASH_RNG_IRQHandler               /* Hash and Rng                 */
   .word     FPU_IRQHandler                    /* FPU                          */
+  .word     UART7_IRQHandler                  /* UART7                        */
+  .word     UART8_IRQHandler                  /* UART8                        */
+  .word     SPI4_IRQHandler                   /* SPI4                         */
+  .word     SPI5_IRQHandler                   /* SPI5                         */
+  .word     SPI6_IRQHandler                   /* SPI6                         */
+  .word     SAI1_IRQHandler                   /* SAI                          */
+  .word     LTDC_IRQHandler                   /* LTDC                         */
+  .word     LTDC_ER_IRQHandler                /* LTDC Error                   */
+  .word     DMA2D_IRQHandler                  /* DMA2D                        */
 
 
 /*******************************************************************************

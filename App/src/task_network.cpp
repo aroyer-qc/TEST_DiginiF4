@@ -200,6 +200,12 @@ SystemState_e ClassNetwork::Initialize(void)
 
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
     myWiredIP.Initialize(IF_WIRED);
+
+  #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
+    myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
+    //myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
+  #endif
+
 /*
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
@@ -211,8 +217,7 @@ SystemState_e ClassNetwork::Initialize(void)
                              , nullptr
                            #endif
                             );
-*/
-    // Webserver task
+  */  // Webserver task
 
     /*Error = nOS_ThreadCreate(&m_WebServerHandle,
                              TaskWebServer_Wrapper,
@@ -227,15 +232,6 @@ SystemState_e ClassNetwork::Initialize(void)
 
     // tcp echo server Init
     //TCP_EchoServerInitialize();
-
-  #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-     memset(&m_NetworkStack[0], 0xFF, TASK_NETWORK_STACK_SIZE * 4);
-//memset(&m_WebServerStack[0], 0xFF, TASK_WEBSERVER_STACK_SIZE * 4);
-
-    myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
-    //myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
-  #endif
-
 
     //Error = nOS_FlagCreate(&this->m_Flag, 0);
     return (Error != NOS_OK) ? SYS_ERROR : SYS_READY;  // TODO  improve error handling

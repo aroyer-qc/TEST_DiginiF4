@@ -119,7 +119,7 @@
 // Note: If it is DEF_ENABLED then you need also need to  "NOS_CONFIG_DEBUG  1"    in nOSConfig.h
 #define DIGINI_USE_STACKTISTIC                          DEF_ENABLED                 // Allow debugging of the stack, per code or using VT100 terminal
 #define DIGINI_STACKTISTIC_NUMBER_OF_STACK              10
-#define DIGINI_STACKTISTIC_WATER_MARK_CODE              0xFFFFFFFFUL                // This is for nOS. Depend on the value put in stack by OS. FreeRTOS it's 0xA5
+#define DIGINI_STACKTISTIC_WATER_MARK_CODE              0xFF                        // This is for nOS. Depend on the value put in stack by OS. FreeRTOS it's 0xA5
 
 //-------------------------------------------------------------------------------------------------
 // Debug special feature

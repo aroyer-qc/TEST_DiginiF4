@@ -16,7 +16,7 @@
 ******************************************************************************/
 
 /*------------------------------------------------------------------------------
- *      Linker script for running in internal FLASH on the STM32F407VG
+ *      Linker script for running in internal FLASH on the STM32F429ZI
  *----------------------------------------------------------------------------*/
 
 /* Entry Point */
@@ -30,8 +30,8 @@ _Min_Stack_Size = __STACK_SIZE;   /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-    FLASH            (rx)  : ORIGIN = 0x08000000, LENGTH = 896K          /* Normal code and const data */
-    RAM              (rwx) : ORIGIN = 0x20000000, LENGTH = 72K
+    FLASH            (rx)  : ORIGIN = 0x08000000, LENGTH = 2M             /* Normal code and const data */
+    RAM              (rwx) : ORIGIN = 0x20000000, LENGTH = 256K
 }
 
 _estack = ORIGIN(RAM) + LENGTH(RAM);

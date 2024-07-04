@@ -53,7 +53,7 @@
 //#define TASK_WEBSERVER_STACK_SIZE            500
 //#define TASK_WEBSERVER_PRIO                  6
 
-#define TASK_NETWORK_STACK_SIZE              1024
+#define TASK_NETWORK_STACK_SIZE              256
 #define TASK_NETWORK_PRIO                    4
 
 //-------------------------------------------------------------------------------------------------
