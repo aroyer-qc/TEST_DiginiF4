@@ -198,7 +198,7 @@ SystemState_e ClassNetwork::Initialize(void)
 {
     nOS_Error Error = NOS_OK;
 
-    DEBUG_PrintSerialLog(CON_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
+    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
     myWiredIP.Initialize(IF_WIRED);
 /*
     Error = nOS_ThreadCreate(&m_NetworkHandle,

@@ -36,11 +36,6 @@
 // Include file for the ETH PHY Driver
 #define PHY_DRIVER_INCLUDE                      "./NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
 
-
-
-// Name of the driver class
-// need to be change #define PHY_DRIVER_INTERFACE                    PHY_LAN8742A_Driver
-
 //-------------------------------------------------------------------------------------------------
 // Driver configuration  (may vary according to driver)
 
@@ -86,7 +81,6 @@
 #define MAC_ADDR3                               (((char*)0x1FFF7A10)[6])
 #define MAC_ADDR4                               (((char*)0x1FFF7A10)[8])
 #define MAC_ADDR5                               (((char*)0x1FFF7A10)[10])
-
 #define IP_MAC_ADDRESS_WIRED                    {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5}
 
 

@@ -46,15 +46,15 @@
 
 // TODO is it the best place to put this....???
 
-//#define CON_DEBUG_LEVEL_1 to 16
-#define CON_DEBUG_LEVEL_SYSTEM_STATUS           CON_DEBUG_LEVEL_1
-#define CON_DEBUG_LEVEL_SYSTEM_ACTION           CON_DEBUG_LEVEL_2
-#define CON_DEBUG_LEVEL_SYSTEM_HEALTH           CON_DEBUG_LEVEL_3
-#define CON_DEBUG_LEVEL_MONITOR_LOGS            CON_DEBUG_LEVEL_4
-#define CON_DEBUG_LEVEL_STACK_WARNING           CON_DEBUG_LEVEL_5
-#define CON_DEBUG_LEVEL_ETHERNET                CON_DEBUG_LEVEL_6
-#define CON_DEBUG_LEVEL_NANO_IP                 CON_DEBUG_LEVEL_7
-#define CON_DEBUG_LEVEL_MEMORY_POOL             CON_DEBUG_LEVEL_8
+//#define SYS_DEBUG_LEVEL_1 to 16
+#define SYS_DEBUG_LEVEL_SYSTEM_STATUS           SYS_DEBUG_LEVEL_1
+#define SYS_DEBUG_LEVEL_SYSTEM_ACTION           SYS_DEBUG_LEVEL_2
+#define SYS_DEBUG_LEVEL_SYSTEM_HEALTH           SYS_DEBUG_LEVEL_3
+#define SYS_DEBUG_LEVEL_MONITOR_LOGS            SYS_DEBUG_LEVEL_4
+#define SYS_DEBUG_LEVEL_STACK_WARNING           SYS_DEBUG_LEVEL_5
+#define SYS_DEBUG_LEVEL_ETHERNET                SYS_DEBUG_LEVEL_6
+#define SYS_DEBUG_LEVEL_NANO_IP                 SYS_DEBUG_LEVEL_7
+#define SYS_DEBUG_LEVEL_MEMORY_POOL             SYS_DEBUG_LEVEL_8
 
 //-------------------------------------------------------------------------------------------------
 

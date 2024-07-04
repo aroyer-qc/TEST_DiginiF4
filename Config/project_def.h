@@ -47,7 +47,7 @@ extern char OEM_MODEL_NAME[17];
 extern char OEM_SERIAL_NUMBER[SERIAL_NUMBER_SIZE];
 
 #ifdef BSP_GLOBAL
-const char OUR_FIRMWARE_NAME[]           = { "RCA Retro Radio"   };
+const char OUR_FIRMWARE_NAME[]           = { "Test DEV F4"       };
 const char OUR_FIRMWARE_VERSION[]        = { "V1.00"             };
 const char OUR_FIRMWARE_DIGINI_NAME[]    = { "Digini GUI"        };
 const char OUR_FIRMWARE_DIGINI_VERSION[] = { DIGINI_VERSION      };
@@ -55,7 +55,7 @@ const char OUR_FIRMWARE_BUILD_DATE[]     = {__DATE__ " " __TIME__};
 
  #ifdef DEBUG
 char OEM_VENDOR_NAME[]                   = { "Digini"            };
-char OEM_MODEL_NAME[]                    = { "STM32F407-DISCO"   };
+char OEM_MODEL_NAME[]                    = { "STM32F429-DISCO"   };
 char OEM_SERIAL_NUMBER[]                 = { "00000000"          };
  #else
 char OEM_VENDOR_NAME[]                   = { "" };

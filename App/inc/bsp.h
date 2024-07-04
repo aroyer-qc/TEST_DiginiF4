@@ -47,7 +47,7 @@
 //-------------------------------------------------------------------------------------------------
 
 #if (DIGINI_USE_CONSOLE == DEF_ENABLED)
-BSP_EXTERN CON_DebugLevel_e BSP_GlobalDebugLevel;
+BSP_EXTERN SystemDebugLevel_e BSP_GlobalDebugLevel;
 #endif
 
 //-------------------------------------------------------------------------------------------------
