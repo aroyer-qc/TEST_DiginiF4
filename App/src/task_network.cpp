@@ -206,7 +206,7 @@ SystemState_e ClassNetwork::Initialize(void)
     //myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
   #endif
 
-/*
+
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
                              this,
@@ -217,7 +217,7 @@ SystemState_e ClassNetwork::Initialize(void)
                              , nullptr
                            #endif
                             );
-  */  // Webserver task
+    // Webserver task
 
     /*Error = nOS_ThreadCreate(&m_WebServerHandle,
                              TaskWebServer_Wrapper,

@@ -55,7 +55,6 @@ BSP_EXTERN SystemDebugLevel_e BSP_GlobalDebugLevel;
 //-------------------------------------------------------------------------------------------------
 
 void                BSP_Initialize          (void);
-void                BSP_IRQ_Init            (void);
 SystemState_e       BSP_PostOS_Initialize   (void);
 
 //-------------------------------------------------------------------------------------------------

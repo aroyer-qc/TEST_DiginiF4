@@ -43,7 +43,6 @@
 
 #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
 #include "Task_network.h"
-//IP_Manager myIP_Manager;
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------

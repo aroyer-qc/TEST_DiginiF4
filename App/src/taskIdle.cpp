@@ -43,9 +43,7 @@
 // Variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
-
-
-uint16_t  sine_wave[256] =
+static const uint16_t sine_wave[256] =
 {
   2048, 2098, 2148, 2198, 2248, 2298, 2348, 2398,
   2447, 2496, 2545, 2594, 2642, 2690, 2737, 2784,
@@ -111,7 +109,7 @@ void TaskIdle(void)
     pTaskNetwork->Initialize();
   #endif
 
-  #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED)
+  #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_CONSOLE == DEF_ENABLED)
     pTaskCOMM->Initialize();
   #endif
 
@@ -119,7 +117,7 @@ void TaskIdle(void)
     // Low level main control loop
     while(1)
     {
-      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_DISABLED)
+      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_CONSOLE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_DISABLED)
         pTaskCOMM->Process();
       #endif
 
@@ -165,6 +163,6 @@ void TaskIdle(void)
         //pTaskNetwork->Process();
       #endif
 
-        nOS_Yield();
+//        nOS_Yield();
     }
 }

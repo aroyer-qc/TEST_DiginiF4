@@ -2,7 +2,7 @@
   ******************************************************************************
   * @file      startup_stm32f429xx.s
   * @author    MCD Application Team
-  * @brief     STM32F407xx Devices vector table for GCC based toolchains.
+  * @brief     STM32F429xx Devices vector table for GCC based toolchains.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -109,6 +109,29 @@ LoopFillZerobss:
   bl  SystemInit
 /* Call static constructors */
   bl  __libc_init_array
+
+/* Fill the stack with watermark */
+  ldr  r3, =_StackBottom;
+  mov   r2, sp
+  movs  r4, 0xFFFFFFFF
+  b     LoopFillStack
+FillStack:
+  str   r4,     [r3],   #4
+LoopFillStack:
+  cmp  r2,     r3
+  bne  FillStack
+
+
+
+
+
+
+
+
+
+
+
+
 /* Call the application's entry point.*/
   bl  main
   bx  lr
@@ -236,7 +259,7 @@ g_pfnVectors:
   .word     OTG_HS_WKUP_IRQHandler            /* USB OTG HS Wakeup through EXTI */
   .word     OTG_HS_IRQHandler                 /* USB OTG HS                   */
   .word     DCMI_IRQHandler                   /* DCMI                         */
-  .word     0                                 /*                              */
+  .word     0                                 /* Reserved                     */
   .word     HASH_RNG_IRQHandler               /* Hash and Rng                 */
   .word     FPU_IRQHandler                    /* FPU                          */
   .word     UART7_IRQHandler                  /* UART7                        */
@@ -244,9 +267,9 @@ g_pfnVectors:
   .word     SPI4_IRQHandler                   /* SPI4                         */
   .word     SPI5_IRQHandler                   /* SPI5                         */
   .word     SPI6_IRQHandler                   /* SPI6                         */
-  .word     SAI1_IRQHandler                   /* SAI                          */
-  .word     LTDC_IRQHandler                   /* LTDC                         */
-  .word     LTDC_ER_IRQHandler                /* LTDC Error                   */
+  .word     SAI1_IRQHandler                   /* SAI1						  */
+  .word     LTDC_IRQHandler                   /* LTDC_IRQHandler			  */
+  .word     LTDC_ER_IRQHandler                /* LTDC_ER_IRQHandler			  */
   .word     DMA2D_IRQHandler                  /* DMA2D                        */
 
 
@@ -428,8 +451,8 @@ g_pfnVectors:
    .weak      DMA1_Stream7_IRQHandler
    .thumb_set DMA1_Stream7_IRQHandler,Default_Handler
 
-   .weak      FSMC_IRQHandler
-   .thumb_set FSMC_IRQHandler,Default_Handler
+   .weak      FMC_IRQHandler
+   .thumb_set FMC_IRQHandler,Default_Handler
 
    .weak      SDIO_IRQHandler
    .thumb_set SDIO_IRQHandler,Default_Handler
@@ -526,5 +549,32 @@ g_pfnVectors:
 
    .weak      FPU_IRQHandler
    .thumb_set FPU_IRQHandler,Default_Handler
+
+   .weak      UART7_IRQHandler
+   .thumb_set UART7_IRQHandler,Default_Handler
+
+   .weak      UART8_IRQHandler
+   .thumb_set UART8_IRQHandler,Default_Handler
+
+   .weak      SPI4_IRQHandler
+   .thumb_set SPI4_IRQHandler,Default_Handler
+
+   .weak      SPI5_IRQHandler
+   .thumb_set SPI5_IRQHandler,Default_Handler
+
+   .weak      SPI6_IRQHandler
+   .thumb_set SPI6_IRQHandler,Default_Handler
+
+   .weak      SAI1_IRQHandler
+   .thumb_set SAI1_IRQHandler,Default_Handler
+
+   .weak      LTDC_IRQHandler
+   .thumb_set LTDC_IRQHandler,Default_Handler
+
+   .weak      LTDC_ER_IRQHandler
+   .thumb_set LTDC_ER_IRQHandler,Default_Handler
+
+   .weak      DMA2D_IRQHandler
+   .thumb_set DMA2D_IRQHandler,Default_Handler
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -110,7 +110,9 @@ NOS_ISR(USART3_IRQHandler)
 //
 //-------------------------------------------------------------------------------------------------
 
-void DebugTrap(int32_t IRQ_Number)
+/*
+
+inline void DebugTrap(int32_t IRQ_Number)
 {
     static int32_t IRQ_Trap = IRQ_Number;
 
@@ -224,6 +226,8 @@ __attribute__((weak)) void LTDC_IRQHandler               (void)  { DebugTrap(LTD
 __attribute__((weak)) void LTDC_ER_IRQHandler            (void)  { DebugTrap(LTDC_ER_IRQn);            }
 __attribute__((weak)) void DMA2D_IRQHandler              (void)  { DebugTrap(DMA2D_IRQn);              }
 
+
+*/
 //-------------------------------------------------------------------------------------------------
 
 } // extern "C"
