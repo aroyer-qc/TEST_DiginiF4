@@ -44,45 +44,13 @@
 
 #define VT100_USER_LABEL_LANGUAGE_DEF(X_VT100_USER_LBL_CFG) \
     X_VT100_USER_LBL_CFG( VT100_LBL_MENU_TITLE,                       "Test F4 Menu",                                             "Menu Test F4"                                               ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_MAIN_MENU,                        "Main Menu",                                                "Menu Principal"                                             ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_INFO,                      "Display System Information",                               "Information Syst\x8ame"                                     ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG,                            "Debug",                                                    "D\x82" "bogage"                                             ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_SETTING,                   "System Settings",                                          "Configuration Syst\x8ame"                                   ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_TEST,                             "Test",                                                     "Test"                                                       ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_STACKTISTIC,                      "Stack Usage",                                              "Usage des Stacks"                                           ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_MEMORY_POOL_STAT,                 "Memory Pool Statistic",                                    "Statistiques Bassin de m\x82moire"                          ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_MISCELLEANEOUS,                   "Miscelleaneous",                                           "Divers"                                                     ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_MENU,                       "Debug Menu",                                               "Menu de D\x82" "bogage"                                     ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_1,                    "Dbg level 1  - System Status   ( )",                       "Dbg level 1  - Status Syst\x8ame  ( )"                      ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_2,                    "Dbg level 2  - System Action   ( )",                       "Dbg level 2  - Action Syst\x8ame  ( )"                      ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_3,                    "Dbg level 3  - System Health   ( )",                       "Dbg level 3  - Sant\x82 Syst\x8ame   ( )"                   ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_4,                    "Dbg level 4  - Monitor/Logs    ( )",                       "Dbg level 4  - Moniteur/Logs   ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_5,                    "Dbg level 5  - Stack Warning   ( )",                       "Dbg level 5  - Alerte Stack    ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_6,                    "Dbg level 6  - Ethernet driver ( )",                       "Dbg level 6  - Pilote Ethernet ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_7,                    "Dbg level 7  - Nano IP         ( )",                       nullptr                                                      ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_8,                    "Dbg level 8  - Memory Pool     ( )",                       "Dbg level 8  - R\x82serve m\x82moire ( )"                   ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_9,                    "Dbg level 9  - Free            ( )",                       "Dbg level 9  - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_10,                   "Dbg level 10 - Free            ( )",                       "Dbg level 10 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_11,                   "Dbg level 11 - Free            ( )",                       "Dbg level 11 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_12,                   "Dbg level 12 - Free            ( )",                       "Dbg level 12 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_13,                   "Dbg level 13 - Free            ( )",                       "Dbg level 13 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_14,                   "Dbg level 14 - Free            ( )",                       "Dbg level 14 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_15,                   "Dbg level 15 - Free            ( )",                       "Dbg level 15 - Libre           ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DEBUG_LEVEL_16,                   "Dbg level 16 - Free            ( )",                       "Dbg level 16 - Libre           ( )"                         ) \
+    X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_SETTING,                   "System Settings",                                          "Configuration Syst\x8ame"                                   ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_SETTING_MENU,              "System Settings Menu",                                     "Menu Configuration Syst\x8ame"                              ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE,                    "Time and Date",                                            "Heure et Date"                                              ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TEST_1,                           "Test 1",                                                   "Test 1"                                                     ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_POUTINE_1,                        "Poutine ski                    ( )",                       "Poutine ski                    ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_POUTINE_2,                        "Poutine ski                    ( )",                       "Poutine ski                    ( )"                         ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE_CONFIGURATION,      "Time and Date Configuration",                              "Configuration Heure et Date"                                ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_HOUR,                             "Hour",                                                     "Heure"                                                      ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_MINUTE,                           "Minute",                                                   "Minute"                                                     ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_SECOND,                           "Second",                                                   "Seconde"                                                    ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_DAY,                              "Day",                                                      "Jour"                                                       ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_MONTH,                            "Month",                                                    "Mois"                                                       ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_YEAR,                             "Year",                                                     "Ann\x82" "e"                                                ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_BLANK_FOR_SAVE,                   nullptr,                                                    nullptr                                                      ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_MISC_CONFIG_MENU,                 "Miscellaneous Configuration Menu",                         "Menu de Configuration Divers"                               ) \
+    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE,                    "Time and Date",                                            "Heure et Date"                                              ) \
+    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE_CONFIGURATION,      "Time and Date Configuration",                              "Configuration Heure et Date"                                ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_SERIAL_NUMBER_SETTING,            "Setting Serial Number",                                    "Configurer Num\x82ro de S\x82rie"                           ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_SELECT_LANGUAGE,                  "Toggle Language:",                                         "Basculer de Langage:"                                       ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_LANGUAGE_SELECTION,               "Choose Language:  English ( )  French   ( )",              "Choisir Langage:  Anglais ( )  Fran\x87" "ais ( )"          ) \
@@ -108,14 +76,14 @@
 // Define here all the menu and sub menu you will use in the VT100 terminal
 #define VT100_MENU_DEF(ENTRY)        \
                                             ENTRY(MenuMain           )  \
-                                            ENTRY(MenuInfo           )  \
+    IF_USE( LABEL_USE_PRODUCT_INFO,         ENTRY(MenuInfo           ) )\
     IF_USE( DIGINI_USE_STACKTISTIC,         ENTRY(MenuStackUsage     ) )\
     IF_USE( DIGINI_USE_STATIC_MEMORY_ALLOC, ENTRY(MenuMemoryPool     ) )\
                                             ENTRY(MenuSystemSetting  )  \
     IF_USE( DIGINI_USE_DEBUG_IN_CONSOLE,    ENTRY(MenuDebug          ) )\
     IF_USE( DIGINI_USE_ETHERNET,            ENTRY(MenuNetwork        ) )\
 
-// those are not used at this time
+// Those are not used at this time
 #define VT100_MENU_DEF_NU(ENTRY)\
                                  ENTRY(MenuSetting        )  \
                                  ENTRY(MenuSetMisc        )  \
@@ -124,7 +92,7 @@
 // Define here all the callback you will use in the VT100 terminal
 #define VT100_CALLBACK(ENTRY)\
                                                ENTRY(CALLBACK_MenuMain           )  \
-                                               ENTRY(CALLBACK_ProductInformation )  \
+    IF_USE( LABEL_USE_PRODUCT_INFO,            ENTRY(CALLBACK_ProductInformation ) )\
     IF_USE( DIGINI_USE_STACKTISTIC,            ENTRY(CALLBACK_StackUsage         ) )\
     IF_USE( DIGINI_USE_STATIC_MEMORY_ALLOC,    ENTRY(CALLBACK_MemoryPool         ) )\
     IF_USE( DIGINI_USE_DEBUG_IN_CONSOLE,       ENTRY(CALLBACK_DebugLevelSetting  ) )\
@@ -142,14 +110,14 @@
 #define VT100_MENU_TREE_DEF(ENTRY, MENU) \
 \
                                             ENTRY  (MENU,  MenuMain,            ID_MAIN_TITLE,                       CALLBACK_None,                           VT100_MENU_NONE,                  VT100_LBL_MAIN_MENU                             )  \
-                                            ENTRY  (MENU,  MenuMain,            ID_INFO_DISPLAY,                     CALLBACK_ProductInformation,             MenuInfo,                         VT100_LBL_SYSTEM_INFO                           )  \
+    IF_USE( LABEL_USE_PRODUCT_INFO,         ENTRY  (MENU,  MenuMain,            ID_INFO_DISPLAY,                     CALLBACK_ProductInformation,             MenuInfo,                         VT100_LBL_SYSTEM_INFO                           ) )\
     IF_USE( DIGINI_USE_STACKTISTIC,         ENTRY  (MENU,  MenuMain,            ID_STACK_DISPLAY,                    CALLBACK_None,                           MenuStackUsage,                   VT100_LBL_STACKTISTIC                           ) )\
     IF_USE( DIGINI_USE_DEBUG_IN_CONSOLE,    ENTRY  (MENU,  MenuMain,            ID_DEBUG_MENU,                       CALLBACK_None,                           MenuDebug,                        VT100_LBL_DEBUG                                 ) )\
     IF_USE( DIGINI_USE_STATIC_MEMORY_ALLOC, ENTRY  (MENU,  MenuMain,            ID_MEMORY_POOL_MENU,                 CALLBACK_None,                           MenuMemoryPool,                   VT100_LBL_MEMORY_POOL_STAT                      ) )\
                                             ENTRY  (MENU,  MenuMain,            ID_SYSTEM_SETTING_MENU,              CALLBACK_None,                           MenuSystemSetting,                VT100_LBL_SYSTEM_SETTING                        )  \
     IF_USE( DIGINI_USE_ETHERNET,            ENTRY  (MENU,  MenuMain,            ID_NETWORK_INFO,                     CALLBACK_None,                           MenuNetwork,                      LBL_NETWORK_INFO                                ) )\
 \
-                                            ENTRY  (MENU,  MenuInfo,            ID_INFO_SYSTEM,                      CALLBACK_ProductInformation,             MenuMain,                         VT100_LBL_SYSTEM_INFO                           )  \
+    IF_USE( LABEL_USE_PRODUCT_INFO,         ENTRY  (MENU,  MenuInfo,            ID_INFO_SYSTEM,                      CALLBACK_ProductInformation,             MenuMain,                         VT100_LBL_SYSTEM_INFO                           ) )\
 \
     IF_USE( DIGINI_USE_STACKTISTIC,         ENTRY  (MENU,  MenuStackUsage,      ID_INFO_DISPLAY,                     CALLBACK_StackUsage,                     MenuMain,                         VT100_LBL_STACKTISTIC                           ) )\
 \
@@ -199,16 +167,15 @@
                                  ENTRY  (MENU,  MenuSetMisc,       ID_MISC_SAVE,                       CALLBACK_MiscCfg,                      MenuSetMisc,                      VT100_LBL_BLANK                                 ) \
 \
 		                         ENTRY  (MENU,  MenuSettingTime,   ID_TIME_DATE_TITLE,                 CALLBACK_None,                         MenuSetting,                      VT100_LBL_TIME_AND_DATE_CONFIGURATION           ) \
-                                 ENTRY  (MENU,  MenuSettingTime,   ID_HOUR,                            CALLBACK_TimeDateCfg,                  MenuSettingTime,                  VT100_LBL_MINUTE                                ) \
-                                 ENTRY  (MENU,  MenuSettingTime,   ID_SECOND,                          CALLBACK_TimeDateCfg,                  MenuSettingTime,                  VT100_LBL_SECOND                                ) \
-                                 ENTRY  (MENU,  MenuSettingTime,   ID_DAY,                             CALLBACK_TimeDateCfg,                  MenuSettingTime,                  VT100_LBL_MONTH                                 ) \
-                                 ENTRY  (MENU,  MenuSettingTime,   ID_YEAR,                            CALLBACK_TimeDateCfg,                  MenuSettingTime,                  VT100_LBL_YEAR                                  ) \
+                                 ENTRY  (MENU,  MenuSettingTime,   ID_HOUR,                            CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_MINUTE                                      ) \
+                                 ENTRY  (MENU,  MenuSettingTime,   ID_SECOND,                          CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_SECOND                                      ) \
+                                 ENTRY  (MENU,  MenuSettingTime,   ID_DAY,                             CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_MONTH                                       ) \
+                                 ENTRY  (MENU,  MenuSettingTime,   ID_YEAR,                            CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_YEAR                                        ) \
                                  ENTRY  (MENU,  MenuSettingTime,   ID_TIME_DATE_SAVE,                  CALLBACK_TimeDateCfg,                  MenuSettingTime,                  VT100_LBL_BLANK                                 ) \
 \
                                  ENTRY  (MENU,  MenuSetting,       ID_SETTING_TITLE,                   CALLBACK_None,                         MenuMain,                         VT100_LBL_SYSTEM_SETTING_MENU                   ) \
                                  ENTRY  (MENU,  MenuSetting,       ID_MISC_MENU,                       CALLBACK_None,                         MenuSetMisc,                      VT100_LBL_MISCELLEANEOUS                        ) \
                                  ENTRY  (MENU,  MenuSetting,       ID_TIME_MENU,                       CALLBACK_None,                         MenuSettingTime,                  VT100_LBL_TIME_AND_DATE                         ) \
-
 
 // ------------------------------------------------------------------------------------------------------------------
 

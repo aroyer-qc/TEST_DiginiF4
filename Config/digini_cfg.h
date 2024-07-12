@@ -50,7 +50,7 @@
 #define DIGINI_USE_DATABASE                             DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
-// Static memory allocation
+// Label support and option
 //
 #define DIGINI_USE_LABEL                                DEF_ENABLED
 

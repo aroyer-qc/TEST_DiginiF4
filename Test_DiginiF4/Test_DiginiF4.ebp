@@ -161,7 +161,6 @@
 		<Unit filename="..\Config\vt100_cfg.h" />
 		<Unit filename="..\Config\vt100_var.h" />
 		<Unit filename="..\Module\Digini\Comm\CmdLine\inc\lib_cli.h" />
-		<Unit filename="..\Module\Digini\Comm\CmdLine\inc\lib_cli_label.h" />
 		<Unit filename="..\Module\Digini\Comm\CmdLine\src\lib_cli.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -179,7 +178,6 @@
 		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100.h" />
 		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100_code.h" />
 		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100_expanding_macro.h" />
-		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100_label.h" />
 		<Unit filename="..\Module\Digini\Comm\VT100\src\lib_vt100.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
