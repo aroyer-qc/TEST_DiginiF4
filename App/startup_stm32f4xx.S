@@ -121,17 +121,6 @@ LoopFillStack:
   cmp  r2,     r3
   bne  FillStack
 
-
-
-
-
-
-
-
-
-
-
-
 /* Call the application's entry point.*/
   bl  main
   bx  lr

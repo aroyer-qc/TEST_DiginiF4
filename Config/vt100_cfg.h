@@ -58,52 +58,15 @@
 
 
 // Define the compare name (I did not find a way to get rid of those definition by the use of advanced macro)
-#define COMPARE_MenuRedirection(x)      x
-#define COMPARE_MenuBoot(x)    		    x
 #define COMPARE_MenuSystemSetting(x)    x
 
-
-#define COMPARE_MenuMain(x) 		    x
-#define COMPARE_MenuInfo(x)    		    x
-#define COMPARE_MenuStackUsage(x)       x
-#define COMPARE_MenuNetwork(x)          x
-#define COMPARE_MenuDebug(x)    	    x
-#define COMPARE_MenuSD_Card(x)     	    x
-
-//#define COMPARE_MenuTest(x)     	    x
-//#define COMPARE_MenuSetting(x)	    x
-//#define COMPARE_MenuSettingTime(x)    x
-
 // Define here all the menu and sub menu you will use in the VT100 terminal
-#define VT100_MENU_DEF(ENTRY)        \
-                                                ENTRY(MenuMain           )  \
-    IF_USE( LABEL_USE_PRODUCT_INFO,             ENTRY(MenuInfo           ) )\
-    IF_USE( DIGINI_USE_STACKTISTIC,             ENTRY(MenuStackUsage     ) )\
-    IF_USE( DIGINI_USE_STATIC_MEMORY_ALLOC,     ENTRY(MenuMemoryPool     ) )\
-    IF_USE( DIGINI_USE_DEBUG_IN_CONSOLE,        ENTRY(MenuDebug          ) )\
-    IF_USE( DIGINI_USE_ETHERNET,                ENTRY(MenuNetwork        ) )\
-    IF_USE( DIGINI_DEBUG_SDCARD_INFO_ON_VT100,  ENTRY(MenuSD_Card        ) )\
-                                                ENTRY(MenuSystemSetting  )  \
-
-// Those are not used at this time
-#define VT100_MENU_DEF_NU(ENTRY)\
-                                 ENTRY(MenuSetting        )  \
-                                 ENTRY(MenuSetMisc        )  \
-                                 ENTRY(MenuTest1          )  \
+#define VT100_USER_MENU_DEF(ENTRY) \
+    ENTRY(MenuSystemSetting  )     \
 
 // Define here all the callback you will use in the VT100 terminal
-#define VT100_CALLBACK(ENTRY)\
-                                               ENTRY(CALLBACK_MenuMain           )  \
-    IF_USE( LABEL_USE_PRODUCT_INFO,            ENTRY(CALLBACK_ProductInformation ) )\
-    IF_USE( DIGINI_USE_STACKTISTIC,            ENTRY(CALLBACK_StackUsage         ) )\
-    IF_USE( DIGINI_USE_STATIC_MEMORY_ALLOC,    ENTRY(CALLBACK_MemoryPool         ) )\
-    IF_USE( DIGINI_USE_DEBUG_IN_CONSOLE,       ENTRY(CALLBACK_DebugLevelSetting  ) )\
-    IF_USE( DIGINI_USE_ETHERNET,               ENTRY(CALLBACK_NetworkInfo        ) )\
-    IF_USE( DIGINI_DEBUG_SDCARD_INFO_ON_VT100, ENTRY(CALLBACK_SD_CardInformation ) )\
-                                               ENTRY(CALLBACK_SystemSetting      )  \
-
-//                                               ENTRY(CALLBACK_TimeDateCfg        )  
-//                                               ENTRY(CALLBACK_InputReading       )  
+#define VT100_USER_CALLBACK(ENTRY) \
+    ENTRY(CALLBACK_SystemSetting ) \
 
 // Here you define how you will navigate in the menu tree and action associated with them                            1st item of a menu                       1st item
 //                                                  Menu   Member Of            Item ID                              CALLBACK for refresh                     Navigate to this menu on <ESC>    Label ID
