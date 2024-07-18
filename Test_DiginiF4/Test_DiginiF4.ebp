@@ -184,6 +184,7 @@
 		<Unit filename="..\Module\Digini\Comm\VT100\src\lib_vt100_callback.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="..\Module\Digini\Digini\inc\lib_advanced_macro.h" />
 		<Unit filename="..\Module\Digini\Digini\inc\lib_label.h" />
 		<Unit filename="..\Module\Digini\Digini\inc\lib_typedef.h" />
 		<Unit filename="..\Module\Digini\Digini\src\digini.cpp">

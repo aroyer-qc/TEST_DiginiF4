@@ -45,6 +45,11 @@ extern "C"
 //
 //-------------------------------------------------------------------------------------------------
 
+NOS_ISR(DMA1_Stream3_IRQHandler)
+{
+	myUART_Terminal.DMA_TX_IRQ_Handler();
+}
+
 #if 0
 NOS_ISR(DMA2_Stream0_IRQHandler)
 {

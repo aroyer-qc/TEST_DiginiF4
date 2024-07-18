@@ -37,8 +37,9 @@
 #define UART_DRIVER_RX_OVERRUN_ERROR_CFG        DEF_DISABLED
 #define UART_DRIVER_RX_IDLE_CFG                 DEF_ENABLED
 #define UART_DRIVER_RX_NOT_EMPTY_CFG            DEF_DISABLED
-#define UART_DRIVER_TX_COMPLETED_CFG            DEF_ENABLED
+#define UART_DRIVER_TX_COMPLETED_CFG            DEF_DISABLED            // TX complete doesn't work well with console.. use DMA
 #define UART_DRIVER_TX_EMPTY_CFG                DEF_DISABLED
+#define UART_DRIVER_DMA_TX_COMPLETED_CFG        DEF_ENABLED
 
 #define UART_DRIVER_SUPPORT_UART1_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_UART2_CFG           DEF_DISABLED

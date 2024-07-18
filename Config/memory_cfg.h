@@ -34,11 +34,12 @@
 //  block memory declaration section
 //-------------------------------------------------------------------------------------------------
 
+
+#define MEMORY_POOL_USE_DEBUG_BLOCK_TRACE           DEF_ENABLED
 #define MEMORY_POOL_USE_STAT                        DEF_ENABLED
 #define MEMORY_POOL_RESTRICT_ALLOC_TO_BLOCK_SIZE    DEF_DISABLED    // If Enable we allow only closest block size that are greater to be allocated
 
 // Add here all group of memory block needed and their size
-
 
 // Memory block 0:      general all around block
 // Memory block 1:      general all around block
@@ -54,6 +55,14 @@
     X_MEM_BLOCK( MEM_BLOCK_2,        Block_2,            AllocBlock_2,           2,             256U            )\
     X_MEM_BLOCK( MEM_BLOCK_3,        Block_3,            AllocBlock_3,           8,             1024U           )\
     X_MEM_BLOCK( MEM_BLOCK_4,        Block_4,            AllocBlock_4,           2,             2048U           )\
+
+// Add here the user application debug unique ID to added to system list of debug ID.
+#define MEMORY_USER_DEBUG_ID  \
+    MEM_DBG_USER_1_EXAMPLE,   \
+    MEM_DBG_USER_2_EXAMPLE,   \
+    MEM_DBG_USER_3_EXAMPLE,   \
+
+
 
 //-------------------------------------------------------------------------------------------------
 
