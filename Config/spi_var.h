@@ -70,6 +70,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
         SPI1_IRQn,                  // IRQn_Channel
 
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_3, // Configuration + DMA_Channel RX
@@ -97,6 +98,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
          // DMA2_Stream5,                                  // TX_DMA_TypeDef
          // DMA2_Stream5_IRQn,                             // TX_IRQn
         },
+      #endif  
 	},
   #endif
 
@@ -110,6 +112,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
 		SPI_HALF_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
 		SPI2_IRQn,                  // IRQn_Channel
 
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_0, // Configuration + DMA_Channel RX
@@ -125,6 +128,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
             DMA1_Stream4,                                  // TX_DMA_TypeDef
             DMA1_Stream4_IRQn,                             // TX_IRQn
         },
+      #endif  
  	},
   #endif
 
@@ -138,6 +142,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
 		SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
 		SPI3_IRQn,                  // IRQn_Channel
 
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_0, // Configuration + DMA_Channel RX
@@ -165,6 +170,131 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
          // DMA1_Stream7,                                  // TX_DMA_TypeDef
          // DMA1_Stream7_IRQn,                             // TX_IRQn
         },
+      #endif  
+	},
+  #endif
+  
+    #if (SPI_DRIVER_SUPPORT_SPI4_CFG == DEF_ENABLED)
+	{
+		SPI4,                       // SPIx
+
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+
+		24000000,                   // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
+        IO_SPI4_CLK,                // CLK
+        IO_SPI4_MOSI,               // MOSI
+        IO_SPI4_MISO,               // MISO
+        IO_NOT_DEFINED,             // NSS
+		SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+		SPI4_IRQn,                  // IRQn_Channel
+
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
+        // DMA_RX
+        {
+            SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_5, // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
+            DMA_LIFCR_CTCIF3,                              // RX_IT_Flag
+            DMA2_Stream3,                                  // RX_DMA_TypeDef
+            DMA2_Stream3_IRQn,                             // RX_IRQn
+            6,                                             // PreempPrio
+        },
+
+        // DMA_TX
+        {
+            SPI_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_5, // Configuration + DMA_Channel TX or SPI_DMA_DISABLED
+            DMA_HIFCR_CTCIF4,                              // TX_IT_Flag
+            DMA2_Stream4,                                  // TX_DMA_TypeDef
+            DMA2_Stream4_IRQn,                             // TX_IRQn
+            6,                                             // PreempPrio
+        },
+      #endif  
+	},
+  #endif
+
+  #if (SPI_DRIVER_SUPPORT_SPI5_CFG == DEF_ENABLED)
+	{
+		SPI6,                       // SPIx
+        
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+
+		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
+        IO_SPI5_CLK,                // CLK
+        IO_SPI5_MOSI,               // MOSI
+        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip            
+        IO_NOT_DEFINED,             // NSS  N/U 
+		SPI5_IRQn,                  // IRQn_Channel
+
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
+        // DMA_RX
+        {
+            SPI_DMA_DISABLED,                             // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
+            DMA_HIFCR_CTCIF6,                              // RX_IT_Flag
+            DMA2_Stream6,                                  // RX_DMA_TypeDef
+            DMA2_Stream6_IRQn,                             // RX_IRQn
+            6,                                             // PreempPrio
+        },
+
+        // DMA_TX
+        {
+            SPI_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_1, // Configuration + DMA_Channel TX or SPI_DMA_DISABLED
+            DMA_HIFCR_CTCIF5,                              // TX_IT_Flag
+            DMA2_Stream5,                                  // TX_DMA_TypeDef
+            DMA2_Stream5_IRQn,                             // TX_IRQn
+            6,                                             // PreempPrio
+        },
+      #endif  
+	},
+  #endif
+
+  #if (SPI_DRIVER_SUPPORT_SPI6_CFG == DEF_ENABLED)
+	{
+		SPI6,                       // SPIx
+        
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+
+		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
+        IO_SPI6_CLK,                // CLK
+        IO_SPI6_MOSI,               // MOSI
+        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip            
+        IO_NOT_DEFINED,             // NSS  N/U 
+		SPI6_IRQn,                  // IRQn_Channel
+
+      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
+        // DMA_RX
+        {
+            SPI_DMA_DISABLED,                             // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
+            DMA_HIFCR_CTCIF6,                              // RX_IT_Flag
+            DMA2_Stream6,                                  // RX_DMA_TypeDef
+            DMA2_Stream6_IRQn,                             // RX_IRQn
+            6,                                             // PreempPrio
+        },
+
+        // DMA_TX
+        {
+            SPI_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_1, // Configuration + DMA_Channel TX or SPI_DMA_DISABLED
+            DMA_HIFCR_CTCIF5,                              // TX_IT_Flag
+            DMA2_Stream5,                                  // TX_DMA_TypeDef
+            DMA2_Stream5_IRQn,                             // TX_IRQn
+            6,                                             // PreempPrio
+        },
+      #endif  
 	},
   #endif
 };
