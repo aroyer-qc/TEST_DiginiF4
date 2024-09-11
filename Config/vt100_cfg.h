@@ -39,6 +39,12 @@
 #define VT100_USE_STANDARD_MENU_STATIC_INFO     DEF_ENABLED             // VT100 Class provide its own header. then enable this if it is desire.
 #define VT100_USE_USER_MENU_STATIC_INFO         DEF_DISABLED            // If user wish to create his own header or special formatting.
 
+// Configuration option in menu system, choose the one you want
+#define VT100_USE_LANGUAGE_SELECTION            DEF_ENABLED
+#define VT100_USE_TEMPERATURE_SELECTION         DEF_ENABLED
+#define VT100_USE_SERIAL_NUMBER_SETTING         DEF_ENABLED
+#define VT100_USE_TIME_AND_DATE_SETTING         DEF_ENABLED
+
 // TODO move label use by digini internal menu into digini lib_vt100_label.h
 // in fact I should move every configuration for menu item and menu built-in Digini to the digini itself
 
@@ -49,12 +55,6 @@
     X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_SETTING,                   "System Settings",                                          "Configuration Syst\x8ame"                                   ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_SYSTEM_SETTING_MENU,              "System Settings Menu",                                     "Menu Configuration Syst\x8ame"                              ) \
     X_VT100_USER_LBL_CFG( VT100_LBL_MISC_CONFIG_MENU,                 "Miscellaneous Configuration Menu",                         "Menu de Configuration Divers"                               ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE,                    "Time and Date",                                            "Heure et Date"                                              ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TIME_AND_DATE_CONFIGURATION,      "Time and Date Configuration",                              "Configuration Heure et Date"                                ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_SERIAL_NUMBER_SETTING,            "Setting Serial Number",                                    "Configurer Num\x82ro de S\x82rie"                           ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_SELECT_LANGUAGE,                  "Toggle Language:",                                         "Basculer de Langage:"                                       ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_LANGUAGE_SELECTION,               "Choose Language:  English ( )  French   ( )",              "Choisir Langage:  Anglais ( )  Fran\x87" "ais ( )"          ) \
-    X_VT100_USER_LBL_CFG( VT100_LBL_TEMPERATURE_UNIT_SELECTION,       "Choose Temp Unit:      \xF8" "C ( )        \xF8" "F ( )",  "Choisir Unit\x82 Temp:    \xF8" "C ( )        \xF8" "F ( )" ) \
 
 
 // Define the compare name (I did not find a way to get rid of those definition by the use of advanced macro)
