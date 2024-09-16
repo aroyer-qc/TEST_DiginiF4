@@ -115,7 +115,7 @@ NOS_ISR(USART3_IRQHandler)
 //
 //-------------------------------------------------------------------------------------------------
 
-/*
+
 
 inline void DebugTrap(int32_t IRQ_Number)
 {
@@ -154,7 +154,7 @@ __attribute__((weak)) void EXTI4_IRQHandler              (void)  { DebugTrap(EXT
 __attribute__((weak)) void DMA1_Stream0_IRQHandler       (void)  { DebugTrap(DMA1_Stream0_IRQn);       }
 __attribute__((weak)) void DMA1_Stream1_IRQHandler       (void)  { DebugTrap(DMA1_Stream1_IRQn);       }
 __attribute__((weak)) void DMA1_Stream2_IRQHandler       (void)  { DebugTrap(DMA1_Stream2_IRQn);       }
-__attribute__((weak)) void DMA1_Stream3_IRQHandler       (void)  { DebugTrap(DMA1_Stream3_IRQn);       }
+//__attribute__((weak)) void DMA1_Stream3_IRQHandler       (void)  { DebugTrap(DMA1_Stream3_IRQn);       }
 __attribute__((weak)) void DMA1_Stream4_IRQHandler       (void)  { DebugTrap(DMA1_Stream4_IRQn);       }
 __attribute__((weak)) void DMA1_Stream5_IRQHandler       (void)  { DebugTrap(DMA1_Stream5_IRQn);       }
 __attribute__((weak)) void DMA1_Stream6_IRQHandler       (void)  { DebugTrap(DMA1_Stream6_IRQn);       }
@@ -231,8 +231,6 @@ __attribute__((weak)) void LTDC_IRQHandler               (void)  { DebugTrap(LTD
 __attribute__((weak)) void LTDC_ER_IRQHandler            (void)  { DebugTrap(LTDC_ER_IRQn);            }
 __attribute__((weak)) void DMA2D_IRQHandler              (void)  { DebugTrap(DMA2D_IRQn);              }
 
-
-*/
 //-------------------------------------------------------------------------------------------------
 
 } // extern "C"

@@ -30,32 +30,19 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-// Notes some default label exist in the file "lib_label.h"
+// Notes some default label exist in the file "lib_label.h", some of them can be enable/disable in this configuratio
 
 #define     LABEL_USE_DATE                      DEF_ENABLED
 #define     LABEL_USE_TIME                      DEF_ENABLED
 #define     LABEL_USE_PRODUCT_INFO              DEF_ENABLED
+#define     LABEL_USE_DECIMAL_KEY               DEF_DISABLED            // Enable label 0-9 and dot, del, sign, sign inversion
+#define     LABEL_USE_HEXADECIMAL_KEY           DEF_DISABLED            // Enable label A-F
 
 // That is completely wrong here !! most of it is not used!!!
 
 #define LABEL_LANGUAGE_DEF(X_LBL_CFG) \
-    X_LBL_CFG( LBL_OK,                    "Ok",                                                                                                        nullptr                                 ) \
 
 #if 0
-
-    X_LBL_CFG( LBL_1,                     "1",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_2,                     "2",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_3,                     "3",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_4,                     "4",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_5,                     "5",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_6,                     "6",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_7,                     "7",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_8,                     "8",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_9,                     "9",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_0,                     "0",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_DOT,                   ".",                                                                                                         nullptr                                 ) \
-    X_LBL_CFG( LBL_SIGN,                  "-",                                                                                                         nullptr                                 ) \
-\
 
     X_LBL_CFG( LBL_TEST_MENU,             "    Test Menu\r\n",                                                                                         "    Menu Des Tests\r\n"                ) \
     X_LBL_CFG( LBL_TEST_OPT1,             "LED Control\r\n",                                                                                           "Contrôle LEDs\r\n"                     ) \

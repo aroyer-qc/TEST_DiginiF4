@@ -90,7 +90,7 @@
                                  ENTRY  (MENU,  MenuSetMisc,       ID_MISC_SERIAL_NUMBER,              CALLBACK_MiscCfg,                      MenuSetMisc,                      VT100_LBL_SERIAL_NUMBER_SETTING                 ) \
                                  ENTRY  (MENU,  MenuSetMisc,       ID_MISC_SAVE,                       CALLBACK_MiscCfg,                      MenuSetMisc,                      VT100_LBL_BLANK                                 ) \
 \
-		                         ENTRY  (MENU,  MenuSettingTime,   ID_TIME_DATE_TITLE,                 CALLBACK_None,                         MenuSetting,                      VT100_LBL_TIME_AND_DATE_CONFIGURATION           ) \
+		                         ENTRY  (MENU,  MenuSettingTime,   ID_TIME_DATE_TITLE,                 CALLBACK_None,                         MenuSetting,                      VT100_LBL_TIME_AND_DATE_CONFIG                  ) \
                                  ENTRY  (MENU,  MenuSettingTime,   ID_HOUR,                            CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_MINUTE                                      ) \
                                  ENTRY  (MENU,  MenuSettingTime,   ID_SECOND,                          CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_SECOND                                      ) \
                                  ENTRY  (MENU,  MenuSettingTime,   ID_DAY,                             CALLBACK_TimeDateCfg,                  MenuSettingTime,                  LBL_MONTH                                       ) \
