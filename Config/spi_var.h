@@ -63,11 +63,18 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
   #if (SPI_DRIVER_SUPPORT_SPI1_CFG == DEF_ENABLED)
 	{
         SPI1,                       // SPIx
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+		24000000,                   // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI1_CLK,                // CLK
         IO_SPI1_MOSI,               // MOSI
         IO_NOT_DEFINED,             // MISO
-        SPI_SPEED_FCLK_DIV64,
-        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+        IO_NOT_DEFINED,             // NSS  N/U 
         SPI1_IRQn,                  // IRQn_Channel
 
       #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
@@ -105,11 +112,18 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
   #if (SPI_DRIVER_SUPPORT_SPI2_CFG == DEF_ENABLED)
 	{
 		SPI2,                       // SPIx
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+		24000000,                   // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI2_CLK,                // CLK
         IO_SPI2_MOSI,               // MOSI
         IO_NOT_DEFINED,             // MISO
-		SPI_SPEED_FCLK_DIV64,
-		SPI_HALF_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+        IO_NOT_DEFINED,             // NSS  N/U 
 		SPI2_IRQn,                  // IRQn_Channel
 
       #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
@@ -135,11 +149,18 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
   #if (SPI_DRIVER_SUPPORT_SPI3_CFG == DEF_ENABLED)
 	{
 		SPI3,                       // SPIx
+        SPI_MODE_MASTER       |     // Configuration
+        SPI_DATA_WIDTH_8_BIT  |
+        SPI_POLARITY_LOW      |
+        SPI_PHASE_1_EDGE      |
+        SPI_NSS_SOFT          |     // The CS pin will be handle in software
+        SPI_MSB_FIRST         |
+        SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+		24000000,                   // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI3_CLK,                // CLK
         IO_SPI3_MOSI,               // MOSI
-        IO_NOT_DEFINED,             // MISO
-		SPI_SPEED_FCLK_DIV64,
-		SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+        IO_SPI3_MISO,               // MISO
+        IO_NOT_DEFINED,             // NSS  N/U 
 		SPI3_IRQn,                  // IRQn_Channel
 
       #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
@@ -177,7 +198,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
     #if (SPI_DRIVER_SUPPORT_SPI4_CFG == DEF_ENABLED)
 	{
 		SPI4,                       // SPIx
-
         SPI_MODE_MASTER       |     // Configuration
         SPI_DATA_WIDTH_8_BIT  |
         SPI_POLARITY_LOW      |
@@ -185,13 +205,11 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         SPI_NSS_SOFT          |     // The CS pin will be handle in software
         SPI_MSB_FIRST         |
         SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
-
 		24000000,                   // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI4_CLK,                // CLK
         IO_SPI4_MOSI,               // MOSI
         IO_SPI4_MISO,               // MISO
-        IO_NOT_DEFINED,             // NSS
-		SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
+        IO_NOT_DEFINED,             // NSS  N/U 
 		SPI4_IRQn,                  // IRQn_Channel
 
       #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
@@ -218,8 +236,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
 
   #if (SPI_DRIVER_SUPPORT_SPI5_CFG == DEF_ENABLED)
 	{
-		SPI6,                       // SPIx
-        
+		SPI5,                       // SPIx
         SPI_MODE_MASTER       |     // Configuration
         SPI_DATA_WIDTH_8_BIT  |
         SPI_POLARITY_LOW      |
@@ -227,7 +244,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         SPI_NSS_SOFT          |     // The CS pin will be handle in software
         SPI_MSB_FIRST         |
         SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
-
 		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI5_CLK,                // CLK
         IO_SPI5_MOSI,               // MOSI
@@ -260,7 +276,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
   #if (SPI_DRIVER_SUPPORT_SPI6_CFG == DEF_ENABLED)
 	{
 		SPI6,                       // SPIx
-        
         SPI_MODE_MASTER       |     // Configuration
         SPI_DATA_WIDTH_8_BIT  |
         SPI_POLARITY_LOW      |
@@ -268,7 +283,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         SPI_NSS_SOFT          |     // The CS pin will be handle in software
         SPI_MSB_FIRST         |
         SPI_FULL_DUPLEX,            // SPI_FULL_DUPLEX or SPI_HALF_DUPLEX
-
 		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI6_CLK,                // CLK
         IO_SPI6_MOSI,               // MOSI

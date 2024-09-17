@@ -58,20 +58,16 @@
 // COMM support (Console, CLI, VT100)
 //
 #define DIGINI_USE_COMM_MODULE                          DEF_ENABLED
-#define DIGINI_USE_COMM_AS_A_TASK                       DEF_ENABLED         // Otherwise it is a process that need to be incluse in your choice of task
 
-// Only set this if DIGINI_USE_COMM_AS_A_TASK is DEF_ENABLED
-#define TASK_COMM_PRIO                                  7
-#define TASK_COMM_STACK_SIZE                            256
-
-//-------------------------------------------------------------------------------------------------
-// COMM support module
-//
 #define DIGINI_USE_CONSOLE                              DEF_ENABLED
 #define DIGINI_USE_CMD_LINE                             DEF_ENABLED
-#define DIGINI_USE_VT100_MENU                           DEF_ENABLED     // need label
+#define DIGINI_USE_VT100_MENU                           DEF_ENABLED
 
 #define DIGINI_USE_DEBUG_IN_CONSOLE                     DEF_ENABLED
+
+#define DIGINI_USE_COMM_AS_A_TASK                       DEF_ENABLED     // Otherwise it is a process that need to be include in your choice of task
+#define TASK_COMM_PRIO                                  7
+#define TASK_COMM_STACK_SIZE                            256
 
 //-------------------------------------------------------------------------------------------------
 // Ethernet
