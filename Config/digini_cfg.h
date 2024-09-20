@@ -47,7 +47,7 @@
 //-------------------------------------------------------------------------------------------------
 // Database support
 //
-#define DIGINI_USE_DATABASE                             DEF_DISABLED
+#define DIGINI_USE_DATABASE                             DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // Label support and option
@@ -72,7 +72,7 @@
 //-------------------------------------------------------------------------------------------------
 // Ethernet
 //
-#define DIGINI_USE_ETHERNET                             DEF_ENABLED
+#define DIGINI_USE_ETHERNET                             DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
 // High level Peripheral

@@ -50,6 +50,22 @@ int main()
     BSP_Initialize();                           // All hardware and system initialization
     nOS_Start();
     BSP_PostOS_Initialize();                    // All initialization that must be done after the OS is started
+
+  #ifdef DEBUG
+    DateAndTime_t DateTime;
+
+    DateTime.Date.Day    = 25;
+    DateTime.Date.Month  = 6;
+    DateTime.Date.Year   = 2024;
+    DateTime.Time.Hour   = 15;
+    DateTime.Time.Minute = 30;
+    DateTime.Time.Second = 1;
+    LIB_SetDateAndTime(&DateTime);
+  #endif
+
+
+
+
     TaskIdle();
     return 0;
 }

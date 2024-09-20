@@ -46,6 +46,13 @@
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------
+
+// because for now we don't have eeprom for this test board
+const TempUnit_e T_Unit = TEMP_CELSIUS;
+const SystemDebugLevel_e DebugLvl = SystemDebugLevel_e(0xFF);
+const Language_e Lang = LANG_ENGLISH;
+
+//-------------------------------------------------------------------------------------------------
 // Local Function(s)
 //-------------------------------------------------------------------------------------------------
 
