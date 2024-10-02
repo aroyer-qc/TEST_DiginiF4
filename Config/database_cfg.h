@@ -31,8 +31,8 @@
 //-------------------------------------------------------------------------------------------------
 
 #include "./Digini/Digini/inc/lib_label.h"
-#include "project_def.h"
-#include "./Digini/Digini/inc/lib_typedef.h"
+//#include "project_def.h"
+//#include "./Digini/Digini/inc/lib_typedef.h"
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)

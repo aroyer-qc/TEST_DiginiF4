@@ -33,7 +33,7 @@
 #undef  TASK_IDLE_GLOBAL
 #include "bsp.h"
 #include "./lib_digini.h"
-#include "task_network.h"
+//#include "task_network.h"
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)
@@ -103,15 +103,6 @@ void TaskIdle(void)
 
     Test[0] = 0xA5;
     Test[1] = 0x69;
-
-
-  #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
-    pTaskNetwork->Initialize();
-  #endif
-
-  #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_CONSOLE == DEF_ENABLED)
-    pTaskCOMM->Initialize();
-  #endif
 
     // --------------------------------------------------------------------------------------------
     // Low level main control loop

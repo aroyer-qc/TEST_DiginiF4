@@ -63,9 +63,6 @@ int main()
     LIB_SetDateAndTime(&DateTime);
   #endif
 
-
-
-
     TaskIdle();
     return 0;
 }

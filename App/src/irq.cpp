@@ -201,7 +201,7 @@ __attribute__((weak)) void DMA2_Stream1_IRQHandler       (void)  { DebugTrap(DMA
 __attribute__((weak)) void DMA2_Stream2_IRQHandler       (void)  { DebugTrap(DMA2_Stream2_IRQn);       }
 __attribute__((weak)) void DMA2_Stream3_IRQHandler       (void)  { DebugTrap(DMA2_Stream3_IRQn);       }
 __attribute__((weak)) void DMA2_Stream4_IRQHandler       (void)  { DebugTrap(DMA2_Stream4_IRQn);       }
-__attribute__((weak)) void ETH_IRQHandler                (void)  { DebugTrap(ETH_IRQn);                }
+//__attribute__((weak)) void ETH_IRQHandler                (void)  { DebugTrap(ETH_IRQn);                }
 __attribute__((weak)) void ETH_WKUP_IRQHandler           (void)  { DebugTrap(ETH_WKUP_IRQn);           }
 __attribute__((weak)) void CAN2_TX_IRQHandler            (void)  { DebugTrap(CAN2_TX_IRQn);            }
 __attribute__((weak)) void CAN2_RX0_IRQHandler           (void)  { DebugTrap(CAN2_RX0_IRQn);           }

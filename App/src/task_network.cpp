@@ -28,13 +28,11 @@
 // Include file(s)
 //-------------------------------------------------------------------------------------------------
 
+#define TASK_NETWORK_GLOBAL
 #include "./lib_digini.h"
+#undef  TASK_NETWORK_GLOBAL
 
 #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
-
-#define TASK_NETWORK_GLOBAL
-#include "task_network.h"
-#undef  TASK_NETWORK_GLOBAL
 
 //-------------------------------------------------------------------------------------------------
 // Private variable(s) and constant(s)
@@ -206,7 +204,7 @@ SystemState_e ClassNetwork::Initialize(void)
     //myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
   #endif
 
-
+/*
     Error = nOS_ThreadCreate(&m_NetworkHandle,
                              TaskNetwork_Wrapper,
                              this,
@@ -217,6 +215,8 @@ SystemState_e ClassNetwork::Initialize(void)
                              , nullptr
                            #endif
                             );
+  */
+
     // Webserver task
 
     /*Error = nOS_ThreadCreate(&m_WebServerHandle,
@@ -260,15 +260,6 @@ void ClassNetwork::Network(void)
   //  void*           data;
   //  u16_t           len;
    // err_t           recv_err;
-
-
-for(;;)
-{
-
-    nOS_Sleep(100);
-
-
-}
 
 
 #if 0  // need to reenable LWIP_NETCONN    1
