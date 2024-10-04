@@ -95,14 +95,15 @@ static const uint16_t sine_wave[256] =
 //  Note(s):
 //
 //-------------------------------------------------------------------------------------------------
+int Count = 0;
+
 void TaskIdle(void)
 {
-    int Count = 0;
-    uint16_t Value;
-    uint8_t Test[3];
+  //  uint16_t Value;
+ //   uint8_t Test[3];
 
-    Test[0] = 0xA5;
-    Test[1] = 0x69;
+  //  Test[0] = 0xA5;
+   // Test[1] = 0x69;
 
     // --------------------------------------------------------------------------------------------
     // Low level main control loop
@@ -113,7 +114,7 @@ void TaskIdle(void)
       #endif
 
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
-        Value = sine_wave[Count];
+     //   Value = sine_wave[Count];
 
         if((Count & 0x01) == 0x00)
         {

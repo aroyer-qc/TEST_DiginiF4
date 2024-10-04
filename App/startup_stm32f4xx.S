@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32f429xx.s
+  * @file      startup_stm32f4xx.S
   * @author    MCD Application Team
-  * @brief     STM32F429xx Devices vector table for GCC based toolchains.
+  * @brief     STM32F4xx Devices vector table for GCC based toolchains.
   *            This module performs:
   *                - Set the initial SP
   *                - Set the initial PC == Reset_Handler,
@@ -148,7 +148,6 @@ Infinite_Loop:
    .section  .isr_vector,"a",%progbits
   .type  g_pfnVectors, %object
   .size  g_pfnVectors, .-g_pfnVectors
-
 
 g_pfnVectors:
   .word  _estack

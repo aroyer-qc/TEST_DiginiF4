@@ -73,7 +73,7 @@
 //-------------------------------------------------------------------------------------------------
 // Ethernet
 //
-#define DIGINI_USE_ETHERNET                             DEF_DISABLED
+#define DIGINI_USE_ETHERNET                             DEF_DISABLED//DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // High level Peripheral
@@ -116,7 +116,7 @@
 //-------------------------------------------------------------------------------------------------
 //
 // Note: If it is DEF_ENABLED then you need also need to  "NOS_CONFIG_DEBUG  1"    in nOSConfig.h
-#define DIGINI_USE_STACKTISTIC                          DEF_ENABLED                 // Allow debugging of the stack, per code or using VT100 terminal
+#define DIGINI_USE_STACKTISTIC                          DEF_DISABLED//DEF_ENABLED                 // Allow debugging of the stack, per code or using VT100 terminal
 #define DIGINI_STACKTISTIC_NUMBER_OF_STACK              10
 
 //-------------------------------------------------------------------------------------------------

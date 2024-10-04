@@ -196,12 +196,12 @@ SystemState_e ClassNetwork::Initialize(void)
 {
     nOS_Error Error = NOS_OK;
 
-    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
-    myWiredIP.Initialize(IF_WIRED);
+  //  DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
+  //  myWiredIP.Initialize(IF_WIRED);
 
   #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-    myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
-    //myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
+ //  myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
+ //   myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
   #endif
 
 /*

@@ -112,7 +112,6 @@
 			<Add option="-lstdc++" />
 			<Add option="-eb_start_files" />
 		</Linker>
-		<Unit filename="..\App\inc\app_enum.h" />
 		<Unit filename="..\App\inc\bsp.h" />
 		<Unit filename="..\App\inc\task_network.h" />
 		<Unit filename="..\App\inc\taskIdle.h" />
@@ -162,7 +161,6 @@
 		<Unit filename="..\Config\uart_cfg.h" />
 		<Unit filename="..\Config\uart_var.h" />
 		<Unit filename="..\Config\vt100_cfg.h" />
-		<Unit filename="..\Config\vt100_var.h" />
 		<Unit filename="..\Module\Digini\Comm\CmdLine\inc\lib_cli.h" />
 		<Unit filename="..\Module\Digini\Comm\CmdLine\src\lib_cli.cpp">
 			<Option compilerVar="CC" />

@@ -342,7 +342,7 @@
  *   1. If enabled, freeing memory block can return error if pointer has been corrupted.                              *
  *                                                                                                                    *
  **********************************************************************************************************************/
-#define NOS_CONFIG_MEM_SANITY_CHECK_ENABLE          1
+#define NOS_CONFIG_MEM_SANITY_CHECK_ENABLE          1       // Needed by lib_memory.cpp
 
 /**********************************************************************************************************************
  *                                                                                                                    *

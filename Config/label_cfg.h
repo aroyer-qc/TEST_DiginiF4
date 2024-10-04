@@ -32,18 +32,15 @@
 
 // Notes some default label exist in the file "lib_label.h", some of them can be enable/disable in this configuratio
 
-#define     LABEL_USE_DATE                      DEF_ENABLED
-#define     LABEL_USE_TIME                      DEF_ENABLED
-#define     LABEL_USE_PRODUCT_INFO              DEF_ENABLED
-#define     LABEL_USE_DECIMAL_KEY               DEF_DISABLED            // Enable label 0-9 and dot, del, sign, sign inversion
-#define     LABEL_USE_HEXADECIMAL_KEY           DEF_DISABLED            // Enable label A-F
-
-// That is completely wrong here !! most of it is not used!!!
-
-#define LABEL_LANGUAGE_DEF(X_LBL_CFG) \
+#define     DIGINI_USE_LABEL_DATE               DEF_ENABLED
+#define     DIGINI_USE_LABEL_TIME               DEF_ENABLED
+#define     DIGINI_USE_LABEL_PRODUCT_INFO       DEF_ENABLED
+#define     DIGINI_USE_LABEL_DECIMAL_KEY        DEF_DISABLED            // Enable label 0-9 and dot, del, sign, sign inversion
+#define     DIGINI_USE_LABEL_HEXADECIMAL_KEY    DEF_DISABLED            // Enable label A-F
 
 #if 0
 
+#define USER_LABEL_LANGUAGE_DEF(X_LBL_CFG)
     X_LBL_CFG( LBL_TEST_MENU,             "    Test Menu\r\n",                                                                                         "    Menu Des Tests\r\n"                ) \
     X_LBL_CFG( LBL_TEST_OPT1,             "LED Control\r\n",                                                                                           "Contrôle LEDs\r\n"                     ) \
     X_LBL_CFG( LBL_TEST_OPT2,             "poutine Control\r\n",                                                                                       "Contrôle Poutine\r\n"                  ) \
