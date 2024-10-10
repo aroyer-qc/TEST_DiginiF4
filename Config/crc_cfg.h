@@ -131,6 +131,14 @@
 #define DIGINI_USE_CRC_64_XZ                DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
+//
+// Hardware CRC for STM32F4 ( NO CRC using RefIn / RefOut are supported)
+
+#define DIGINI_USE_HW_CRC_32_BZIP2          DEF_DISABLED            // XorOut 0xFFFFFFFF
+#define DIGINI_USE_HW_CRC_32_MPEG_2         DEF_DISABLED
+#define DIGINI_USE_HW_CRC_32_POSIX          DEF_DISABLED            // Init 0x00000000 using 0xFFFFFFFF as first DR value, XorOut 0xFFFFFFFF
+#define DIGINI_USE_HW_CRC_32_SATA           DEF_DISABLED            // Init 0x52325032 using 0x
+
 
 
 

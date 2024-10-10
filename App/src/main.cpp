@@ -45,6 +45,39 @@
 //-------------------------------------------------------------------------------------------------
 int main()
 {
+    RCC->AHB1ENR = RCC_AHB1ENR_CRCEN;
+
+    for(uint32_t i = 0; i < 0xFFFFFFFF; i++)
+    {
+        CRC->CR = 1;
+        CRC->DR = i;
+
+        if(CRC->DR == 0xFFFFFFFF)
+        {
+            __asm("nop");
+        }
+    }
+
+
+    uint32_t i = 0x55aa55aa ^ 0x00000000;
+
+
+    CRC->CR = 1;
+    CRC->DR = 0xFFFFFFFF;
+
+    if(CRC->DR == 0)
+    {
+        __asm("nop");
+    }
+
+
+
+
+
+
+
+
+
     ISR_Disable();
     nOS_Init();
     BSP_Initialize();                           // All hardware and system initialization

@@ -104,7 +104,7 @@
 #define DIGINI_USE_GRAFX                                DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
-// CRC Configuration
+// Software CRC Configuration
 //
 #define DIGINI_USE_CRC                                  DEF_ENABLED
 
