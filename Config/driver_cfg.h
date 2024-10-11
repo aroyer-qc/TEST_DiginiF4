@@ -38,7 +38,7 @@
 
 #define USE_ADC_DRIVER              DEF_DISABLED
 #define USE_CAN_DRIVER              DEF_DISABLED
-#define USE_CRC_DRIVER              DEF_DISABLED
+#define USE_CRC_DRIVER              DEF_ENABLED
 #define USE_DAC_DRIVER              DEF_DISABLED
 #define USE_IO_BUS_DRIVER           DEF_DISABLED
 #define USE_I2C_DRIVER              DEF_DISABLED
