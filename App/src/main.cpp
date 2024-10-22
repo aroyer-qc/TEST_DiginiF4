@@ -32,6 +32,15 @@
 #include "taskIdle.h"
 #include "bsp.h"
 
+uint32_t swap(uint32_t in)
+{
+ //uint32_t out ;
+
+  in = __builtin_bswap32(in);
+ //out = (in >> 16) | (in << 16);
+  return in;
+}
+
 //-------------------------------------------------------------------------------------------------
 //
 // Name:           main
@@ -45,6 +54,14 @@
 //-------------------------------------------------------------------------------------------------
 int main()
 {
+    uint32_t testID = 0x00123456;
+    uint32_t SwaptestID;
+
+    SwaptestID = swap(testID);
+
+
+  //  uint8_t* pTestID = (void*)&testID;
+
     ISR_Disable();
     nOS_Init();
     BSP_Initialize();                           // All hardware and system initialization

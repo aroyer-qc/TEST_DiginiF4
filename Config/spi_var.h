@@ -77,7 +77,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
         SPI1_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_3, // Configuration + DMA_Channel RX
@@ -105,7 +104,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
          // DMA2_Stream5,                                  // TX_DMA_TypeDef
          // DMA2_Stream5_IRQn,                             // TX_IRQn
         },
-      #endif  
 	},
   #endif
 
@@ -126,7 +124,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
 		SPI2_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_0, // Configuration + DMA_Channel RX
@@ -142,7 +139,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
             DMA1_Stream4,                                  // TX_DMA_TypeDef
             DMA1_Stream4_IRQn,                             // TX_IRQn
         },
-      #endif  
  	},
   #endif
 
@@ -163,7 +159,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
 		SPI3_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_0, // Configuration + DMA_Channel RX
@@ -191,7 +186,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
          // DMA1_Stream7,                                  // TX_DMA_TypeDef
          // DMA1_Stream7_IRQn,                             // TX_IRQn
         },
-      #endif  
 	},
   #endif
   
@@ -212,7 +206,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
 		SPI4_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_5, // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
@@ -230,7 +223,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
             DMA2_Stream4_IRQn,                             // TX_IRQn
             6,                                             // PreempPrio
         },
-      #endif  
 	},
   #endif
 
@@ -251,7 +243,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
 		SPI5_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_DMA_DISABLED,                             // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
@@ -269,7 +260,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
             DMA2_Stream5_IRQn,                             // TX_IRQn
             6,                                             // PreempPrio
         },
-      #endif  
 	},
   #endif
 
@@ -290,7 +280,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_NOT_DEFINED,             // NSS  N/U 
 		SPI6_IRQn,                  // IRQn_Channel
 
-      #if (SPI_DRIVER_SUPPORT_DMA_CFG == DEF_ENABLED)
         // DMA_RX
         {
             SPI_DMA_DISABLED,                             // Configuration + DMA_Channel RX or SPI_DMA_DISABLED
@@ -308,7 +297,6 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
             DMA2_Stream5_IRQn,                             // TX_IRQn
             6,                                             // PreempPrio
         },
-      #endif  
 	},
   #endif
 };
