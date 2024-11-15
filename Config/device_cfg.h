@@ -38,7 +38,7 @@
 
 // Put here included for all high level driver. Driver for device not in the CPU
 //#include "./Peripheral/inc/device/lib_class_spi_DACX3508.h"
-//#include "./Peripheral/inc/device/lib_class_spi_VFD.h"
+#include "./Peripheral/inc/device/lib_class_spi_VFD.h"
 //#include "./Peripheral/inc/device/lib_class_spi_IV_11.h"
 
 //-------------------------------------------------------------------------------------------------

@@ -74,20 +74,20 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_SPI1_CLK,                // CLK
         IO_SPI1_MOSI,               // MOSI
         IO_NOT_DEFINED,             // MISO
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // NSS  N/U
         SPI1_IRQn,                  // IRQn_Channel
 
         // DMA_RX
         {
             SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_3, // Configuration + DMA_Channel RX
             DMA_LIFCR_CTCIF0,                              // RX_IT_Flag
-            DMA2_Stream0,                                  // RX_DMA_TypeDef
+            DMA2_Stream0,                                  // RX_DMA_TypeDef  it won't be used in this case
             DMA2_Stream0_IRQn,                             // RX_IRQn
 
             // Other choice
          // SPI_STANDARD_CONFIGURATION_RX | DMA_CHANNEL_3, // Configuration + DMA_Channel RX
          // DMA_LIFCR_CTCIF2,                              // RX_IT_Flag
-         // DMA1_Stream2,                                  // RX_DMA_TypeDef
+         // DMA1_Stream2,                                  // RX_DMA_TypeDef  it won't be used in this case
          // DMA1_Stream2_IRQn,                             // RX_IRQn
         },
 
@@ -121,7 +121,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_SPI2_CLK,                // CLK
         IO_SPI2_MOSI,               // MOSI
         IO_NOT_DEFINED,             // MISO
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // NSS  N/U
 		SPI2_IRQn,                  // IRQn_Channel
 
         // DMA_RX
@@ -156,7 +156,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_SPI3_CLK,                // CLK
         IO_SPI3_MOSI,               // MOSI
         IO_SPI3_MISO,               // MISO
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // NSS  N/U
 		SPI3_IRQn,                  // IRQn_Channel
 
         // DMA_RX
@@ -188,7 +188,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         },
 	},
   #endif
-  
+
     #if (SPI_DRIVER_SUPPORT_SPI4_CFG == DEF_ENABLED)
 	{
 		SPI4,                       // SPIx
@@ -203,7 +203,7 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
         IO_SPI4_CLK,                // CLK
         IO_SPI4_MOSI,               // MOSI
         IO_SPI4_MISO,               // MISO
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // NSS  N/U
 		SPI4_IRQn,                  // IRQn_Channel
 
         // DMA_RX
@@ -239,8 +239,8 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
 		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI5_CLK,                // CLK
         IO_SPI5_MOSI,               // MOSI
-        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip            
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip
+        IO_NOT_DEFINED,             // NSS  N/U
 		SPI5_IRQn,                  // IRQn_Channel
 
         // DMA_RX
@@ -276,8 +276,8 @@ SPI_Info_t SPI_Info[NB_OF_SPI_DRIVER] =
 		8000000,                    // The DAC chip is 12 inche away from CPU on 790A, so reduced comm speed
         IO_SPI6_CLK,                // CLK
         IO_SPI6_MOSI,               // MOSI
-        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip            
-        IO_NOT_DEFINED,             // NSS  N/U 
+        IO_NOT_DEFINED,             // MISO  There is no MISO pin on the DAC chip
+        IO_NOT_DEFINED,             // NSS  N/U
 		SPI6_IRQn,                  // IRQn_Channel
 
         // DMA_RX

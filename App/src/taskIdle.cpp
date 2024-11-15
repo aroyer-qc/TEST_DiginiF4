@@ -139,7 +139,7 @@ void TaskIdle(void)
         if (Count >= 256) Count = 0;
 
         // VFD part test
-        //VFD.Send();
+        VFD.Send();
 
         //VFD.Set(13, &Test[0], 10);
         //VFD.Set(14, &Test[0], 10);

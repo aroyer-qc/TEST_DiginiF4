@@ -49,7 +49,7 @@
 #define USE_RTC_DRIVER              DEF_DISABLED
 #define USE_SAI_DRIVER              DEF_DISABLED                    // Serial audio out
 #define USE_SDIO_DRIVER             DEF_DISABLED
-#define USE_SPI_DRIVER              DEF_DISABLED
+#define USE_SPI_DRIVER              DEF_ENABLED
 #define USE_TIM_DRIVER              DEF_ENABLED
 #define USE_UART_DRIVER             DEF_ENABLED
 #define USE_USB_DRIVER              DEF_DISABLED
