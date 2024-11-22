@@ -4,7 +4,7 @@
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2024 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -71,6 +71,20 @@ NOS_ISR(DMA1_Stream5_IRQHandler)
 	SPI_Driver::DMA_TX_IRQ_Handler(DRIVER_SPI3_ID);
 }
 #endif
+
+NOS_ISR(DMA2_Stream5_IRQHandler)
+{
+    bool Result;
+
+//IO_SetPinHigh(IO_DEBUG);
+
+    Result = (DMA2->HISR & DMA_HISR_TCIF5) ? true : false;
+    WS281x_LedStream.DMA_Channel_IRQ_Handler(Result);
+    DMA2->HIFCR = (DMA_HIFCR_CTCIF5 | DMA_HIFCR_CHTIF5);
+
+//IO_SetPinLow(IO_DEBUG);
+}
+
 
 //-------------------------------------------------------------------------------------------------
 //

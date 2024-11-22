@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_project_file>
-	<EmBitzVersion release="2.62" revision="0" />
+	<EmBitzVersion release="2.63" revision="0" />
 	<FileVersion major="2" minor="0" />
 	<Project>
 		<Option title="Test_DiginiF4" />
@@ -200,6 +200,7 @@
 		</Unit>
 		<Unit filename="..\Module\Digini\Digini\inc\lib_advanced_macro.h" />
 		<Unit filename="..\Module\Digini\Digini\inc\lib_label.h" />
+		<Unit filename="..\Module\Digini\Digini\inc\lib_macro.h" />
 		<Unit filename="..\Module\Digini\Digini\inc\lib_typedef.h" />
 		<Unit filename="..\Module\Digini\Digini\src\digini.cpp">
 			<Option compilerVar="CC" />
@@ -234,6 +235,7 @@
 		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_IP_Manager.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_pwm_WS281x.h" />
 		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_DACx3508.h" />
 		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_IV_11.h" />
 		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_VFD.h" />
@@ -249,7 +251,6 @@
 		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_system_clock.h" />
 		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_pwm_WS281x.cpp">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_spi_DACx3508.cpp">
 			<Option compilerVar="CC" />

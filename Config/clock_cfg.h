@@ -54,7 +54,7 @@
 // For 168 MHz HCLK on HSE
 #define CFG_PLL_SOURCE                              CFG_HSE_VALUE
 #define CFG_PLL_M_DIVIDER                           4
-#define CFG_PLL_N_MULTIPLIER                        168
+#define CFG_PLL_N_MULTIPLIER                        160
 #define CFG_PLL_P_DIVIDER                           2
 #define CFG_PLL_Q_DIVIDER                           7
 

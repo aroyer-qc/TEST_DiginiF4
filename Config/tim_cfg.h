@@ -31,7 +31,7 @@
 //-------------------------------------------------------------------------------------------------
 #define TIM_USE_PWM_FEATURE_CFG                         DEF_ENABLED
 
-#define TIM_DRIVER_SUPPORT_TIM1_CFG                     DEF_DISABLED
+#define TIM_DRIVER_SUPPORT_TIM1_CFG                     DEF_ENABLED     // Timer NEO data Led in PWM mode
 #define TIM_DRIVER_SUPPORT_TIM2_CFG                     DEF_ENABLED
 #define TIM_DRIVER_SUPPORT_TIM3_CFG                     DEF_DISABLED
 #define TIM_DRIVER_SUPPORT_TIM4_CFG                     DEF_DISABLED
@@ -51,7 +51,7 @@
 //       2 - This setting is effective only TIM_DRIVER_SUPPORT_TIMx_CFG is DEF_ENABLED
 //       3 - No compare register for TIM6 and TIM7
 //       4 - Even if timer is disable other timer can enable the feature, if code is shared
-#define TIM_DRIVER_SUPPORT_TIM1_COMPARE_CFG             DEF_DISABLED
+#define TIM_DRIVER_SUPPORT_TIM1_COMPARE_CFG             DEF_ENABLED
 #define TIM_DRIVER_SUPPORT_TIM2_TO_TIM5_COMPARE_CFG     DEF_ENABLED
 #define TIM_DRIVER_SUPPORT_TIM8_COMPARE_CFG             DEF_DISABLED
 #define TIM_DRIVER_SUPPORT_TIM9_OR_TIM12_COMPARE_CFG    DEF_DISABLED
@@ -61,6 +61,8 @@
 #define TIM_DRIVER_SUPPORT_TIM14_COMPARE_CFG            DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
+
+#define LED_NEO_LED_TIMER             TIM_DRIVER_ID_1
 
 #define VFD_TIMER                     TIM_DRIVER_ID_2
 #define VFD_MODE                      TIM_OP_MODE_REPETITIVE_DOWN_COUNT

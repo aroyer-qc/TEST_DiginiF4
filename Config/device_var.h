@@ -34,6 +34,44 @@
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
+#ifdef __CLASS_WS281x__
+
+    extern class WS281x WS281x_LedStream;
+
+  #ifdef LIB_WS281x_GLOBAL
+
+  // See dma_var.h for DMA configuration
+    const WS281x_Config_t LedStreamConfig =
+    {
+        &myPWM_NEO_Led,
+
+        // Led Chain info
+        7, //34,                                        // There is 34 LED's in the chain
+        WS2812B_RESET,                                  // Use reset configuration for WS2812B
+
+        // DMA
+        {
+            // Configuration
+            DMA_MODE_CIRCULAR                |
+            DMA_MEMORY_TO_PERIPHERAL         |
+            DMA_PERIPHERAL_NO_INCREMENT      |
+            DMA_MEMORY_INCREMENT             |
+            DMA_PERIPHERAL_SIZE_8_BITS       |
+            DMA_MEMORY_SIZE_8_BITS           |
+            DMA_PRIORITY_LEVEL_HIGH          |
+            DMA_CHANNEL_6,                          // Connected to channel 6
+            DMA_HIFCR_CTCIF5 | DMA_HIFCR_CHTIF5,    // Transfer complete and Half transfer Flag
+            DMA2_Stream5,                           // DMA_Stream_TypeDef
+            DMA2_Stream5_IRQn,
+            4,                                      // PreempPrio
+        },
+    };
+
+    class WS281x WS281x_LedStream(&LedStreamConfig);
+
+  #endif
+#endif
+
 #ifdef __CLASS_DAC_X3508__
 //extern class DAC_X3508_Driver       DAC43508;
 #ifdef LIB_DAC_x3508_GLOBAL

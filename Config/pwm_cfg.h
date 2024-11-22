@@ -32,10 +32,9 @@
 
 enum PWM_ChannelID_e
 {
+	PWM_STRIP_NEO_DATA,
 	PWM_VFD_OUTPUT,
     NB_OF_PWM_CHANNEL
 };
-
-// todo use X-macro if more parameter
 
 //-------------------------------------------------------------------------------------------------

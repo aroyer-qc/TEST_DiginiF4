@@ -4,7 +4,7 @@
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2024 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -51,6 +51,10 @@
 const TempUnit_e T_Unit = TEMP_CELSIUS;
 const SystemDebugLevel_e DebugLvl = SystemDebugLevel_e(0);//SystemDebugLevel_e(SYS_DEBUG_LEVEL_ETHERNET | SYS_DEBUG_LEVEL_MEMORY_POOL);
 const Language_e Lang = LANG_ENGLISH;
+
+//#if (BSP_TEST_HARDWARE == DEF_ENABLED)
+void BSP_HardwareTest (void);
+//#endif
 
 //-------------------------------------------------------------------------------------------------
 // Local Function(s)
@@ -106,8 +110,40 @@ SystemState_e BSP_PostOS_Initialize(void)
     VFD.Initialize();                       // Then initialize the VFD driver
     State = DIGINI_PostInitialize();
 
+    // WS2812 LED stream
+    myTIM_NEO_Led.Initialize();
+    myPWM_NEO_Led.Initialize();
+    WS281x_LedStream.Initialize();
+    BSP_HardwareTest();
+
     return State;
 }
+
+//-------------------------------------------------------------------------------------------------
+//
+//  Name:           BSP_HardwareTest
+//  Parameter(s):   None
+//  Return:         void
+//
+//  Description:    This function is for testing the hardware.
+//
+//-------------------------------------------------------------------------------------------------
+//#if (BSP_TEST_HARDWARE == DEF_ENABLED)
+void BSP_HardwareTest(void)
+{
+    ISR_Enable();
+    WS281x_LedStream.Start();
+    WS281x_LedStream.SetLed(0, {0x80,0x00,0x00});
+    WS281x_LedStream.SetLed(1, {0x00,0x80,0x00});
+    WS281x_LedStream.SetLed(2, {0x00,0x00,0x80});
+    WS281x_LedStream.SetLed(3, {0x20,0x20,0x00});
+    WS281x_LedStream.SetLed(4, {0x00,0x20,0x20});
+    WS281x_LedStream.SetLed(5, {0x20,0x00,0x20});
+    WS281x_LedStream.SetLed(6, {0x20,0x20,0x20});
+
+}
+//#endif
+
 
 //-------------------------------------------------------------------------------------------------
 

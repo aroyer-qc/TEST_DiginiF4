@@ -40,7 +40,7 @@
                                         DMA_MEMORY_SIZE_8_BITS      | \
                                         DMA_PERIPHERAL_BURST_SINGLE | \
                                         DMA_MEMORY_BURST_SINGLE     | \
-                                        DMA_PRIORITY_MEDIUM)
+                                        DMA_PRIORITY_LEVEL_MEDIUM)
 
 #define SPI_STANDARD_CONFIGURATION_TX ( DMA_MODE_NORMAL             | \
                                         DMA_MEMORY_TO_PERIPHERAL    | \
@@ -50,7 +50,7 @@
                                         DMA_MEMORY_SIZE_8_BITS      | \
                                         DMA_PERIPHERAL_BURST_SINGLE | \
                                         DMA_MEMORY_BURST_SINGLE     | \
-                                        DMA_PRIORITY_MEDIUM)
+                                        DMA_PRIORITY_LEVEL_MEDIUM)
 
 //-------------------------------------------------------------------------------------------------
 // Constant(s)

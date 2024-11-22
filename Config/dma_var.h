@@ -30,24 +30,6 @@
 
 #ifdef DMA_DRIVER_GLOBAL
 
-// WS281x led stream will use Timer2 DMA Stream x Channel x
-const DMA_Info_t DMA_Info_WS281x =
-{
-    // Configuration
-    DMA_MODE_CIRCULAR                |
-    DMA_MEMORY_TO_PERIPHERAL         |
-    DMA_PERIPHERAL_NO_INCREMENT      |
-    DMA_MEMORY_INCREMENT             |
-    DMA_PERIPHERAL_SIZE_16_BITS      |
-    DMA_MEMORY_SIZE_8_BITS           |
-    DMA_PRIORITY_LEVEL_HIGH          |
-    DMA_CHANNEL_3,                          // Connected to channel 3
-    DMA_LIFCR_CTCIF3 | DMA_LIFCR_CHTIF3,    // Transfer complete and Half transfer Flag
-    DMA1_Stream5,                           // DMA_Stream_TypeDef
-    DMA1_Stream5_IRQn
-    //4,                                      // PreempPrio
-};
-
 #endif // DMA_DRIVER_GLOBAL
 
 //-------------------------------------------------------------------------------------------------
