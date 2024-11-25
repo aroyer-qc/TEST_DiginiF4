@@ -60,15 +60,10 @@
 //#define CFG_PLL_Q_DIVIDER                         7
 
 #define CFG_PLL_SOURCE                              CFG_HSE_VALUE
-<<<<<<< HEAD
 
 #ifdef STM32F401xx
   #define CFG_PLL_M_DIVIDER                         8
   #define CFG_PLL_N_MULTIPLIER                      84
-=======
-#define CFG_PLL_M_DIVIDER                           4
-#define CFG_PLL_N_MULTIPLIER                        160
->>>>>>> 8f88e3cefec6b481e4c023a92ce2acffdce43f58
 #define CFG_PLL_P_DIVIDER                           2
 #endif
 #ifdef STM32F429_439xx
