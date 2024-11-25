@@ -72,121 +72,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART2_CFG == DEF_ENABLED)
-    {
-        USART2,                     // USARTx
-        IO_UART2_RX,
-        IO_UART2_TX,
-        RCC_APB1ENR_USART2EN,       // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        USART2_IRQn,                // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART3_CFG == DEF_ENABLED)
-    {
-        USART3,                     // USARTx
-        IO_UART3_RX,
-        IO_UART3_TX,
-        RCC_APB1ENR_USART3EN,       // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        USART3_IRQn,                // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART4_CFG == DEF_ENABLED)
-    {
-        UART4,                      // USARTx
-        IO_UART4_RX,
-        IO_UART4_TX,
-        RCC_APB1ENR_UART4EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        UART4_IRQn,                 // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART5_CFG == DEF_ENABLED)
-    {
-        UART5,                      // USARTx
-        IO_UART5_RX,
-        IO_UART5_TX,
-        RCC_APB1ENR_UART5EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        UART5_IRQn,                 // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART6_CFG == DEF_ENABLED)
-    {
-        USART6,                     // USARTx
-        IO_UART6_RX,
-        IO_UART6_TX,
-        RCC_APB2ENR_USART6EN,       // RCC_APBxENR
-        &RCC->APB2ENR,              // Register
-        USART6_IRQn,                // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART7_CFG == DEF_ENABLED)
-    {
-        UART7,                      // USARTx
-        IO_UART7_RX,
-        IO_UART7_TX,
-        RCC_APB1ENR_UART7EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        UART7_IRQn,                 // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-
-  #if (UART_DRIVER_SUPPORT_UART8_CFG == DEF_ENABLED)
-    {
-        UART8,                      // USARTx
-        IO_UART8_RX,
-        IO_UART8_TX,
-        RCC_APB1ENR_UART8EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
-        UART8_IRQn,                 // IRQn_Channel
-        7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
-        UART_WAIT_ON_BUSY,
-    },
-  #endif
-};
-
-#if (UART_DRIVER_DMA_CFG == DEF_ENABLED)
-const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
-{
-  #if (UART_DRIVER_SUPPORT_UART1_DMA_CFG == DEF_ENABLED)
-    {
-        UART_DRIVER_ID_1,
 
         // DMA_RX
         {
@@ -213,9 +98,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART2_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART2_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_2,
+        USART2,                     // USARTx
+        IO_UART2_RX,
+        IO_UART2_TX,
+        RCC_APB1ENR_USART2EN,       // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        ISR_IRQn_NONE,              // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_9_2),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -228,16 +122,25 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
         // DMA_TX
         {
             UART_STANDARD_CONFIGURATION_TX | DMA_CHANNEL_4, // Configuration + DMA_Channel TX
-            DMA_HIFCR_CTCIF6,                               // TX_IT_Flag
+            DMA_HIFCR_CTCIF6 | DMA_HIFCR_CHTIF6,            // TX_IT_Flag
             DMA1_Stream6,                                   // TX_DMA_TypeDef
             DMA1_Stream6_IRQn,                              // TX_IRQn
         },
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART3_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART3_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_3,
+        USART3,                     // USARTx
+        IO_UART3_RX,
+        IO_UART3_TX,
+        RCC_APB1ENR_USART3EN,       // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        USART3_IRQn,                // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -263,9 +166,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART4_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART4_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_4,
+        UART4,                      // USARTx
+        IO_UART4_RX,
+        IO_UART4_TX,
+        RCC_APB1ENR_UART4EN,        // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        UART4_IRQn,                 // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -285,9 +197,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART5_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART5_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_5,
+        UART5,                      // USARTx
+        IO_UART5_RX,
+        IO_UART5_TX,
+        RCC_APB1ENR_UART5EN,        // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        UART5_IRQn,                 // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -307,9 +228,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART6_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART6_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_6,
+        USART6,                     // USARTx
+        IO_UART6_RX,
+        IO_UART6_TX,
+        RCC_APB2ENR_USART6EN,       // RCC_APBxENR
+        &RCC->APB2ENR,              // Register
+        USART6_IRQn,                // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -341,9 +271,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART7_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART7_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_7,
+        UART7,                      // USARTx
+        IO_UART7_RX,
+        IO_UART7_TX,
+        RCC_APB1ENR_UART7EN,        // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        UART7_IRQn,                 // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -363,9 +302,18 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 
-  #if (UART_DRIVER_SUPPORT_UART8_DMA_CFG == DEF_ENABLED)
+  #if (UART_DRIVER_SUPPORT_UART8_CFG == DEF_ENABLED)
     {
-        UART_DRIVER_ID_8,
+        UART8,                      // USARTx
+        IO_UART8_RX,
+        IO_UART8_TX,
+        RCC_APB1ENR_UART8EN,        // RCC_APBxENR
+        &RCC->APB1ENR,              // Register
+        UART8_IRQn,                 // IRQn_Channel
+        7,                          // PreempPrio
+        UART_Config_e(UART_CFG_N_8_1),
+        UART_BAUD_115200,
+        UART_WAIT_ON_BUSY,
 
         // DMA_RX
         {
@@ -385,13 +333,20 @@ const UART_DMA_Info_t UART_DMA_Info[NB_OF_UART_DMA_DRIVER] =
     },
   #endif
 };
-#endif
 
+//-------------------------------------------------------------------------------------------------
+
+#ifdef STM32F429_439xx
 class UART_Driver myUART_Terminal(TERMINAL_SERIAL);
+#endif
+class UART_Driver myUART_NEO_Led(NEO_LED_UART);
 
 #else // UART_DRIVER_GLOBAL
 
+#ifdef STM32F429_439xx
 extern class UART_Driver myUART_Terminal;
+#endif
+extern class UART_Driver myUART_NEO_Led;
 
 #endif // UART_DRIVER_GLOBAL
 

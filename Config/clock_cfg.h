@@ -30,8 +30,16 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define CFG_HSE_VALUE                               8000000
-#define CFG_HSI_VALUE                               16000000
+#ifdef STM32F401xx
+#define CFG_HSE_VALUE                               16000000
+#define CFG_HSI_VALUE                               8000000
+#endif
+
+#ifdef STM32F429_439xx
+#define CFG_HSE_VALUE                               16000000
+#define CFG_HSI_VALUE                               8000000
+#endif
+
 #define CFG_LSE_VALUE                               32768
 #define CFG_LSI_VALUE                               32000
 #define CFG_SYSTICK_RATE                            1000
@@ -51,16 +59,23 @@
 //#define CFG_PLL_P_DIVIDER                         2
 //#define CFG_PLL_Q_DIVIDER                         7
 
-// For 168 MHz HCLK on HSE
 #define CFG_PLL_SOURCE                              CFG_HSE_VALUE
-#define CFG_PLL_M_DIVIDER                           4
-#define CFG_PLL_N_MULTIPLIER                        168
+
+#ifdef STM32F401xx
+  #define CFG_PLL_M_DIVIDER                         8
+  #define CFG_PLL_N_MULTIPLIER                      84
 #define CFG_PLL_P_DIVIDER                           2
+#endif
+#ifdef STM32F429_439xx
+  #define CFG_PLL_M_DIVIDER                         8
+  #define CFG_PLL_N_MULTIPLIER                      168
+#define CFG_PLL_P_DIVIDER                           2
+#endif
 #define CFG_PLL_Q_DIVIDER                           7
 
 // User clock and divider
 #define CFG_AHB_CLK_DIVIDER                         CFG_RCC_CFGR_HPRE_DIV1      // (AHB Prescaler) CFG_RCC_CFGR_HPRE_DIVx -> 1,2,4,8,16,64,128,256,512
-#define CFG_APB1_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE1_DIV4     // CFG_RCC_CFGR_PPRE1_DIVx -> 1,2,4,8,16
+#define CFG_APB1_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE1_DIV2     // CFG_RCC_CFGR_PPRE1_DIVx -> 1,2,4,8,16
 #define CFG_APB2_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE2_DIV2     // CFG_RCC_CFGR_PPRE2_DIVx -> 1,2,4,8,16
 
 #define CFG_MCO_1                                   (CFG_RCC_CFGR_MCO1_PLL | CFG_RCC_CFGR_MCO1PRE_DIV5)

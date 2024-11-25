@@ -70,6 +70,8 @@
     X_IO( IO_SPI3_CLK,           GPIOB,      3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
     X_IO( IO_SPI3_MOSI,          GPIOB,      5,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
 /* UART IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
+    X_IO( IO_UART2_RX,           GPIOxx,     3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART2)/* N/U */\
+    X_IO( IO_UART2_TX,           GPIOA,      2,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF7_USART2)         \
     X_IO( IO_UART3_RX,           GPIOD,      9,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
     X_IO( IO_UART3_TX,           GPIOD,      8,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
 /* PWM Output ---------------------------------------------------------------------------------------------------------------------------------*/\

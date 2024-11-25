@@ -42,8 +42,10 @@
 #define UART_DRIVER_DMA_TX_COMPLETED_CFG        DEF_ENABLED
 
 #define UART_DRIVER_SUPPORT_UART1_CFG           DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART2_CFG           DEF_DISABLED
+#define UART_DRIVER_SUPPORT_UART2_CFG           DEF_ENABLED
+#ifdef STM32F429_439xx
 #define UART_DRIVER_SUPPORT_UART3_CFG           DEF_ENABLED
+#endif
 #define UART_DRIVER_SUPPORT_UART4_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_UART5_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_UART6_CFG           DEF_DISABLED
@@ -51,19 +53,14 @@
 #define UART_DRIVER_SUPPORT_UART8_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_VIRTUAL_UART_CFG    DEF_DISABLED
 
-#define UART_DRIVER_SUPPORT_UART1_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART2_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART3_DMA_CFG       DEF_ENABLED
-#define UART_DRIVER_SUPPORT_UART4_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART5_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART6_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART7_DMA_CFG       DEF_DISABLED
-#define UART_DRIVER_SUPPORT_UART8_DMA_CFG       DEF_DISABLED
-
 #define UART_DRIVER_INTERNAL_RX_BUFFER_SIZE     64                      // this is very unsafe setting.. need to check with who is using this setting... it must be linked to the owner of the serial port
 
+//-------------------------------------------------------------------------------------------------
+
+#ifdef STM32F429_439xx
 #define TERMINAL_SERIAL                         UART_DRIVER_ID_3
-//#define DEBUG_SERIAL                          UART_DRIVER_ID_3
+#endif
+#define NEO_LED_UART                            UART_DRIVER_ID_2
 
 #if (UART_DRIVER_SUPPORT_VIRTUAL_UART_CFG == DEF_ENABLED)
 

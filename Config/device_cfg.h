@@ -32,11 +32,16 @@
 
 #define   IV11_NUMBER_OF_TUBE       6
 
+// Config for lib_class_STM32F1_WS281x.h
+#define WS281x_CONTINUOUS_SCAN                      DEF_ENABLED             // this is automatic when WS281x_USE_PRECALCULATED_PWM_BUFFER is DEF_ENABLED
+#define WS281x_USE_WS2812B                          DEF_ENABLED
+
 //-------------------------------------------------------------------------------------------------
 // Include file(s)
 //-------------------------------------------------------------------------------------------------
 
 // Put here included for all high level driver. Driver for device not in the CPU
+#include "./Digini/Peripheral/inc/device/lib_class_uart_WS281x.h"
 //#include "./Peripheral/inc/device/lib_class_spi_DACX3508.h"
 //#include "./Peripheral/inc/device/lib_class_spi_VFD.h"
 //#include "./Peripheral/inc/device/lib_class_spi_IV_11.h"

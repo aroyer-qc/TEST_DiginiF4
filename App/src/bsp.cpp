@@ -106,6 +106,45 @@ SystemState_e BSP_PostOS_Initialize(void)
    // VFD.Initialize();                       // Then initialize the VFD driver
     State = DIGINI_PostInitialize();
 
+    // WS2812 LED stream
+    //myUART_NEO_Led.Initialize();
+    WS281x_LedStream.Initialize();
+
+
+    WS281x_LedStream.Start();
+
+uint8_t R,G,B;
+
+    while(1)
+    {
+        WS281x_LedStream.SetLed(0, {R++,G--,B+=3});
+        WS281x_LedStream.SetLed(1, {uint8_t(R++ + 10), G--,uint8_t(B-= 10)});
+        WS281x_LedStream.SetLed(2, {uint8_t(R++ + 20), G--,uint8_t(B-= 20)});
+        WS281x_LedStream.SetLed(3, {uint8_t(R++ + 30), G--,uint8_t(B-= 30)});
+        WS281x_LedStream.SetLed(4, {uint8_t(R++ + 40), G--,uint8_t(B-= 40)});
+        WS281x_LedStream.SetLed(5, {uint8_t(R++ + 50), G--,uint8_t(B-= 50)});
+        WS281x_LedStream.SetLed(6, {uint8_t(R++ + 60), G--,uint8_t(B-= 60)});
+        WS281x_LedStream.SetLed(7, {uint8_t(R++ + 70), G--,uint8_t(B-= 70)});
+        WS281x_LedStream.SetLed(8, {uint8_t(R++ + 80), G--,uint8_t(B-= 80)});
+        WS281x_LedStream.SetLed(9, {uint8_t(R++ + 90), G--,uint8_t(B-= 90)});
+        WS281x_LedStream.SetLed(10,{uint8_t(R++ + 100),G--,uint8_t(B-= 100)});
+        WS281x_LedStream.SetLed(11,{uint8_t(R++ + 110),G--,uint8_t(B-= 110)});
+        WS281x_LedStream.SetLed(12,{uint8_t(R++ + 120),G--,uint8_t(B-= 120)});
+        WS281x_LedStream.SetLed(13,{uint8_t(R++ + 130),G--,uint8_t(B-= 130)});
+        WS281x_LedStream.SetLed(14,{uint8_t(R++ + 140),G--,uint8_t(B-= 140)});
+        WS281x_LedStream.SetLed(15,{uint8_t(R++ + 150),G--,uint8_t(B-= 150)});
+        WS281x_LedStream.SetLed(16,{uint8_t(R++ + 160),G--,uint8_t(B-= 160)});
+        WS281x_LedStream.SetLed(17,{uint8_t(R++ + 170),G--,uint8_t(B-= 170)});
+        WS281x_LedStream.SetLed(18,{uint8_t(R++ + 180),G--,uint8_t(B-= 180)});
+        WS281x_LedStream.SetLed(19,{uint8_t(R++ + 190),G--,uint8_t(B-= 190)});
+        WS281x_LedStream.SetLed(20,{uint8_t(R++ + 200),G--,uint8_t(B-= 200)});
+        WS281x_LedStream.SetLed(21,{uint8_t(R++ + 210),G--,uint8_t(B-= 210)});
+        WS281x_LedStream.SetLed(22,{uint8_t(R++ + 220),G--,uint8_t(B-= 220)});
+        WS281x_LedStream.SetLed(23,{uint8_t(R++ + 230),G--,uint8_t(B-= 230)});
+        nOS_Sleep(16);
+}
+
+
     return State;
 }
 

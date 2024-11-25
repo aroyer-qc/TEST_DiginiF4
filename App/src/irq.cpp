@@ -47,7 +47,18 @@ extern "C"
 
 NOS_ISR(DMA1_Stream3_IRQHandler)
 {
+  #ifdef STM32F429_439xx
 	myUART_Terminal.DMA_TX_IRQ_Handler();
+  #endif
+}
+
+NOS_ISR(DMA1_Stream6_IRQHandler)
+{
+    bool Result;
+
+    Result = (DMA1->HISR & DMA_HIFCR_CTCIF6) ? true: false;
+    WS281x_LedStream.DMA_Channel_IRQ_Handler(Result);
+    DMA1->HIFCR = (DMA_HIFCR_CTCIF6 | DMA_HIFCR_CHTIF6);
 }
 
 #if 0
@@ -100,11 +111,12 @@ NOS_ISR(SPI1_IRQHandler)
 //
 //-------------------------------------------------------------------------------------------------
 
+#ifdef STM32F429_439xx
 NOS_ISR(USART3_IRQHandler)
 {
     myUART_Terminal.IRQ_Handler();
 }
-
+#endif
 //-------------------------------------------------------------------------------------------------
 
 } // extern "C"

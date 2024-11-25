@@ -59,9 +59,11 @@
 //
 #define DIGINI_USE_COMM_MODULE                          DEF_ENABLED
 
+#ifdef STM32F429_439xx
 #define DIGINI_USE_CONSOLE                              DEF_ENABLED
 #define DIGINI_USE_CMD_LINE                             DEF_ENABLED
 #define DIGINI_USE_VT100_MENU                           DEF_ENABLED
+#endif
 
 #define DIGINI_USE_DEBUG_IN_CONSOLE                     DEF_DISABLED        // seem to be a bug when enabled
 #define DIGINI_USE_HELP_IN_CONSOLE                      DEF_ENABLED     // Adding the help command to the command line

@@ -34,6 +34,24 @@
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
+#ifdef __CLASS_WS281x__
+
+    extern class WS281x WS281x_LedStream;
+
+  #ifdef LIB_WS281x_GLOBAL
+
+    const WS281x_Config_t LedStreamConfig =
+    {
+        MODE_WS2812B,
+        &myUART_NEO_Led,
+        24, //34,                                    // There is 34 LED's in the chain
+    };
+
+    class WS281x WS281x_LedStream(&LedStreamConfig);
+
+  #endif
+#endif
+
 #ifdef __CLASS_DAC_X3508__
 //extern class DAC_X3508_Driver       DAC43508;
 #ifdef LIB_DAC_x3508_GLOBAL
