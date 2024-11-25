@@ -43,7 +43,7 @@
 
 #define UART_DRIVER_SUPPORT_UART1_CFG           DEF_DISABLED
 #define UART_DRIVER_SUPPORT_UART2_CFG           DEF_ENABLED
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 #define UART_DRIVER_SUPPORT_UART3_CFG           DEF_ENABLED
 #endif
 #define UART_DRIVER_SUPPORT_UART4_CFG           DEF_DISABLED
@@ -57,7 +57,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 #define TERMINAL_SERIAL                         UART_DRIVER_ID_3
 #endif
 #define NEO_LED_UART                            UART_DRIVER_ID_2

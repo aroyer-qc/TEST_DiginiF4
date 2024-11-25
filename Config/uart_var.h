@@ -336,14 +336,14 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
 
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 class UART_Driver myUART_Terminal(TERMINAL_SERIAL);
 #endif
 class UART_Driver myUART_NEO_Led(NEO_LED_UART);
 
 #else // UART_DRIVER_GLOBAL
 
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 extern class UART_Driver myUART_Terminal;
 #endif
 extern class UART_Driver myUART_NEO_Led;

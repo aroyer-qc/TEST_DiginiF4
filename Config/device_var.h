@@ -40,39 +40,11 @@
 
   #ifdef LIB_WS281x_GLOBAL
 
-<<<<<<< HEAD
     const WS281x_Config_t LedStreamConfig =
     {
         MODE_WS2812B,
         &myUART_NEO_Led,
         24, //34,                                    // There is 34 LED's in the chain
-=======
-  // See dma_var.h for DMA configuration
-    const WS281x_Config_t LedStreamConfig =
-    {
-        &myPWM_NEO_Led,
-
-        // Led Chain info
-        7, //34,                                        // There is 34 LED's in the chain
-        WS2812B_RESET,                                  // Use reset configuration for WS2812B
-
-        // DMA
-        {
-            // Configuration
-            DMA_MODE_CIRCULAR                |
-            DMA_MEMORY_TO_PERIPHERAL         |
-            DMA_PERIPHERAL_NO_INCREMENT      |
-            DMA_MEMORY_INCREMENT             |
-            DMA_PERIPHERAL_SIZE_8_BITS       |
-            DMA_MEMORY_SIZE_8_BITS           |
-            DMA_PRIORITY_LEVEL_HIGH          |
-            DMA_CHANNEL_6,                          // Connected to channel 6
-            DMA_HIFCR_CTCIF5 | DMA_HIFCR_CHTIF5,    // Transfer complete and Half transfer Flag
-            DMA2_Stream5,                           // DMA_Stream_TypeDef
-            DMA2_Stream5_IRQn,
-            4,                                      // PreempPrio
-        },
->>>>>>> 8f88e3cefec6b481e4c023a92ce2acffdce43f58
     };
 
     class WS281x WS281x_LedStream(&LedStreamConfig);

@@ -47,7 +47,7 @@ extern "C"
 
 NOS_ISR(DMA1_Stream3_IRQHandler)
 {
-  #ifdef STM32F429_439xx
+  #ifdef STM32F429xx
 	myUART_Terminal.DMA_TX_IRQ_Handler();
   #endif
 }
@@ -125,7 +125,7 @@ NOS_ISR(DMA2_Stream5_IRQHandler)
 //
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 NOS_ISR(USART3_IRQHandler)
 {
     myUART_Terminal.IRQ_Handler();

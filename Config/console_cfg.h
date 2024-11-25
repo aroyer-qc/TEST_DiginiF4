@@ -30,7 +30,7 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429_439xx
+#ifdef STM32F429xx
 #define CON_USE_COMM_UART                       &myUART_Terminal
 #endif
 
