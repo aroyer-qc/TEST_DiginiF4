@@ -35,6 +35,14 @@
 
 const PWM_Info_t PWM_Info[NB_OF_PWM_CHANNEL] =
 {
+    // PWM_STRIP_NEO_DATA
+    {
+        IO_NEO_DATA,                            // IO of the channel
+        LED_NEO_LED_TIMER,                      // ID of the timer for this channel
+        TIM_CHANNEL_4,                          // Channel on the timer
+        0,                                      // Initial duty of the PWM
+    },
+
     // PWM_VFD_OUTPUT
     {
         IO_VFD_BLANK,                           // IO of the channel
@@ -44,11 +52,12 @@ const PWM_Info_t PWM_Info[NB_OF_PWM_CHANNEL] =
     },
 };
 
-//use it in the x-macro mode
+class PWM_Driver myPWM_NEO_Led    (PWM_STRIP_NEO_DATA, &myTIM_NEO_Led);
 class PWM_Driver myPWM_VFD_Blank (PWM_VFD_OUTPUT, &myTIM_VFD);
 
 #else // PWM_DRIVER_GLOBAL
 
+extern class PWM_Driver myPWM_NEO_Led;
 extern class PWM_Driver myPWM_VFD_Blank;
 
 #endif // PWM_DRIVER_GLOBAL

@@ -4,7 +4,7 @@
 //
 //-------------------------------------------------------------------------------------------------
 //
-// Copyright(c) 2020 Alain Royer.
+// Copyright(c) 2024 Alain Royer.
 // Email: aroyer.qc@gmail.com
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software
@@ -51,6 +51,10 @@
 const TempUnit_e T_Unit = TEMP_CELSIUS;
 const SystemDebugLevel_e DebugLvl = SystemDebugLevel_e(0);//SystemDebugLevel_e(SYS_DEBUG_LEVEL_ETHERNET | SYS_DEBUG_LEVEL_MEMORY_POOL);
 const Language_e Lang = LANG_ENGLISH;
+
+//#if (BSP_TEST_HARDWARE == DEF_ENABLED)
+void BSP_HardwareTest (void);
+//#endif
 
 //-------------------------------------------------------------------------------------------------
 // Local Function(s)
@@ -100,7 +104,7 @@ SystemState_e BSP_PostOS_Initialize(void)
    // DAC43508.Initialize();
 
     // VFD
-   // mySPI_ForVFD.Initialize();              // SPI Driver for the data
+    //mySPI_ForVFD.Initialize();              // SPI Driver for the data
    // myTIM_VFD.Initialize();                 // Timer Driver on top of PWM for blank line
    // myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
    // VFD.Initialize();                       // Then initialize the VFD driver

@@ -31,6 +31,7 @@
 //  TIM_OP_MODE_SINGLE_DOWN_COUNT
 //  TIM_OP_MODE_REPETITIVE_UP_COUNT
 //  TIM_OP_MODE_REPETITIVE_DOWN_COUNT
+
 //-------------------------------------------------------------------------------------------------
 
 #ifdef TIM_DRIVER_GLOBAL
@@ -42,11 +43,12 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM1,                                   // TIMx
         RCC_APB2ENR_TIM1EN,                     // RCC_APBxENR
         &RCC->APB2ENR,                          // Register
-        TIM1_UP_TIM10_IRQn,                     // IRQn_Channel
+        ISR_IRQn_NONE,                          // IRQn_Channel
         7,                                      // PreempPrio
-        TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
-        example 1000,          					// Prescaler
-        example 100,	 	                    // Reload
+        TIM_OP_MODE_REPETITIVE_UP_COUNT,        // See note for 7th parameter
+        8,                     					// Prescaler      //?? verify clock and calculation  // 80 MHz / 4 = 20 MHz ideal frequency for WS2812B Led
+        24,         	 	                    // Reload
+        TIM_IE_DMA_UPDATE,
     },
   #endif
 
@@ -60,6 +62,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         VFD_MODE,                               // See note for 7th parameter
         VFD_PRESCALER,        					// Prescaler
         VFD_RELOAD,	 	                        // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -73,6 +76,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,         					// Prescaler
         example 100,                            // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -86,6 +90,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -100,6 +105,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -114,6 +120,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -128,6 +135,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -142,6 +150,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -156,6 +165,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -170,6 +180,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -184,6 +195,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -198,6 +210,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // Use TIM_OP_MODE_SINGLE or TIM_OP_MODE_REPETITIVE
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -212,6 +225,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // Use TIM_OP_MODE_SINGLE or TIM_OP_MODE_REPETITIVE
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 
@@ -226,14 +240,17 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM_OP_MODE_REPETITIVE,                 // Use TIM_OP_MODE_SINGLE or TIM_OP_MODE_REPETITIVE
         example 1000,          					// Prescaler
         example 100,	 	                    // Reload
+        TIM_IE_IRQ_DMA_NO_SOURCE,
     },
   #endif
 };
 
+class TIM_Driver myTIM_NEO_Led(LED_NEO_LED_TIMER);
 class TIM_Driver myTIM_VFD(VFD_TIMER);
 
 #else // TIM_DRIVER_GLOBAL
 
+extern class TIM_Driver myTIM_NEO_Led;
 extern class TIM_Driver myTIM_VFD;
 
 #endif // TIM_DRIVER_GLOBAL
