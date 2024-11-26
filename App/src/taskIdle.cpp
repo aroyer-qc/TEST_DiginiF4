@@ -138,8 +138,10 @@ void TaskIdle(void)
         Count++;
         if (Count >= 256) Count = 0;
 
+      #ifdef STM32F429xx
         // VFD part test
         VFD.Send();
+      #endif
 
         //VFD.Set(13, &Test[0], 10);
         //VFD.Set(14, &Test[0], 10);

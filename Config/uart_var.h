@@ -101,7 +101,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART2_CFG == DEF_ENABLED)
     {
         USART2,                     // USARTx
-        IO_UART2_RX,
+        IO_NOT_DEFINED,
         IO_UART2_TX,
         RCC_APB1ENR_USART2EN,       // RCC_APBxENR
         &RCC->APB1ENR,              // Register
