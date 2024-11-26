@@ -54,6 +54,8 @@
                                          DMA_MEMORY_BURST_SINGLE     | \
                                          DMA_PRIORITY_LEVEL_HIGH)
 
+#define TEST_CONFIG                      (UART_CFG_NO_PARITY |UART_CFG_8_LEN_BITS | UART_CFG_1_STOP_BIT)
+
 //-------------------------------------------------------------------------------------------------
 // Constant(s)
 //-------------------------------------------------------------------------------------------------
@@ -107,7 +109,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         ISR_IRQn_NONE,              // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_9_2),
+        UART_Config_e(UART_CFG_N_8_1),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
 
@@ -173,9 +175,9 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         IO_UART4_TX,
         RCC_APB1ENR_UART4EN,        // RCC_APBxENR
         &RCC->APB1ENR,              // Register
-        UART4_IRQn,                 // IRQn_Channel
+        ISR_IRQn_NONE,              // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
+        UART_Config_e(TEST_CONFIG | UART_CFG_ENABLE_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
 
@@ -206,7 +208,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         &RCC->APB1ENR,              // Register
         UART5_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
 
@@ -235,10 +237,10 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         IO_UART6_TX,
         RCC_APB2ENR_USART6EN,       // RCC_APBxENR
         &RCC->APB2ENR,              // Register
-        USART6_IRQn,                // IRQn_Channel
+        ISR_IRQn_NONE,                // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
-        UART_BAUD_115200,
+        UART_Config_e(TEST_CONFIG | UART_CFG_ENABLE_TX),
+        UART_BAUD_8000000,
         UART_WAIT_ON_BUSY,
 
         // DMA_RX

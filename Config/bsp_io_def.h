@@ -90,8 +90,8 @@
 #define IO_DEF(X_IO) \
 /*        ENUM ID of the IO,     IO Port,    IO Pin, Mode,               Pin type,              IO Speed,                 Pin Option           */\
 /* Output IO's --------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_RED,            GPIOB,      14,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-    X_IO( IO_LED_GREEN,          GPIOB,      0,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_LED_RED,            GPIOB,      14,     IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        1)                     \
+    X_IO( IO_LED_GREEN,          GPIOB,      0,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        1)                     \
     X_IO( IO_LED_BLUE,           GPIOB,      7,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
 /* SPI IO's -----------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_SPI3_CLK,           GPIOB,      3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI3)           \
@@ -102,6 +102,8 @@
 /* UART IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_UART3_RX,           GPIOD,      9,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
     X_IO( IO_UART3_TX,           GPIOD,      8,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART3)         \
+    X_IO( IO_UART6_RX,           GPIOxx,     7,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF8_USART6)/* N/U */\
+    X_IO( IO_UART6_TX,           GPIOC,      6,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF8_USART6)         \
 /* PWM Output ---------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_VFD_BLANK,          GPIOA,      0,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM2)           \
     X_IO( IO_VFD_LOAD,           GPIOG,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \

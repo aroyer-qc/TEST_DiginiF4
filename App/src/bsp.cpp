@@ -79,6 +79,10 @@ void BSP_Initialize(void)
 
     IO_PinInit(IO_LED_RED);
     IO_PinInit(IO_LED_GREEN);
+
+    IO_SetPinLow(IO_LED_RED);
+    IO_SetPinLow(IO_LED_GREEN);
+
     // IO_PinInit(IO_LED_BLUE);  transfert to ETH for now
     IO_PinInit(IO_MCO_2);        // Output the MCO for clock validation
     DIGINI_Initialize();
