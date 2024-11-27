@@ -115,7 +115,8 @@ SystemState_e BSP_PostOS_Initialize(void)
     State = DIGINI_PostInitialize();
 
     // WS2812 LED stream
-    //myUART_NEO_Led.Initialize();
+    myTIM_NEO_Led.Initialize();
+    myPWM_NEO_Led.Initialize();
     WS281x_LedStream.Initialize();
 
 

@@ -54,8 +54,6 @@
                                          DMA_MEMORY_BURST_SINGLE     | \
                                          DMA_PRIORITY_LEVEL_HIGH)
 
-#define TEST_CONFIG                      (UART_CFG_NO_PARITY |UART_CFG_8_LEN_BITS | UART_CFG_1_STOP_BIT)
-
 //-------------------------------------------------------------------------------------------------
 // Constant(s)
 //-------------------------------------------------------------------------------------------------
@@ -240,7 +238,7 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
         ISR_IRQn_NONE,                // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(TEST_CONFIG | UART_CFG_ENABLE_TX),
-        UART_BAUD_8000000,
+        UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
 
         // DMA_RX
@@ -341,14 +339,12 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
 #ifdef STM32F429xx
 class UART_Driver myUART_Terminal(TERMINAL_SERIAL);
 #endif
-class UART_Driver myUART_NEO_Led(NEO_LED_UART);
 
 #else // UART_DRIVER_GLOBAL
 
 #ifdef STM32F429xx
 extern class UART_Driver myUART_Terminal;
 #endif
-extern class UART_Driver myUART_NEO_Led;
 
 #endif // UART_DRIVER_GLOBAL
 

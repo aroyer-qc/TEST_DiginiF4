@@ -63,17 +63,6 @@ NOS_ISR(DMA1_Stream6_IRQHandler)
   #endif
 }
 
-NOS_ISR(DMA2_Stream1_IRQHandler)
-{
-  #ifdef STM32F429xx
-    bool Result;
-
-    Result = (DMA1->LISR & DMA_LIFCR_CTCIF1) ? true: false;
-    WS281x_LedStream.DMA_Channel_IRQ_Handler(Result);
-    DMA1->LIFCR = (DMA_LIFCR_CTCIF1 | DMA_LIFCR_CHTIF1);
-  #endif
-}
-
 NOS_ISR(DMA2_Stream0_IRQHandler)
 {
 	SPI_Driver::DMA_RX_IRQ_Handler(DRIVER_SPI1_ID);

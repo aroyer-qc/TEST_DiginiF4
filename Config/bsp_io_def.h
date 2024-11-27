@@ -75,11 +75,11 @@
     X_IO( IO_SPI1_CS,            GPIOB,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       1)                     \
 /* UART IO's ----------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_UART2_RX,           GPIOxx,     3,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF7_USART2)/* N/U */\
-    X_IO( IO_UART2_TX,           GPIOA,      2,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF7_USART2)         \
+    X_IO( IO_UART2_TX,           GPIOxx,     2,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF7_USART2)         \
 /* PWM Output ---------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO( IO_VFD_BLANK,          GPIOxx,      0,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM2)           \
-    X_IO( IO_VFD_LOAD,           GPIOxx,      9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
-    X_IO( IO_NEO_DATA,           GPIOxx,      14,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        IO_AF1_TIM1)           \
+    X_IO( IO_VFD_BLANK,          GPIOxx,     0,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM2)           \
+    X_IO( IO_VFD_LOAD,           GPIOxx,     9,      IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        0)                     \
+    X_IO( IO_NEO_DATA,           GPIOx,      14,     IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_MEDIUM,     IO_AF1_TIM1)           \
 /* MCO ----------------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO( IO_MCO_2,              GPIOC,      9,      IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF0_MCO)            \
 

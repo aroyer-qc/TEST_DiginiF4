@@ -43,8 +43,26 @@
     const WS281x_Config_t LedStreamConfig =
     {
         MODE_WS2812B,
-        &myUART_NEO_Led,
+        &myPWM_NEO_Led,
         24, //34,                                    // There is 34 LED's in the chain
+        
+        // DMA
+        {
+            DMA_MODE_CIRCULAR           |
+            DMA_MEMORY_TO_PERIPHERAL    |
+            DMA_PERIPHERAL_NO_INCREMENT |
+            DMA_MEMORY_INCREMENT        |
+            DMA_PERIPHERAL_SIZE_16_BITS |
+            DMA_MEMORY_SIZE_16_BITS     |
+            DMA_PERIPHERAL_BURST_SINGLE |
+            DMA_MEMORY_BURST_SINGLE     |
+            DMA_PRIORITY_LEVEL_HIGH     |
+            DMA_CHANNEL_6,                                  // Configuration + DMA_Channel
+            DMA_HIFCR_CTCIF5 | DMA_HIFCR_CHTIF5,            // Flag
+            DMA2_Stream5,                                   // DMA_TypeDef
+            DMA2_Stream5_IRQn,                              // IRQn
+            4,
+        },
     };
 
     class WS281x WS281x_LedStream(&LedStreamConfig);
