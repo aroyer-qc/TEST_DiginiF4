@@ -43,9 +43,10 @@
     const WS281x_Config_t LedStreamConfig =
     {
         MODE_WS2812B,
+        &myTIM_NEO_Led,
         &myPWM_NEO_Led,
         24, //34,                                    // There is 34 LED's in the chain
-        
+
         // DMA
         {
             DMA_MODE_CIRCULAR           |
