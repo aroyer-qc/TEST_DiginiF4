@@ -149,6 +149,7 @@ uint8_t R,G,B;
         WS281x_LedStream.SetLed(22,{uint8_t(R++ + 220),G--,uint8_t(B-= 220)});
         WS281x_LedStream.SetLed(23,{uint8_t(R++ + 230),G--,uint8_t(B-= 230)});
         nOS_Sleep(16);
+        WS281x_LedStream.Start();
 }
 
 

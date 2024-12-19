@@ -52,6 +52,7 @@ uint32_t swap(uint32_t in)
 // Note(s):        Here we create the task that will start all the other
 //
 //-------------------------------------------------------------------------------------------------
+
 int main()
 {
     uint32_t testID = 0x00123456;
@@ -60,6 +61,7 @@ int main()
     SwaptestID = swap(testID);
 
 
+printf("allo");
   //  uint8_t* pTestID = (void*)&testID;
 
     ISR_Disable();

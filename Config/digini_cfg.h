@@ -57,12 +57,12 @@
 //-------------------------------------------------------------------------------------------------
 // COMM support (Console, CLI, VT100)
 //
-#define DIGINI_USE_COMM_MODULE                          DEF_ENABLED
+#define DIGINI_USE_COMM_MODULE                          DEF_DISABLED
 
 #ifdef STM32F429xx
-#define DIGINI_USE_CONSOLE                              DEF_ENABLED
-#define DIGINI_USE_CMD_LINE                             DEF_ENABLED
-#define DIGINI_USE_VT100_MENU                           DEF_ENABLED
+#define DIGINI_USE_CONSOLE                              DEF_DISABLED
+#define DIGINI_USE_CMD_LINE                             DEF_DISABLED
+#define DIGINI_USE_VT100_MENU                           DEF_DISABLED
 #else
 #define DIGINI_USE_CONSOLE                              DEF_DISABLED
 #define DIGINI_USE_CMD_LINE                             DEF_DISABLED

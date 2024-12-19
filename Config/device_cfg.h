@@ -33,8 +33,8 @@
 #define   IV11_NUMBER_OF_TUBE       6
 
 // Config for lib_class_STM32F1_WS281x.h
-#define WS281x_USE_PRECALCULATED_PWM_BUFFER         DEF_ENABLED
-#define WS281x_CONTINUOUS_SCAN                      DEF_ENABLED             // this is automatic when WS281x_USE_PRECALCULATED_PWM_BUFFER is DEF_ENABLED
+#define WS281x_USE_PRECALCULATED_PWM_BUFFER         DEF_DISABLED
+#define WS281x_USE_48_BITS_DMA_TRANSFER             DEF_ENABLED
 #define WS281x_USE_WS2812B                          DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------

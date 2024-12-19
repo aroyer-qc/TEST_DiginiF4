@@ -468,6 +468,13 @@
 		<Unit filename="..\Module\nOS\src\port\GCC\ARM_Cortex_M4\nOSPort.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="ebmon.c">
+			<Option compilerVar="CC" />
+			<Option target="Debug F429" />
+		</Unit>
+		<Unit filename="ebmon.h">
+			<Option target="Debug F429" />
+		</Unit>
 		<Unit filename="stm32f429zi_flash.ld" />
 		<Extensions>
 			<code_completion />
