@@ -80,8 +80,19 @@ void BSP_Initialize(void)
     IO_PinInit(IO_LED_RED);
     IO_PinInit(IO_LED_GREEN);
 
-    IO_SetPinLow(IO_LED_RED);
-    IO_SetPinLow(IO_LED_GREEN);
+    // SPI
+    IO_GroupPinInit(IO_SPI1_ON_PORT_A);
+    IO_GroupPinInit(IO_SPI3_ON_PORT_B);
+
+    // UART
+  #ifdef STM32F401xE
+    IO_GroupPinInit(IO_UART2_ON_PORT_xx);
+  #endif
+  #ifdef STM32F429xx
+    IO_GroupPinInit(IO_UART3_ON_PORT_D);
+    IO_GroupPinInit(IO_UART6_ON_PORT_C);
+  #endif
+
 
     // IO_PinInit(IO_LED_BLUE);  transfert to ETH for now
     IO_PinInit(IO_MCO_2);        // Output the MCO for clock validation
