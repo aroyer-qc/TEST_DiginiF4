@@ -80,6 +80,12 @@ void BSP_Initialize(void)
     IO_PinInit(IO_LED_RED);
     IO_PinInit(IO_LED_GREEN);
 
+    // Ethernet
+    IO_GroupPinInit(IO_ETH_ON_PORT_A);
+    IO_GroupPinInit(IO_ETH_ON_PORT_B);
+    IO_GroupPinInit(IO_ETH_ON_PORT_C);
+    IO_GroupPinInit(IO_ETH_ON_PORT_G);
+
     // SPI
     IO_GroupPinInit(IO_SPI1_ON_PORT_A);
     IO_GroupPinInit(IO_SPI3_ON_PORT_B);
