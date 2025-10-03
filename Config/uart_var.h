@@ -58,13 +58,11 @@
 // Constant(s)
 //-------------------------------------------------------------------------------------------------
 
-const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
+const UART_Info_t UART_Info[NB_OF_UART_DRIVER] =
 {
   #if (UART_DRIVER_SUPPORT_UART1_CFG == DEF_ENABLED)
     {
         USART1,                     // USARTx
-        RCC_APB2ENR_USART1EN,       // RCC_APBxENR
-        &RCC->APB2ENR,              // Register
         USART1_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
@@ -99,8 +97,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART2_CFG == DEF_ENABLED)
     {
         USART2,                     // USARTx
-        RCC_APB1ENR_USART2EN,       // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         ISR_IRQn_NONE,              // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1),
@@ -128,8 +124,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART3_CFG == DEF_ENABLED)
     {
         USART3,                     // USARTx
-        RCC_APB1ENR_USART3EN,       // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         USART3_IRQn,                // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
@@ -163,8 +157,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART4_CFG == DEF_ENABLED)
     {
         UART4,                      // USARTx
-        RCC_APB1ENR_UART4EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         ISR_IRQn_NONE,              // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(TEST_CONFIG | UART_CFG_ENABLE_TX),
@@ -192,8 +184,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART5_CFG == DEF_ENABLED)
     {
         UART5,                      // USARTx
-        RCC_APB1ENR_UART5EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         UART5_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1 | UART_CFG_ENABLE_RX_TX),
@@ -221,8 +211,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART6_CFG == DEF_ENABLED)
     {
         USART6,                     // USARTx
-        RCC_APB2ENR_USART6EN,       // RCC_APBxENR
-        &RCC->APB2ENR,              // Register
         ISR_IRQn_NONE,                // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(TEST_CONFIG | UART_CFG_ENABLE_TX),
@@ -262,8 +250,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART7_CFG == DEF_ENABLED)
     {
         UART7,                      // USARTx
-        RCC_APB1ENR_UART7EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         UART7_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1),
@@ -291,8 +277,6 @@ const UART_Info_t UART_Info[NB_OF_REAL_UART_DRIVER] =
   #if (UART_DRIVER_SUPPORT_UART8_CFG == DEF_ENABLED)
     {
         UART8,                      // USARTx
-        RCC_APB1ENR_UART8EN,        // RCC_APBxENR
-        &RCC->APB1ENR,              // Register
         UART8_IRQn,                 // IRQn_Channel
         7,                          // PreempPrio
         UART_Config_e(UART_CFG_N_8_1),

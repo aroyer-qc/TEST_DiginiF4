@@ -32,16 +32,12 @@
 
 #ifdef STM32F401xE
 #define CFG_HSE_VALUE                               16000000
-#define CFG_HSI_VALUE                               8000000
 #endif
 
 #ifdef STM32F429xx
 #define CFG_HSE_VALUE                               8000000
-#define CFG_HSI_VALUE                               8000000
 #endif
 
-#define CFG_LSE_VALUE                               32768
-#define CFG_LSI_VALUE                               32000
 #define CFG_SYSTICK_RATE                            1000
 
 // User loop value for LIB_Delay_uSec function.. use IO to check for the right value
@@ -53,7 +49,7 @@
 #define CFG_SYSTEM_CLOCK_NUMBER_OF_RETRY            1000
 
 // For 168 MHz HCLK on HSI
-//#define CFG_PLL_SOURCE                            CFG_HSI_VALUE
+//#define CFG_PLL_SOURCE                            HSI_CLOCK_FREQUENCY
 //#define CFG_PLL_M_DIVIDER                         8
 //#define CFG_PLL_N_MULTIPLIER                      168
 //#define CFG_PLL_P_DIVIDER                         2

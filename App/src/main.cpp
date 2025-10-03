@@ -56,9 +56,9 @@ uint32_t swap(uint32_t in)
 int main()
 {
     uint32_t testID = 0x00123456;
-    uint32_t SwaptestID;
+    //uint32_t SwaptestID;
 
-    SwaptestID = swap(testID);
+    //SwaptestID = swap(testID);
 
 
 printf("allo");
