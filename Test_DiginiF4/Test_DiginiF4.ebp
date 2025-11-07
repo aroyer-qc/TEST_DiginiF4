@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <EmBitz_project_file>
-	<EmBitzVersion release="2.63" revision="0" />
+	<EmBitzVersion release="2.64" revision="0" />
 	<FileVersion major="2" minor="0" />
 	<Project>
 		<Option title="Test_DiginiF4" />
