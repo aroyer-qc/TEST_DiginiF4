@@ -73,10 +73,6 @@ void BSP_HardwareTest (void);
 //-------------------------------------------------------------------------------------------------
 void BSP_Initialize(void)
 {
-    SysTick_Config(SYSTEM_CORE_CLOCK / CFG_SYSTICK_RATE);
-
-    ISR_Initialize();
-    IO_InitializeAll();
     DIGINI_Initialize();
 }
 
@@ -95,24 +91,28 @@ SystemState_e BSP_PostOS_Initialize(void)
 {
     SystemState_e State = SYS_READY;
 
+  #if (USE_SPI_DACX3508_DRIVER == DEF_ENABLED)
     // DAC
-   // mySPI_ForDAC.Initialize();
-   // DAC43508.Initialize();
+    mySPI_ForDAC.Initialize();
+    DAC43508.Initialize();
+  #endif
 
+  #if (USE_SPI_VFD_DRIVER == DEF_ENABLED)
     // VFD
-    //mySPI_ForVFD.Initialize();              // SPI Driver for the data
-   // myTIM_VFD.Initialize();                 // Timer Driver on top of PWM for blank line
-   // myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
-   // VFD.Initialize();                       // Then initialize the VFD driver
+    mySPI_ForVFD.Initialize();              // SPI Driver for the data
+    myTIM_VFD.Initialize();                 // Timer Driver on top of PWM for blank line
+    myPWM_VFD_Blank.Initialize();           // PWM Driver to control blank line (dimming feature)
+    VFD.Initialize();                       // Then initialize the VFD driver
+  #endif
+
     State = DIGINI_PostInitialize();
 
     // WS2812 LED stream
+  #if (USE_SPI_WS281X_DRIVER == DEF_ENABLED)
     WS281x_LedStream.Initialize();
-
-
     WS281x_LedStream.Start();
 
-uint8_t R,G,B;
+    uint8_t R,G,B;
 
     while(1)
     {
@@ -142,8 +142,8 @@ uint8_t R,G,B;
         WS281x_LedStream.SetLed(23,{uint8_t(R++ + 230),G--,uint8_t(B-= 230)});
         nOS_Sleep(16);
         WS281x_LedStream.Start();
-}
-
+    }
+  #endif
 
     return State;
 }

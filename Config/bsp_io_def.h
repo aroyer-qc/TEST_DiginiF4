@@ -72,7 +72,7 @@
     X_IO_CFG( IO_CFG_OUTPUT_PP_LS_DEF1,                 IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_LOW,        1)                     \
     X_IO_CFG( IO_CFG_OUTPUT_PP_HS_DEF1,                 IO_MODE_OUTPUT,     IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       1)                     \
 /* MCO IO's CFG ----------------------------------------------------------------------------------------------------------------------------------*/\
-    X_IO_CFG( IO_CFG_MCO_OUTPUT,                        IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF0_MC0)            \
+    X_IO_CFG( IO_CFG_MCO_OUTPUT,                        IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF0_MCO)            \
 /* SPI IO's CFG ----------------------------------------------------------------------------------------------------------------------------------*/\
     X_IO_CFG( IO_CFG_SPI_AF5,                           IO_MODE_ALTERNATE,  IO_TYPE_PIN_PP,        IO_SPEED_FREQ_HIGH,       IO_AF5_SPI)            \
 /* TIM IO's CFG ----------------------------------------------------------------------------------------------------------------------------------*/\
@@ -145,11 +145,11 @@
 /* ---------------------------------------------------------------------------------------------*/\
 /*        ENUM ID of the IO,    IO Port,    IO Pin, IO Config                                   */\
 /* Input IO's ----------------------------------------------------------------------------------*/\
-    X_IO( IO_USER_SWITCH,       GPIOC,      13,     IO_CFG_INPUT_NP_LS)                           \
+    X_IO( IO_USER_SWITCH,       GPIOC,      IO_PIN_13,     IO_CFG_INPUT_NP_LS)                    \
 /* Output IO's ---------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_GREEN,         GPIOD,      13,     IO_CFG_OUTPUT_PP_LS_DEF0)                     \
+    X_IO( IO_LED_GREEN,         GPIOD,      IO_PIN_13,     IO_CFG_OUTPUT_PP_LS_DEF0)              \
 /* MCO -----------------------------------------------------------------------------------------*/\
-    X_IO( IO_MCO_2,             GPIOC,      9,      IO_CFG_MCO_OUTPUT)                            \
+    X_IO( IO_MCO_2,             GPIOC,      IO_PIN_9,      IO_CFG_MCO_OUTPUT)                     \
 /* ---------------------------------------------------------------------------------------------*/
 #endif
 
@@ -158,35 +158,35 @@
 /* ---------------------------------------------------------------------------------------------*/\
 /*        ENUM ID of the IO,    IO Port,    IO Pin, IO Config                                   */\
 /* Input IO's ----------------------------------------------------------------------------------*/\
-    X_IO( IO_USER_SWITCH,       GPIOA,      0,      IO_CFG_INPUT_NP_LS)                           \
+    X_IO( IO_USER_SWITCH,       GPIOA,      IO_PIN_0,      IO_CFG_INPUT_NP_LS)                    \
 /* Output IO's ---------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_GREEN,         GPIOD,      12,     IO_CFG_OUTPUT_PP_LS_DEF0)                     \
-    X_IO( IO_LED_ORANGE,        GPIOD,      13,     IO_CFG_OUTPUT_PP_LS_DEF0)                     \
-    X_IO( IO_LED_RED,           GPIOD,      14,     IO_CFG_OUTPUT_PP_LS_DEF0)                     \
-    X_IO( IO_LED_BLUE,          GPIOD,      15,     IO_CFG_OUTPUT_PP_LS_DEF0)                     \
+    X_IO( IO_LED_GREEN,         GPIOD,      IO_PIN_12,     IO_CFG_OUTPUT_PP_LS_DEF0)              \
+    X_IO( IO_LED_ORANGE,        GPIOD,      IO_PIN_13,     IO_CFG_OUTPUT_PP_LS_DEF0)              \
+    X_IO( IO_LED_RED,           GPIOD,      IO_PIN_14,     IO_CFG_OUTPUT_PP_LS_DEF0)              \
+    X_IO( IO_LED_BLUE,          GPIOD,      IO_PIN_15,     IO_CFG_OUTPUT_PP_LS_DEF0)              \
 /* MCO -----------------------------------------------------------------------------------------*/\
-    X_IO( IO_MCO_2,             GPIOC,      9,      IO_CFG_MCO_OUTPUT)                            \
+    X_IO( IO_MCO_2,             GPIOC,      IO_PIN_9,      IO_CFG_MCO_OUTPUT)                     \
 /* ---------------------------------------------------------------------------------------------*/
 #endif
 
 #ifdef STM32F429xx
 #define IO_DEF(X_IO) \
 /* ---------------------------------------------------------------------------------------------*/\
-/*        ENUM ID of the IO,    IO Port,    IO Pin, IO Config                                   */\
+/*        ENUM ID of the IO,    IO Port,    IO Pin,         IO Config                           */\
 /* Input IO's ----------------------------------------------------------------------------------*/\
-    X_IO( IO_USER_SWITCH,       GPIOC,      13,     IO_CFG_INPUT_NP_LS)                           \
+    X_IO( IO_USER_SWITCH,       GPIOC,      IO_PIN_13,      IO_CFG_INPUT_NP_LS)                   \
 /* Output IO's ---------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_RED,           GPIOB,      14,     IO_CFG_OUTPUT_PP_LS_DEF1)                     \
-    X_IO( IO_LED_GREEN,         GPIOB,      0,      IO_CFG_OUTPUT_PP_LS_DEF1)                     \
-    X_IO( IO_LED_BLUE,          GPIOB,      7,      IO_CFG_OUTPUT_PP_LS_DEF1)                     \
+    X_IO( IO_LED_RED,           GPIOB,      IO_PIN_14,      IO_CFG_OUTPUT_PP_LS_DEF1)             \
+    X_IO( IO_LED_GREEN,         GPIOB,      IO_PIN_0,       IO_CFG_OUTPUT_PP_LS_DEF1)             \
+    X_IO( IO_LED_BLUE,          GPIOB,      IO_PIN_7,       IO_CFG_OUTPUT_PP_LS_DEF1)             \
 /* SPI IO's ------------------------------------------------------------------------------------*/\
-    X_IO( IO_SPI1_CS,           GPIOB,      9,      IO_CFG_OUTPUT_PP_HS_DEF1)                     \
+    X_IO( IO_SPI1_CS,           GPIOB,      IO_PIN_9,       IO_CFG_OUTPUT_PP_HS_DEF1)             \
 /* PWM Output ----------------------------------------------------------------------------------*/\
-    X_IO( IO_VFD_BLANK,         GPIOA,      0,      IO_CFG_TIM_AF1)                               \
-    X_IO( IO_VFD_LOAD,          GPIOG,      9,      IO_CFG_OUTPUT_PP_LS_DEF0)                     \
-    X_IO( IO_NEO_DATA,          GPIOE,      14,     IO_CFG_TIM_AF1)                               \
+    X_IO( IO_VFD_BLANK,         GPIOA,      IO_PIN_0,       IO_CFG_TIM_AF1)                       \
+    X_IO( IO_VFD_LOAD,          GPIOG,      IO_PIN_9,       IO_CFG_OUTPUT_PP_LS_DEF0)             \
+    X_IO( IO_NEO_DATA,          GPIOE,      IO_PIN_14,      IO_CFG_TIM_AF1)                       \
 /* MCO -----------------------------------------------------------------------------------------*/\
-    X_IO( IO_MCO_2,             GPIOC,      9,      IO_CFG_MCO_OUTPUT)                            \
+    X_IO( IO_MCO_2,             GPIOC,      IO_PIN_9,       IO_CFG_MCO_OUTPUT)                    \
 /* ---------------------------------------------------------------------------------------------*/
 #endif
 
@@ -228,31 +228,31 @@
 #ifdef STM32F401xE
 #define IO_GROUP_DEF(X_IO_GROUP) \
 /* ------------------------------------------------------------------------------------------------------*/\
-/*              ENUM ID of the Group,   IO Port,    IO Group Pin,              IO ConfigMode             */\
+/*              ENUM ID of the Group,   IO Port,    IO Group Pin,               IO ConfigMode            */\
 /* SPI --------------------------------------------------------------------------------------------------*/\
-    X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOA,      SPI1_PIN_ON_PORT_A,         IO_CFG_SPI_AF5             \
+    X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOA,      SPI1_PIN_ON_PORT_A,         IO_CFG_SPI_AF5)            \
     X_IO_GROUP( IO_SPI3_ON_PORT_B,      GPIOB,      SPI3_PIN_ON_PORT_B,         IO_CFG_SPI_AF5)            \
 /* UART -------------------------------------------------------------------------------------------------*/\
-    X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,     UART2_PIN_ON_PORTxx,        IO_CFG_UART2_AF7)          \
+    X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,     UART2_PIN_ON_PORT_xx,       IO_CFG_UART2_AF7)          \
 /* ------------------------------------------------------------------------------------------------------*/
 #endif
 
-#ifdef STM32F407xx              // TODO for Discovery F407 
+#ifdef STM32F407xx              // TODO for Discovery F407
 #define IO_GROUP_DEF(X_IO_GROUP) \
 /* ------------------------------------------------------------------------------------------------------*/\
-/*              ENUM ID of the Group,   IO Port,    IO Group Pin,              IO ConfigMode             */\
+/*              ENUM ID of the Group,   IO Port,    IO Group Pin,               IO ConfigMode            */\
 /* SPI --------------------------------------------------------------------------------------------------*/\
-    X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOxx,      SPI1_PIN_ON_PORT_A,         IO_CFG_SPI_AF5            \
-    X_IO_GROUP( IO_SPI3_ON_PORT_B,      GPIOxx,      SPI3_PIN_ON_PORT_B,         IO_CFG_SPI_AF5)           \
+    X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOxx,      SPI1_PIN_ON_PORT_A,        IO_CFG_SPI_AF5)            \
+    X_IO_GROUP( IO_SPI3_ON_PORT_B,      GPIOxx,      SPI3_PIN_ON_PORT_B,        IO_CFG_SPI_AF5)            \
 /* UART -------------------------------------------------------------------------------------------------*/\
-    X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,     UART2_PIN_ON_PORTxx,        IO_CFG_UART2_AF7)          \
+    X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,      UART2_PIN_ON_PORT_xx,      IO_CFG_UART2_AF7)          \
 /* ------------------------------------------------------------------------------------------------------*/
 #endif
 
 #ifdef STM32F429xx
 #define IO_GROUP_DEF(X_IO_GROUP) \
 /* ------------------------------------------------------------------------------------------------------*/\
-/*              ENUM ID of the Group,   IO Port,    IO Group Pin,              IO ConfigMode             */\
+/*              ENUM ID of the Group,   IO Port,    IO Group Pin,               IO ConfigMode            */\
 /* ETH --------------------------------------------------------------------------------------------------*/\
     X_IO_GROUP( IO_ETH_ON_PORT_A,       GPIOA,      ETH_PIN_ON_PORT_A,          IO_CFG_ETH_PP_VHS_AF11)    \
     X_IO_GROUP( IO_ETH_ON_PORT_B,       GPIOB,      ETH_PIN_ON_PORT_B,          IO_CFG_ETH_PP_VHS_AF11)    \
@@ -319,6 +319,6 @@
     X_IO_IRQ(IO_IRQ_USER_SWITCH,    IO_USER_SWITCH,     EXTI15_10_IRQn,  4,          IO_EXTI_TRIGGER_RISING,             nullptr,                nullptr)      \
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------------*/
 #endif
-  
+
 //-------------------------------------------------------------------------------------------------
 

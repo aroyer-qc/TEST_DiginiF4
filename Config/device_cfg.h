@@ -37,14 +37,31 @@
 #define WS281x_USE_48_BITS_DMA_TRANSFER             DEF_ENABLED
 #define WS281x_USE_WS2812B                          DEF_ENABLED
 
+
+#define USE_SPI_WS281X_DRIVER                       DEF_DISABLED
+#define USE_SPI_DACX3508_DRIVER                     DEF_DISABLED
+#define USE_SPI_VFD_DRIVER                          DEF_DISABLED
+#define USE_SPI_IV_11_DRIVER                        DEF_DISABLED
+
 //-------------------------------------------------------------------------------------------------
 // Include file(s)
 //-------------------------------------------------------------------------------------------------
 
 // Put here included for all high level driver. Driver for device not in the CPU
+#if USE_SPI_WS281X_DRIVER == DEF_ENABLED
 #include "./Digini/Peripheral/inc/device/lib_class_pwm_WS281x.h"
-//#include "./Peripheral/inc/device/lib_class_spi_DACX3508.h"
+#endif
+
+#if USE_SPI_DACX3508_DRIVER == DEF_ENABLED
+#include "./Peripheral/inc/device/lib_class_spi_DACX3508.h"
+#endif
+
+#if USE_SPI_VFD_DRIVER == DEF_ENABLED
 #include "./Peripheral/inc/device/lib_class_spi_VFD.h"
-//#include "./Peripheral/inc/device/lib_class_spi_IV_11.h"
+#endif
+
+#if USE_SPI_IV_11_DRIVER == DEF_ENABLED
+#include "./Peripheral/inc/device/lib_class_spi_IV_11.h"
+#endif
 
 //-------------------------------------------------------------------------------------------------
