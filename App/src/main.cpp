@@ -61,7 +61,7 @@ int main()
     //SwaptestID = swap(testID);
 
 
-printf("allo");
+//printf("allo");
   //  uint8_t* pTestID = (void*)&testID;
 
     ISR_Disable();

@@ -140,7 +140,7 @@ void TaskIdle(void)
 
       #ifdef STM32F429xx
         // VFD part test
-        VFD.Send();
+        //VFD.Send();
       #endif
 
         //VFD.Set(13, &Test[0], 10);
@@ -165,6 +165,6 @@ void TaskIdle(void)
         //pTaskNetwork->Process();
       #endif
 
-//        nOS_Yield();
+        nOS_Yield();
     }
 }
