@@ -34,7 +34,7 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define UART_STANDARD_CONFIGURATION_RX ( DMA_MODE_NORMAL             | \
+#define UART_STANDARD_CONFIGURATION_RX ( DMA_MODE_CIRCULAR           | \
                                          DMA_PERIPHERAL_TO_MEMORY    | \
                                          DMA_PERIPHERAL_NO_INCREMENT | \
                                          DMA_MEMORY_INCREMENT        | \
@@ -99,7 +99,7 @@ const UART_Info_t UART_Info[NB_OF_UART_DRIVER] =
         USART2,                     // USARTx
         ISR_IRQn_NONE,              // IRQn_Channel
         7,                          // PreempPrio
-        UART_Config_e(UART_CFG_N_8_1),
+        UART_Config_e(UART_CFG_N_8_1 | UART_CFG_OVER_8 | UART_CFG_ENABLE_RX_TX),
         UART_BAUD_115200,
         UART_WAIT_ON_BUSY,
 
@@ -304,15 +304,11 @@ const UART_Info_t UART_Info[NB_OF_UART_DRIVER] =
 
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429xx
 class UART_Driver myUART_Terminal(TERMINAL_SERIAL);
-#endif
 
 #else // UART_DRIVER_GLOBAL
 
-#ifdef STM32F429xx
 extern class UART_Driver myUART_Terminal;
-#endif
 
 #endif // UART_DRIVER_GLOBAL
 

@@ -62,6 +62,10 @@
 
 //-------------------------------------------------------------------------------------------------
 
+#ifdef STM32F401xE
+#define TERMINAL_SERIAL                         UART_DRIVER_ID_2
+#endif
+
 #ifdef STM32F429xx
 #define TERMINAL_SERIAL                         UART_DRIVER_ID_3
 #endif

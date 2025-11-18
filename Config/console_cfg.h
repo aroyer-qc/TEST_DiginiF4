@@ -30,9 +30,7 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#ifdef STM32F429xx
 #define CON_USE_COMM_UART                       &myUART_Terminal
-#endif
 
 #define CON_CHILD_PROCESS_PUSH_POP_LEVEL        2   // Cascading Number of child process .
 
