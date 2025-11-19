@@ -43,7 +43,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM1,                                   // TIMx
         RCC_APB2ENR_TIM1EN,                     // RCC_APBxENR
         &RCC->APB2ENR,                          // Register
-        ISR_IRQn_NONE,                          // IRQn_Channel
+        ISR_NONE_IRQn,                          // IRQn_Channel
         7,                                      // PreempPrio
         TIM_OP_MODE_REPETITIVE_UP_COUNT,        // See note for 7th parameter
         8,                     					// Prescaler      //?? verify clock and calculation  // 80 MHz / 4 = 20 MHz ideal frequency for WS2812B Led
@@ -85,7 +85,7 @@ const TIM_Info_t TIM_Info[NB_OF_TIM_DRIVER] =
         TIM4,                                   // TIMx
         RCC_APB1ENR_TIM4EN,                     // RCC_APBxENR
         &RCC->APB1ENR,                          // Register
-        ISR_IRQn_NONE, //TIM4_IRQn,                              // IRQn_Channel
+        ISR_NONE_IRQn, //TIM4_IRQn,                              // IRQn_Channel
         7,                                      // PreempPrio
         TIM_OP_MODE_REPETITIVE,                 // See note for 7th parameter
         example 1000,          					// Prescaler
