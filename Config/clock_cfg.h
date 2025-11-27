@@ -44,16 +44,9 @@
 #define CFG_DELAY_TIMING_LOOP_VALUE_FOR_1_USEC      38 // TODO need to be set and fine tuned
 
 // User clock selection
-#define CFG_SYS_CLOCK_MUX                           CFG_RCC_CFGR_SW_PLL         // CFG_RCC_CFGR_SW_HSI, CFG_RCC_CFGR_SW_HSE or CFG_RCC_CFGR_SW_PLL
-#define CFG_RCC_PLLCFGR_PLLSRC                      CFG_RCC_PLLCFGR_PLLSRC_HSE  // CFG_RCC_PLLCFGR_PLLSRC_HSI or CFG_RCC_PLLCFGR_PLLSRC_HSE
+#define CFG_SYS_CLOCK_MUX                           CFG_RCC_CFGR_SW_PLL                 // CFG_RCC_CFGR_SW_HSI, CFG_RCC_CFGR_SW_HSE or CFG_RCC_CFGR_SW_PLL
+#define CFG_RCC_PLLCFGR_PLLSRC                      CFG_RCC_PLLCFGR_PLLSRC_HSE          // CFG_RCC_PLLCFGR_PLLSRC_HSI or CFG_RCC_PLLCFGR_PLLSRC_HSE
 #define CFG_SYSTEM_CLOCK_NUMBER_OF_RETRY            1000
-
-// For 168 MHz HCLK on HSI
-//#define CFG_PLL_SOURCE                            HSI_CLOCK_FREQUENCY
-//#define CFG_PLL_M_DIVIDER                         8
-//#define CFG_PLL_N_MULTIPLIER                      168
-//#define CFG_PLL_P_DIVIDER                         2
-//#define CFG_PLL_Q_DIVIDER                         7
 
 #define CFG_PLL_SOURCE                              CFG_HSE_VALUE
 
@@ -63,18 +56,46 @@
   #define CFG_PLL_P_DIVIDER                         2
 #endif
 #ifdef STM32F429xx
-  #define CFG_PLL_M_DIVIDER                         4
-  #define CFG_PLL_N_MULTIPLIER                      160
+  #define CFG_PLL_M_DIVIDER                         8
+  #define CFG_PLL_N_MULTIPLIER                      336
   #define CFG_PLL_P_DIVIDER                         2
 #endif
+
 #define CFG_PLL_Q_DIVIDER                           7
 
-// User clock and divider
-#define CFG_AHB_CLK_DIVIDER                         CFG_RCC_CFGR_HPRE_DIV1      // (AHB Prescaler) CFG_RCC_CFGR_HPRE_DIVx -> 1,2,4,8,16,64,128,256,512
-#define CFG_APB1_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE1_DIV4     // CFG_RCC_CFGR_PPRE1_DIVx -> 1,2,4,8,16
-#define CFG_APB2_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE2_DIV2     // CFG_RCC_CFGR_PPRE2_DIVx -> 1,2,4,8,16
+// PLLSAI
+#define CFG_PLLSAI_N_MULTIPLIER                     192
+#define CFG_PLLSAI_Q_DIVIDER                        2
+#define CFG_PLLSAI_R_DIVIDER                        4                                   // 4 for 6 MHz for LTDC (((1 MHz * 192) / 4) / 8) = 6 MHz
+#define CFG_PLLSAI_DIV_Q                            CFG_RCC_DCKCFGR_PLLSAI_Q_DIV(1)     // External divider from PLLSAI_Q
+#define CFG_PLLSAI_DIV_R                            CFG_RCC_DCKCFGR_PLLSAI_R_DIV8      // External divider from PLLSAI_R. This feed the LCD
 
-#define CFG_MCO_1                                   (CFG_RCC_CFGR_MCO1_PLL | CFG_RCC_CFGR_MCO1PRE_DIV5)
-#define CFG_MCO_2                                   (CFG_RCC_CFGR_MCO2_PLL | CFG_RCC_CFGR_MCO2PRE_DIV5)
+// PLLI2S
+#define CFG_PLLI2S_N_MULTIPLIER                     100
+#define CFG_PLLI2S_Q_DIVIDER                        2
+#define CFG_PLLI2S_R_DIVIDER                        2
+#define CFG_PLLI2S_DIV_Q                            CFG_RCC_DCKCFGR_PLLI2S_Q_DIV(1)     // External divider from PLLI2S_Q
+
+#define CFG_ENABLE_PLLSAI                           1
+#define CFG_ENABLE_PLLI2S                           0
+
+// User clock and divider
+#define CFG_AHB_CLK_DIVIDER                         CFG_RCC_CFGR_HPRE_DIV1              // (AHB Prescaler)   CFG_RCC_CFGR_HPRE_DIVx -> 1,2,4,8,16,64,128,256,512
+#define CFG_APB1_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE1_DIV4             // (PCLK1 Prescaler) CFG_RCC_CFGR_PPRE1_DIVx -> 1,2,4,8,16
+#define CFG_APB2_CLK_DIVIDER                        CFG_RCC_CFGR_PPRE2_DIV2             // (PCLK2 Prescaler) CFG_RCC_CFGR_PPRE2_DIVx -> 1,2,4,8,16
+
+#define CFG_MCO1_CLK_DIVIDER                        CFG_RCC_CFGR_MCO1PRE_DIV5
+#define CFG_MCO2_CLK_DIVIDER                        CFG_RCC_CFGR_MCO2PRE_DIV5
+
+//-------------------------------------------------------------------------------------------------
+// multiplexer clock source
+
+// Define the MUX for module that you will need. See lib_STM32F4_system_clock for clock selection option.
+
+#define CFG_I2S_SOURCE_MUX                          CFG_I2S_PLLI2S_R
+#define CFG_SAI1_SOURCE_MUX                         CFG_SAI1_PLLI2S_Q
+#define CFG_SAI2_SOURCE_MUX                         CFG_SAI1_PLLI2S_Q
+#define CFG_MCO1_SOURCE_MUX                         CFG_MCO1_PLL_CLK
+#define CFG_MCO2_SOURCE_MUX                         CFG_MCO2_PLL_CLK
 
 //-------------------------------------------------------------------------------------------------
