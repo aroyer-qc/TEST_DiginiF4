@@ -51,14 +51,14 @@
 //-------------------------------------------------------------------------------------------------
 // Protocol supported by the application
 
-#define IP_USE_ARP 							    DEF_DISABLED//DEF_ENABLED
-#define IP_USE_DHCP							    DEF_DISABLED//DEF_ENABLED     // Need UDP
-#define IP_USE_ICMP							    DEF_DISABLED//DEF_ENABLED
+#define IP_USE_DHCP							    DEF_DISABLED         // Need UDP
+#define IP_USE_ICMP							    DEF_DISABLED
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
+#define IP_USE_SOCK 						    DEF_DISABLED
 #define IP_USE_TCP 							    DEF_DISABLED
-#define IP_USE_UDP 							    DEF_DISABLED//DEF_ENABLED
+#define IP_USE_UDP 							    DEF_DISABLED
 
 //---------------------------------------------------------
 // External server URL
@@ -66,6 +66,15 @@
 #define IP_DEFAULT_NTP_SERVER_1                 "0.ca.pool.ntp.org"
 #define IP_DEFAULT_NTP_SERVER_2                 "1.ca.pool.ntp.org"
 
+//---------------------------------------------------------
+// ARP Configuration
+
+#define IP_ARP_TIME_OUT							120
+#define IP_ARP_TABLE_SIZE						8                           // how many address in the ARP table
+
+//-------------------------------------------------------------------------------------------------
+
+#define Q_TASK_IP_MANAGER_SIZE					8
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
 

@@ -83,6 +83,7 @@ class ClassNetwork
     //struct netconn*        m_WebServerConn;
 //    struct netconn*        m_WebServerNewConn;
 
+    class IP_Manager       m_IP_Manager;
     class ETH_IF_Driver    m_IF_Driver;
 
 

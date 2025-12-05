@@ -47,6 +47,7 @@
 #define USE_PWM_DRIVER              DEF_ENABLED
 #define USE_QSPI_DRIVER             DEF_DISABLED
 #define USE_RTC_DRIVER              DEF_DISABLED
+#define USE_RNG_DRIVER              DEF_ENABLED
 #define USE_SAI_DRIVER              DEF_DISABLED                    // Serial audio out
 #define USE_SDIO_DRIVER             DEF_DISABLED
 #define USE_SPI_DRIVER              DEF_ENABLED

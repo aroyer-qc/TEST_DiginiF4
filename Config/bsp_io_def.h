@@ -176,9 +176,9 @@
 /* Input IO's ----------------------------------------------------------------------------------*/\
     X_IO( IO_USER_SWITCH,       GPIOC,      IO_PIN_13,      IO_CFG_INPUT_NP_LS)                   \
 /* Output IO's ---------------------------------------------------------------------------------*/\
-    X_IO( IO_LED_RED,           GPIOB,      IO_PIN_14,      IO_CFG_OUTPUT_PP_LS_DEF1)             \
-    X_IO( IO_LED_GREEN,         GPIOB,      IO_PIN_0,       IO_CFG_OUTPUT_PP_LS_DEF1)             \
-    X_IO( IO_LED_BLUE,          GPIOB,      IO_PIN_7,       IO_CFG_OUTPUT_PP_LS_DEF1)             \
+    X_IO( IO_LED_RED,           GPIOB,      IO_PIN_14,      IO_CFG_OUTPUT_PP_LS_DEF0)             \
+    X_IO( IO_LED_GREEN,         GPIOB,      IO_PIN_0,       IO_CFG_OUTPUT_PP_LS_DEF0)             \
+    X_IO( IO_LED_BLUE,          GPIOB,      IO_PIN_7,       IO_CFG_OUTPUT_PP_LS_DEF0)             \
 /* SPI IO's ------------------------------------------------------------------------------------*/\
     X_IO( IO_SPI1_CS,           GPIOB,      IO_PIN_9,       IO_CFG_OUTPUT_PP_HS_DEF1)             \
 /* PWM Output ----------------------------------------------------------------------------------*/\
