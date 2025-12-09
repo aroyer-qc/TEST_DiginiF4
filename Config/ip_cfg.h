@@ -101,6 +101,8 @@
 
 
 
+#define IP_NET_IF_MTU                           1500                // not sure i need this
+
 /*
 
 //--- Socket allocation -----------------------------------
@@ -121,22 +123,5 @@
 #define ETH_DEBUG_PACKET_COUNT
 
 //-------------------------------------------------------------------------------------------------
-
-#define IP_NET_IF_MTU                           1500                // not sure it is used in my stack
-
-
-
-need to add to database_cfg.h :
-
-    X_EEPROM_DBASE( ETHERNET_MAC_Address,        myE2_Setting, 1, 1, sizeof(MAC_t)) \
-    X_EEPROM_DBASE( CONFIGURATION_IP,            myE2_Setting, 1, 1, sizeof(struct of configuration size)) \
-    X_EEPROM_DBASE( ETHERNET_STATIC_HOST_IP,     myE2_Setting, 1, 1, sizeof(IP_Address_t));
-    X_EEPROM_DBASE( ETHERNET_SUBNET_MASK_IP,     myE2_Setting, 1, 1, sizeof(IP_Address_t));
-    X_EEPROM_DBASE( ETHERNET_GATEWAY_IP,         myE2_Setting, 1, 1, sizeof(IP_Address_t));
-
-
-
-
-
 
 */

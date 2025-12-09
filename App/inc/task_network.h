@@ -47,7 +47,7 @@
 //#define TASK_WEBSERVER_STACK_SIZE            500
 //#define TASK_WEBSERVER_PRIO                  6
 
-#define TASK_NETWORK_STACK_SIZE              256
+#define TASK_NETWORK_STACK_SIZE              512
 #define TASK_NETWORK_PRIO                    4
 
 //-------------------------------------------------------------------------------------------------
@@ -84,9 +84,7 @@ class ClassNetwork
 //    struct netconn*        m_WebServerNewConn;
 
     class IP_Manager       m_IP_Manager;
-    class ETH_IF_Driver    m_IF_Driver;
-
-
+    //class ETH_IF_Driver    m_IF_Driver;
 };
 
 //-------------------------------------------------------------------------------------------------

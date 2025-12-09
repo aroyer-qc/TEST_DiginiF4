@@ -151,10 +151,10 @@ static const unsigned char PAGE_START[] =
 //
 //-------------------------------------------------------------------------------------------------
 
-//nOS_Thread ClassNetwork::m_WebServerHandle;
-//nOS_Stack  ClassNetwork::m_WebServerStack[TASK_WEBSERVER_STACK_SIZE];
 nOS_Thread ClassNetwork::m_NetworkHandle;
 nOS_Stack  ClassNetwork::m_NetworkStack[TASK_NETWORK_STACK_SIZE];
+//nOS_Thread ClassNetwork::m_WebServerHandle;
+//nOS_Stack  ClassNetwork::m_WebServerStack[TASK_WEBSERVER_STACK_SIZE];
 
 //-------------------------------------------------------------------------------------------------
 //
@@ -197,7 +197,6 @@ SystemState_e ClassNetwork::Initialize(void)
     nOS_Error Error = NOS_OK;
 
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
-  //  myWiredIP.Initialize(IF_WIRED);
 
   #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
     myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
@@ -253,9 +252,6 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_IP_Manager.Initialize(IF_WIRED);
-
-
-
   //  struct netconn* conn;
  //   struct netconn* newconn;
    // err_t           err;
@@ -344,7 +340,7 @@ void ClassNetwork::Network(void)
         //ethernetif_input(&gnetif);
 
         nOS_Sleep(500);
-        LED_Toggle(IO_LED_BLUE);
+        LED_Toggle(IO_LED_GREEN);
     }
 }
 
