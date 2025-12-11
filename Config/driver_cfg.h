@@ -57,3 +57,7 @@
     #define USE_USB_OTG_FS_CODE     DEF_DISABLED
     #define USE_USB_OTG_HS_CODE     DEF_DISABLED
 
+
+#if (USE_ETH_DRIVER == DEF_ENABLED) && defined(STM32F401xE)
+#error The STM32F401 does not have support for ETH module
+#endif

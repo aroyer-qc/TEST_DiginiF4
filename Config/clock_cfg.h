@@ -34,6 +34,10 @@
 #define CFG_HSE_VALUE                               16000000
 #endif
 
+#ifdef STM32F427xx
+#define CFG_HSE_VALUE                               16000000
+#endif
+
 #ifdef STM32F429xx
 #define CFG_HSE_VALUE                               8000000
 #endif
@@ -53,6 +57,11 @@
 #ifdef STM32F401xE
   #define CFG_PLL_M_DIVIDER                         8
   #define CFG_PLL_N_MULTIPLIER                      84
+  #define CFG_PLL_P_DIVIDER                         2
+#endif
+#ifdef STM32F427xx
+  #define CFG_PLL_M_DIVIDER                         8
+  #define CFG_PLL_N_MULTIPLIER                      336
   #define CFG_PLL_P_DIVIDER                         2
 #endif
 #ifdef STM32F429xx

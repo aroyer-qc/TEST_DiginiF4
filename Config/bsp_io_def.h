@@ -235,6 +235,7 @@
 /* UART -------------------------------------------------------------------------------------------------*/\
     X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,     UART2_PIN_ON_PORT_xx,       IO_CFG_UART2_AF7)          \
 /* ------------------------------------------------------------------------------------------------------*/
+
 #endif
 
 #ifdef STM32F407xx              // TODO for Discovery F407
@@ -247,6 +248,9 @@
 /* UART -------------------------------------------------------------------------------------------------*/\
     X_IO_GROUP( IO_UART2_ON_PORT_xx,    GPIOxx,      UART2_PIN_ON_PORT_xx,      IO_CFG_UART2_AF7)          \
 /* ------------------------------------------------------------------------------------------------------*/
+
+#define IO_ETH_EXT_LED      IO_LED_GREEN
+
 #endif
 
 #ifdef STM32F429xx
@@ -265,11 +269,13 @@
     X_IO_GROUP( IO_UART3_ON_PORT_D,     GPIOD,      UART3_PIN_ON_PORT_D,        IO_CFG_UART3_AF7)          \
     X_IO_GROUP( IO_UART6_ON_PORT_C,     GPIOC,      UART6_PIN_ON_PORT_C,        IO_CFG_UART6_AF8)          \
 /* ------------------------------------------------------------------------------------------------------*/
+
+#define IO_ETH_EXT_LED      IO_LED_BLUE
+
 #endif
 
 
 #define IO_ETH_RX_ER        IO_NOT_DEFINED          // no RX error pin support
-#define IO_ETH_EXT_LED      IO_LED_BLUE
 
 
 

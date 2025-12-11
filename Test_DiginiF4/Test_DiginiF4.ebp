@@ -299,266 +299,266 @@
 		<Unit filename="..\Config\uart_cfg.h" />
 		<Unit filename="..\Config\uart_var.h" />
 		<Unit filename="..\Config\vt100_cfg.h" />
-		<Unit filename="..\Module\Digini\Comm\CmdLine\inc\lib_cli.h" />
-		<Unit filename="..\Module\Digini\Comm\CmdLine\src\lib_cli.cpp">
+		<Unit filename="..\module\Digini\Comm\CmdLine\inc\lib_cli.h" />
+		<Unit filename="..\module\Digini\Comm\CmdLine\src\lib_cli.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Comm\CmdLine\src\lib_cli_command.cpp">
+		<Unit filename="..\module\Digini\Comm\CmdLine\src\lib_cli_command.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Comm\Comm\inc\lib_comm.h" />
-		<Unit filename="..\Module\Digini\Comm\Comm\src\lib_comm.cpp">
+		<Unit filename="..\module\Digini\Comm\Comm\inc\lib_comm.h" />
+		<Unit filename="..\module\Digini\Comm\Comm\src\lib_comm.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Comm\Console\inc\lib_console.h" />
-		<Unit filename="..\Module\Digini\Comm\Console\src\lib_console.cpp">
+		<Unit filename="..\module\Digini\Comm\Console\inc\lib_console.h" />
+		<Unit filename="..\module\Digini\Comm\Console\src\lib_console.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100.h" />
-		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100_code.h" />
-		<Unit filename="..\Module\Digini\Comm\VT100\inc\lib_vt100_expanding_macro.h" />
-		<Unit filename="..\Module\Digini\Comm\VT100\src\lib_vt100.cpp">
+		<Unit filename="..\module\Digini\Comm\VT100\inc\lib_vt100.h" />
+		<Unit filename="..\module\Digini\Comm\VT100\inc\lib_vt100_code.h" />
+		<Unit filename="..\module\Digini\Comm\VT100\inc\lib_vt100_expanding_macro.h" />
+		<Unit filename="..\module\Digini\Comm\VT100\src\lib_vt100.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Comm\VT100\src\lib_vt100_callback.cpp">
+		<Unit filename="..\module\Digini\Comm\VT100\src\lib_vt100_callback.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Database\inc\lib_class_database.h" />
-		<Unit filename="..\Module\Digini\Database\src\lib_class_database.cpp">
+		<Unit filename="..\module\Digini\Database\inc\lib_class_database.h" />
+		<Unit filename="..\module\Digini\Database\src\lib_class_database.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Database\src\lib_class_hard_dbase.cpp">
+		<Unit filename="..\module\Digini\Database\src\lib_class_hard_dbase.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Database\src\lib_class_rom_dbase.cpp">
+		<Unit filename="..\module\Digini\Database\src\lib_class_rom_dbase.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Database\src\lib_database_wrapper.cpp">
+		<Unit filename="..\module\Digini\Database\src\lib_database_wrapper.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Digini\inc\lib_advanced_macro.h" />
-		<Unit filename="..\Module\Digini\Digini\inc\lib_define.h" />
-		<Unit filename="..\Module\Digini\Digini\inc\lib_label.h" />
-		<Unit filename="..\Module\Digini\Digini\inc\lib_macro.h" />
-		<Unit filename="..\Module\Digini\Digini\inc\lib_typedef.h" />
-		<Unit filename="..\Module\Digini\Digini\src\digini.cpp">
+		<Unit filename="..\module\Digini\Digini\inc\lib_advanced_macro.h" />
+		<Unit filename="..\module\Digini\Digini\inc\lib_define.h" />
+		<Unit filename="..\module\Digini\Digini\inc\lib_label.h" />
+		<Unit filename="..\module\Digini\Digini\inc\lib_macro.h" />
+		<Unit filename="..\module\Digini\Digini\inc\lib_typedef.h" />
+		<Unit filename="..\module\Digini\Digini\src\digini.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Digini\src\lib_label.cpp">
+		<Unit filename="..\module\Digini\Digini\src\lib_label.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\lib_digini.h" />
-		<Unit filename="..\Module\Digini\Memory\inc\lib_memory.h" />
-		<Unit filename="..\Module\Digini\Memory\inc\lib_memory_node.h" />
-		<Unit filename="..\Module\Digini\Memory\inc\lib_node_list.h" />
-		<Unit filename="..\Module\Digini\Memory\src\lib_memory.cpp">
+		<Unit filename="..\module\Digini\lib_digini.h" />
+		<Unit filename="..\module\Digini\Memory\inc\lib_memory.h" />
+		<Unit filename="..\module\Digini\Memory\inc\lib_memory_node.h" />
+		<Unit filename="..\module\Digini\Memory\inc\lib_node_list.h" />
+		<Unit filename="..\module\Digini\Memory\src\lib_memory.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Memory\src\lib_memory_node.cpp">
+		<Unit filename="..\module\Digini\Memory\src\lib_memory_node.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Memory\src\lib_node_list.cpp">
+		<Unit filename="..\module\Digini\Memory\src\lib_node_list.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\inc\Device\lib_class_PHY_LAN8742A.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\Interface\lib_class_ethernet_interface.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_arp.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_dhcp.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_ethernet_if.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_icmp.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_IP_Manager.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_class_udp.h" />
-		<Unit filename="..\Module\Digini\NanoIP\inc\lib_ethernet_typedef.h" />
-		<Unit filename="..\Module\Digini\NanoIP\src\Device\lib_class_PHY_LAN8742A.cpp">
+		<Unit filename="..\module\Digini\NanoIP\inc\Device\lib_class_PHY_LAN8742A.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\Interface\lib_class_ethernet_interface.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_arp.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_dhcp.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_ethernet_if.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_icmp.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_IP_Manager.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_udp.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_ethernet_typedef.h" />
+		<Unit filename="..\module\Digini\NanoIP\src\Device\lib_class_PHY_LAN8742A.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_arp.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_arp.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_dhcp.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_dhcp.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_ethernet_if.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_ethernet_if.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_icmp.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_icmp.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_IP_Manager.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_IP_Manager.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\NanoIP\src\lib_class_udp.cpp">
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_udp.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_pwm_WS281x.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_DACx3508.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_IV_11.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\lib_class_spi_VFD.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f401xc.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f401xe.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f405xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f407xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410cx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410rx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410tx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f411xe.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412cx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412rx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412vx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412zx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f413xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f415xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f417xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f423xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f427xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f429xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f437xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f439xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f446xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f469xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f479xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f4xx.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_crc.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_dma.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_eth.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_pwm.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_spi.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_tim.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_uart.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_io.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_isr.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_rng.h" />
-		<Unit filename="..\Module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_system_clock.h" />
-		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_pwm_WS281x.cpp">
+		<Unit filename="..\module\Digini\Peripheral\inc\device\lib_class_pwm_WS281x.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\lib_class_spi_DACx3508.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\lib_class_spi_IV_11.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\lib_class_spi_VFD.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f401xc.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f401xe.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f405xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f407xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410cx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410rx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f410tx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f411xe.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412cx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412rx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412vx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f412zx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f413xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f415xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f417xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f423xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f427xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f429xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f437xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f439xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f446xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f469xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f479xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\device\port\STM32F4xx\stm32f4xx.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_crc.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_dma.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_eth.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_pwm.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_spi.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_tim.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_class_STM32F4_uart.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_io.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_isr.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_rng.h" />
+		<Unit filename="..\module\Digini\Peripheral\inc\port\STM32F4xx\lib_STM32F4_system_clock.h" />
+		<Unit filename="..\module\Digini\Peripheral\src\device\lib_class_pwm_WS281x.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_spi_DACx3508.cpp">
-			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_spi_IV_11.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\device\lib_class_spi_DACx3508.cpp">
 			<Option compilerVar="CC" />
 			<Option compile="0" />
 			<Option link="0" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\device\lib_class_spi_VFD.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\device\lib_class_spi_IV_11.cpp">
+			<Option compilerVar="CC" />
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="..\module\Digini\Peripheral\src\device\lib_class_spi_VFD.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_crc.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_crc.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_dma.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_dma.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_eth.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_eth.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_pwm.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_pwm.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_spi.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_spi.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_tim.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_tim.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_uart.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_class_STM32F4_uart.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_io.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_io.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_isr.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_isr.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_rng.cpp">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_rng.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_system_clock.c">
+		<Unit filename="..\module\Digini\Peripheral\src\port\STM32F4xx\lib_STM32F4_system_clock.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\RTOS_Wrapper\src\nOS\lib_nOS_Tick.c">
+		<Unit filename="..\module\Digini\RTOS_Wrapper\src\nOS\lib_nOS_Tick.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\String\inc\lib_string.h" />
-		<Unit filename="..\Module\Digini\String\src\lib_string.cpp">
+		<Unit filename="..\module\Digini\String\inc\lib_string.h" />
+		<Unit filename="..\module\Digini\String\src\lib_string.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\inc\lib_class_crc.h" />
-		<Unit filename="..\Module\Digini\Utility\inc\lib_fifo.h" />
-		<Unit filename="..\Module\Digini\Utility\inc\lib_stacktistic.h" />
-		<Unit filename="..\Module\Digini\Utility\inc\lib_utility.h" />
-		<Unit filename="..\Module\Digini\Utility\src\lib_bit_reversal.cpp">
+		<Unit filename="..\module\Digini\Utility\inc\lib_class_crc.h" />
+		<Unit filename="..\module\Digini\Utility\inc\lib_fifo.h" />
+		<Unit filename="..\module\Digini\Utility\inc\lib_stacktistic.h" />
+		<Unit filename="..\module\Digini\Utility\inc\lib_utility.h" />
+		<Unit filename="..\module\Digini\Utility\src\lib_bit_reversal.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_class_bit_array.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_class_bit_array.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_class_crc.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_class_crc.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_fast_memcpy.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_fast_memcpy.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_fifo.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_fifo.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_stacktistic.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_stacktistic.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\lib_time_and_delay.cpp">
+		<Unit filename="..\module\Digini\Utility\src\lib_time_and_delay.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\Digini\Utility\src\port\STM32F4xx\lib_stacktistic_STM32F4.cpp">
+		<Unit filename="..\module\Digini\Utility\src\port\STM32F4xx\lib_stacktistic_STM32F4.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\module_STM32F4xx\cmsis\core_cm4.h" />
-		<Unit filename="..\Module\nOS\inc\nOS.h" />
-		<Unit filename="..\Module\nOS\inc\port\GCC\ARM_Cortex_M4\nOSPort.h" />
-		<Unit filename="..\Module\nOS\src\nOSAlarm.c">
+		<Unit filename="..\module\module_STM32F4xx\cmsis\core_cm4.h" />
+		<Unit filename="..\module\nOS\inc\nOS.h" />
+		<Unit filename="..\module\nOS\inc\port\GCC\ARM_Cortex_M4\nOSPort.h" />
+		<Unit filename="..\module\nOS\src\nOSAlarm.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSBarrier.c">
+		<Unit filename="..\module\nOS\src\nOSBarrier.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSEvent.c">
+		<Unit filename="..\module\nOS\src\nOSEvent.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSFlag.c">
+		<Unit filename="..\module\nOS\src\nOSFlag.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSList.c">
+		<Unit filename="..\module\nOS\src\nOSList.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSMem.c">
+		<Unit filename="..\module\nOS\src\nOSMem.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSMutex.c">
+		<Unit filename="..\module\nOS\src\nOSMutex.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSQueue.c">
+		<Unit filename="..\module\nOS\src\nOSQueue.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSSched.c">
+		<Unit filename="..\module\nOS\src\nOSSched.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSSem.c">
+		<Unit filename="..\module\nOS\src\nOSSem.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSSignal.c">
+		<Unit filename="..\module\nOS\src\nOSSignal.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSThread.c">
+		<Unit filename="..\module\nOS\src\nOSThread.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSTime.c">
+		<Unit filename="..\module\nOS\src\nOSTime.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\nOSTimer.c">
+		<Unit filename="..\module\nOS\src\nOSTimer.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="..\Module\nOS\src\port\GCC\ARM_Cortex_M4\nOSPort.c">
+		<Unit filename="..\module\nOS\src\port\GCC\ARM_Cortex_M4\nOSPort.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ebmon.c">
@@ -574,23 +574,23 @@
 		<Extensions>
 			<code_completion />
 			<debugger>
-				<target_debugging_settings target="Release F429">
+				<target_debugging_settings target="Release F427">
 					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="stm32.script" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
-				</target_debugging_settings>
-				<target_debugging_settings target="Debug F401">
-					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="7" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 				<target_debugging_settings target="Release F401">
 					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="stm32.script" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
-				<target_debugging_settings target="Debug F427">
-					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="7" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
-				</target_debugging_settings>
 				<target_debugging_settings target="Debug F429">
 					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="7" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
-				<target_debugging_settings target="Release F427">
+				<target_debugging_settings target="Debug F401">
+					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="7" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+				</target_debugging_settings>
+				<target_debugging_settings target="Release F429">
 					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="stm32.script" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="4" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
+				</target_debugging_settings>
+				<target_debugging_settings target="Debug F427">
+					<debug_interface description="STM32F429.svd" options="10" reg_filter="0" probe="STlink" device="auto" speed="" bus_address="" serial="" defines="" scripts="" flash_size="" ram_size="" vcc_voltage="" verbose="7" unwind="2" rstType="0" use_jtag="false" disable_cache="false" enable_semi="false" close_eblink="false" gdb_reset="" gdb_reset_remote="reset;" gdb_before_conn="" gdb_after_conn="" use_remote="false" ip_address="" ip_port="" path="" executable="" start_server="false" arguments="" flash_verify="false" flash_run="false" />
 				</target_debugging_settings>
 			</debugger>
 			<envvars />
