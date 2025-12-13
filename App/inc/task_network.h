@@ -58,7 +58,6 @@ class ClassNetwork
 {
   public:
 
-
     // Task
     void            Network                     (void);
 //    void            WebServer                   (void);
@@ -70,16 +69,16 @@ class ClassNetwork
 
   private:
 
-    void            WebServer_Serve             (void);
-    void            WebServer_DynamicPage       (void);
+    //void            WebServer_Serve             (void);
+    //void            WebServer_DynamicPage       (void);
 
     //void            TCP_EchoServer_Initialize   (void);
     //rr_t           TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
 
 //    static nOS_Thread      m_WebServerHandle;
     //static nOS_Stack       m_WebServerStack     [TASK_WEBSERVER_STACK_SIZE];
-    static nOS_Thread      m_NetworkHandle;
-    static nOS_Stack       m_NetworkStack       [TASK_NETWORK_STACK_SIZE];
+    static nOS_Thread      m_Handle;
+    static nOS_Stack       m_Stack       [TASK_NETWORK_STACK_SIZE];
     //struct netconn*        m_WebServerConn;
 //    struct netconn*        m_WebServerNewConn;
 
@@ -104,7 +103,7 @@ TASK_NETWORK_EXTERN class ClassNetwork  TaskNetwork;
 //-------------------------------------------------------------------------------------------------
 
 //extern "C" void TaskWebServer_Wrapper       (void* pvParameters);
-extern "C" void TaskNetwork_Wrapper         (void* pvParameters);
+//extern "C" void TaskNetwork_Wrapper         (void* pvParameters);
 
 //-------------------------------------------------------------------------------------------------
 

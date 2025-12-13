@@ -151,8 +151,8 @@ static const unsigned char PAGE_START[] =
 //
 //-------------------------------------------------------------------------------------------------
 
-nOS_Thread ClassNetwork::m_NetworkHandle;
-nOS_Stack  ClassNetwork::m_NetworkStack[TASK_NETWORK_STACK_SIZE];
+nOS_Thread ClassNetwork::m_Handle;
+nOS_Stack  ClassNetwork::m_Stack[TASK_NETWORK_STACK_SIZE];
 //nOS_Thread ClassNetwork::m_WebServerHandle;
 //nOS_Stack  ClassNetwork::m_WebServerStack[TASK_WEBSERVER_STACK_SIZE];
 
@@ -199,34 +199,27 @@ SystemState_e ClassNetwork::Initialize(void)
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
   #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-    myStacktistic.Register(&m_NetworkStack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
+    myStacktistic.Register(&m_Stack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
  //   myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
   #endif
 
 
-    Error = nOS_ThreadCreate(&m_NetworkHandle,
+    Error = nOS_ThreadCreate(&m_Handle,
                              TaskNetwork_Wrapper,
                              this,
-                             &m_NetworkStack[0],
+                             &m_Stack[0],
                              TASK_NETWORK_STACK_SIZE,
-                             TASK_NETWORK_PRIO
-                           #if(NOS_CONFIG_THREAD_MPU_REGION_ENABLE > 0)
-                             , nullptr
-                           #endif
-                            );
+                             TASK_NETWORK_PRIO);
 
 
     // Webserver task
 
-    /*Error = nOS_ThreadCreate(&m_WebServerHandle,
+/*    Error = nOS_ThreadCreate(&m_WebServerHandle,
                              TaskWebServer_Wrapper,
                              this,
                              &m_WebServerStack[0],
                              TASK_WEBSERVER_STACK_SIZE,
-                             TASK_WEBSERVER_PRIO
-                           #if(NOS_CONFIG_THREAD_MPU_REGION_ENABLE > 0)
-                             , nullptr
-                           #endif
+                             TASK_WEBSERVER_PRIO};
 */
 
     // tcp echo server Init
@@ -376,7 +369,7 @@ void ClassNetwork::WebServer(void)
 for(;;)
 { nOS_Sleep(100);}
 
-#if 0
+//#if 0
     m_WebServerConn = netconn_new(NETCONN_TCP);                                     // Create a new TCP connection handle
 
     if(m_WebServerConn != nullptr)
@@ -399,7 +392,7 @@ for(;;)
             }
         }
     }
-#endif
+//#endif
 }
 /**
   * @brief serve tcp connection
@@ -485,9 +478,9 @@ void ClassNetwork::WebServer_Server(void)
   * @param  conn pointer on connection structure
   * @retval None
   */
+#if 0
 void ClassNetwork::WebServer_DynamicPage(void)
 {
-    #if 0
     char* pPageBody;
     char* pPageHits;
 
@@ -513,8 +506,8 @@ void ClassNetwork::WebServer_DynamicPage(void)
 
     pMemoryPool->Free((void**)&pPageBody);
     pMemoryPool->Free((void**)&pPageHits);
-    #endif
 }
+    #endif
 #endif // if 0
 //-------------------------------------------------------------------------------------------------
 
