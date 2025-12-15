@@ -95,9 +95,9 @@
 
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
-/*        ENUM ID of the ETH IF  Hostname            Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
-/* Interface 1 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
-    X_IF( IF_WIRED,              (char*)("TEST IP"), IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
+/*        ENUM ID       Hostname                     Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
+/* Interface 1 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
+    X_IF( IF_WIRED,     (char*)("IP Wired Manager"), IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
 
 
 

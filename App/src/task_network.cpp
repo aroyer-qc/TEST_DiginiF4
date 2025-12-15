@@ -152,7 +152,7 @@ static const unsigned char PAGE_START[] =
 //-------------------------------------------------------------------------------------------------
 
 nOS_Thread ClassNetwork::m_Handle;
-nOS_Stack  ClassNetwork::m_Stack[TASK_NETWORK_STACK_SIZE];
+nOS_Stack  ClassNetwork::m_Stack[TASK_NETWORK_STACK_SIZE]           NOS_STACK_LOCATION;
 //nOS_Thread ClassNetwork::m_WebServerHandle;
 //nOS_Stack  ClassNetwork::m_WebServerStack[TASK_WEBSERVER_STACK_SIZE];
 

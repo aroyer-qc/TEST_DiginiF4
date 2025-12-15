@@ -23,14 +23,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //-------------------------------------------------------------------------------------------------
+//
+// Note(s)      Since there can be multiple instance of IP_Manager, Stack must be declare outside
+//              the class so it can be located in a proper memory region like the CCMRAM on the F4
+//
+//-------------------------------------------------------------------------------------------------
 
 #ifdef LIB_IP_MANAGER_GLOBAL
 
-class IP_Manager myWiredIP;
+//nOS_Stack           WiredIP_Stack[TASK_IP_MANAGER_STACK_SIZE]     NOS_STACK_LOCATION;
+//IP_Manager          myWiredIP(&WiredIP_Stack[0]);
 
 #else
 
-extern class IP_Manager myWiredIP;
+//extern IP_Manager   myWiredIP;
 
 #endif
 

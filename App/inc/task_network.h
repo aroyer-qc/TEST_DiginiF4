@@ -58,6 +58,9 @@ class ClassNetwork
 {
   public:
 
+ClassNetwork(){};
+~ClassNetwork(){};
+
     // Task
     void            Network                     (void);
 //    void            WebServer                   (void);
@@ -76,9 +79,9 @@ class ClassNetwork
     //rr_t           TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
 
 //    static nOS_Thread      m_WebServerHandle;
-    //static nOS_Stack       m_WebServerStack     [TASK_WEBSERVER_STACK_SIZE];
+    //static nOS_Stack       m_WebServerStack       [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
     static nOS_Thread      m_Handle;
-    static nOS_Stack       m_Stack       [TASK_NETWORK_STACK_SIZE];
+    static nOS_Stack       m_Stack                  [TASK_NETWORK_STACK_SIZE];
     //struct netconn*        m_WebServerConn;
 //    struct netconn*        m_WebServerNewConn;
 
@@ -90,10 +93,10 @@ class ClassNetwork
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
-TASK_NETWORK_EXTERN class ClassNetwork  TaskNetwork;
 
 #ifdef TASK_NETWORK_GLOBAL
-                 class ClassNetwork* pTaskNetwork = &TaskNetwork;
+    class ClassNetwork  TaskNetwork;
+    class ClassNetwork* pTaskNetwork = &TaskNetwork;
 #else
     extern       class ClassNetwork* pTaskNetwork;
 #endif
