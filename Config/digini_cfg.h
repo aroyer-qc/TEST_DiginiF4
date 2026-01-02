@@ -40,11 +40,6 @@
 //#define DIGINI_APP_USE_TICK_HOOK                      DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
-// Static memory allocation
-//
-#define DIGINI_USE_STATIC_MEMORY_ALLOC                  DEF_ENABLED
-
-//-------------------------------------------------------------------------------------------------
 // Database support
 //
 #define DIGINI_USE_DATABASE                             DEF_ENABLED
@@ -69,7 +64,7 @@
 #define DIGINI_USE_VT100_MENU                           DEF_DISABLED
 #endif
 
-#define DIGINI_USE_DEBUG_IN_CONSOLE                     DEF_DISABLED        // seem to be a bug when enabled
+#define DIGINI_USE_DEBUG_IN_CONSOLE                     DEF_ENABLED//DEF_DISABLED        // seem to be a bug when enabled
 #define DIGINI_USE_HELP_IN_CONSOLE                      DEF_ENABLED         // Adding the help command to the command line
 
 #define DIGINI_USE_COMM_AS_A_TASK                       DEF_ENABLED         // Otherwise it is a process that need to be include in your choice of task

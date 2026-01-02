@@ -485,8 +485,8 @@ void ClassNetwork::WebServer_DynamicPage(void)
     char* pPageHits;
 
 // TODO Add protection
-    pPageBody = (char*)pMemoryPool->AllocAndClear(512, MEM_DBG_TASK_NETWORK_1);
-    pPageHits = (char*)pMemoryPool->AllocAndClear(10, MEM_DBG_TASK_NETWORK_2);
+    pPageBody = (char*)pMemoryPool->AllocAndClear(512, MEM_DBG_TSKNET1);
+    pPageHits = (char*)pMemoryPool->AllocAndClear(10, MEM_DBG_TSKNET2);
 
     // Update the hit count
     nPageHits++;

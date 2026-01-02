@@ -107,6 +107,8 @@ SystemState_e BSP_PostOS_Initialize(void)
 
     State = DIGINI_PostInitialize();
 
+//ISR_Enable();
+
     // WS2812 LED stream
   #if (USE_SPI_WS281X_DRIVER == DEF_ENABLED)
     WS281x_LedStream.Initialize();

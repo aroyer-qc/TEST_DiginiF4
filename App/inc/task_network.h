@@ -69,6 +69,7 @@ ClassNetwork(){};
 
     SystemState_e   Initialize                  (void);
 
+   IP_Manager*      GetIP_Manager               (void)  { return &m_IP_Manager; }     // temporary until multi interface can work (maybe add ID)
 
   private:
 

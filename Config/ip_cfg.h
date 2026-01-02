@@ -51,14 +51,14 @@
 //-------------------------------------------------------------------------------------------------
 // Protocol supported by the application
 
-#define IP_USE_DHCP							    DEF_DISABLED         // Need UDP
-#define IP_USE_ICMP							    DEF_DISABLED
+#define IP_USE_DHCP							    DEF_DISABLED//DEF_ENABLED         // Need UDP
+#define IP_USE_ICMP							    DEF_DISABLED//DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
 #define IP_USE_SOCK 						    DEF_DISABLED
 #define IP_USE_TCP 							    DEF_DISABLED
-#define IP_USE_UDP 							    DEF_DISABLED
+#define IP_USE_UDP 							    DEF_ENABLED
 
 //---------------------------------------------------------
 // External server URL
@@ -74,7 +74,7 @@
 
 //-------------------------------------------------------------------------------------------------
 
-#define Q_TASK_IP_MANAGER_SIZE					8
+#define Q_IP_MANAGER_MEMORY_NODE_SIZE  			8
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
 
@@ -93,6 +93,9 @@
 #define IP_MAC_ADDRESS_WIRED                    {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5}
 
 
+#define SOCKET_MAX_COUNT                        10
+
+
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
 /*        ENUM ID       Hostname                     Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
@@ -101,7 +104,7 @@
 
 
 
-#define IP_NET_IF_MTU                           1500                // not sure i need this
+#define IP_NET_IF_MTU                           1536
 
 /*
 

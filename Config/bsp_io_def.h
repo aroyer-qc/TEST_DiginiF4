@@ -204,10 +204,10 @@
 
 //---------------------------------------
 // ETH grouping configuration STM32F429xx
-#define ETH_PIN_ON_PORT_A               (IO_PIN_1  | IO_PIN_2  | IO_PIN_7)
+#define ETH_PIN_ON_PORT_A               (IO_PIN_1 | IO_PIN_2  | IO_PIN_7)
 #define ETH_PIN_ON_PORT_B               (IO_PIN_13)
-#define ETH_PIN_ON_PORT_C               (IO_PIN_1  | IO_PIN_4 | IO_PIN_5)
-#define ETH_PIN_ON_PORT_G               (IO_PIN_11 | IO_PIN_13)
+#define ETH_PIN_ON_PORT_C               (IO_PIN_1 | IO_PIN_4  | IO_PIN_5)
+#define ETH_PIN_ON_PORT_G               (IO_PIN_2 | IO_PIN_11 | IO_PIN_13)
 
 //---------------------------------------------------------
 // SPI3 grouping configuration on STM32F401xx & STM32F429xx
@@ -263,7 +263,7 @@
     X_IO_GROUP( IO_ETH_ON_PORT_C,       GPIOC,      ETH_PIN_ON_PORT_C,          IO_CFG_ETH_PP_VHS_AF11)    \
     X_IO_GROUP( IO_ETH_ON_PORT_G,       GPIOG,      ETH_PIN_ON_PORT_G,          IO_CFG_ETH_PP_VHS_AF11)    \
 /* SPI --------------------------------------------------------------------------------------------------*/\
-    X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOA,      SPI1_PIN_ON_PORT_A,         IO_CFG_SPI_AF5)            \
+   /* X_IO_GROUP( IO_SPI1_ON_PORT_A,      GPIOA,      SPI1_PIN_ON_PORT_A,         IO_CFG_SPI_AF5)   */         \
     X_IO_GROUP( IO_SPI3_ON_PORT_B,      GPIOB,      SPI3_PIN_ON_PORT_B,         IO_CFG_SPI_AF5)            \
 /* UART -------------------------------------------------------------------------------------------------*/\
     X_IO_GROUP( IO_UART3_ON_PORT_D,     GPIOD,      UART3_PIN_ON_PORT_D,        IO_CFG_UART3_AF7)          \

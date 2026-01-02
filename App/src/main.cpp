@@ -32,13 +32,13 @@
 #include "taskIdle.h"
 #include "bsp.h"
 
-uint32_t swap(uint32_t in)
+uint32_t swap(uint32_t ToSwap)
 {
  //uint32_t out ;
 
-  in = __builtin_bswap32(in);
+  ToSwap = __builtin_bswap32(ToSwap);
  //out = (in >> 16) | (in << 16);
-  return in;
+  return ToSwap;
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -62,7 +62,8 @@ int main()
 
 
 //printf("allo");
-  //  uint8_t* pTestID = (void*)&testID;
+  //  uint8_t* pTestID = (void*)&testID;menu
+
 
     ISR_Disable();
     nOS_Init();
