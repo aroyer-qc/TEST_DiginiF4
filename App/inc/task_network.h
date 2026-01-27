@@ -58,8 +58,8 @@ class ClassNetwork
 {
   public:
 
-ClassNetwork(){};
-~ClassNetwork(){};
+    ClassNetwork(){};
+    ~ClassNetwork(){};
 
     // Task
     void            Network                     (void);

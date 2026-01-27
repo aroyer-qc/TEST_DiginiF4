@@ -36,6 +36,12 @@
 // Include file for the ETH PHY Driver
 #define PHY_DRIVER_INCLUDE                      "./NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
 
+
+
+//-------------------------------------------------------------------------------------------------
+// Debug
+#define IP_DBG_DHCP                             DEF_ENABLED
+
 //-------------------------------------------------------------------------------------------------
 // Driver configuration  (may vary according to driver)
 
@@ -51,14 +57,14 @@
 //-------------------------------------------------------------------------------------------------
 // Protocol supported by the application
 
-#define IP_USE_DHCP							    DEF_DISABLED//DEF_ENABLED         // Need UDP
-#define IP_USE_ICMP							    DEF_DISABLED//DEF_ENABLED
+#define IP_USE_DHCP							    DEF_ENABLED         // Need UDP
+#define IP_USE_ICMP							    DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
-#define IP_USE_SOCK 						    DEF_DISABLED
 #define IP_USE_TCP 							    DEF_DISABLED
 #define IP_USE_UDP 							    DEF_ENABLED
+#define IP_USE_RAW                              DEF_DISABLED
 
 //---------------------------------------------------------
 // External server URL
@@ -74,7 +80,8 @@
 
 //-------------------------------------------------------------------------------------------------
 
-#define Q_IP_MANAGER_MEMORY_NODE_SIZE  			8
+#define IP_MANAGER_PACKET_Q_SIZE  			    8
+
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
 
@@ -84,12 +91,12 @@
 #define IP_IF_WIRED_PROTOCOL                    (IP_FLAG_USE_ARP | IP_FLAG_USE_DHCP | IP_FLAG_USE_ICMP | IP_FLAG_USE_TCP | IP_FLAG_USE_UDP)
 
 // MAC address configuration using GUID of the CPU.
-#define MAC_ADDR0                               (((char*)0x1FFF7A10)[0])
-#define MAC_ADDR1                               (((char*)0x1FFF7A10)[2])
-#define MAC_ADDR2                               (((char*)0x1FFF7A10)[4])
-#define MAC_ADDR3                               (((char*)0x1FFF7A10)[6])
-#define MAC_ADDR4                               (((char*)0x1FFF7A10)[8])
-#define MAC_ADDR5                               (((char*)0x1FFF7A10)[10])
+#define MAC_ADDR0                               (uint8_t)((((uint8_t*)0x1FFF7A10)[0] & 0xFE) | 0x02)
+#define MAC_ADDR1                               (((uint8_t*)0x1FFF7A10)[2])
+#define MAC_ADDR2                               (((uint8_t*)0x1FFF7A10)[4])
+#define MAC_ADDR3                               (((uint8_t*)0x1FFF7A10)[6])
+#define MAC_ADDR4                               (((uint8_t*)0x1FFF7A10)[8])
+#define MAC_ADDR5                               (((uint8_t*)0x1FFF7A10)[10])
 #define IP_MAC_ADDRESS_WIRED                    {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5}
 
 
@@ -98,9 +105,9 @@
 
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
-/*        ENUM ID       Hostname                     Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
+/*        ENUM ID       Hostname            Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
 /* Interface 1 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
-    X_IF( IF_WIRED,     (char*)("IP Wired Manager"), IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,0,254), IP_ADDRESS(192,168,0,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,0,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
+    X_IF( IF_WIRED,     "Digini_Wired",     IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,1,199), IP_ADDRESS(192,168,1,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,1,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
 
 
 
