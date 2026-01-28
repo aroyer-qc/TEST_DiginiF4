@@ -207,7 +207,7 @@
 #define ETH_PIN_ON_PORT_A               (IO_PIN_1 | IO_PIN_2  | IO_PIN_7)
 #define ETH_PIN_ON_PORT_B               (IO_PIN_13)
 #define ETH_PIN_ON_PORT_C               (IO_PIN_1 | IO_PIN_4  | IO_PIN_5)
-#define ETH_PIN_ON_PORT_G               (IO_PIN_2 | IO_PIN_11 | IO_PIN_13)
+#define ETH_PIN_ON_PORT_G               (IO_PIN_11 | IO_PIN_13)
 
 //---------------------------------------------------------
 // SPI3 grouping configuration on STM32F401xx & STM32F429xx

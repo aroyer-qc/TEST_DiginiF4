@@ -363,6 +363,7 @@
 		<Unit filename="..\module\Digini\NanoIP\inc\Device\lib_class_PHY_LAN8742A.h" />
 		<Unit filename="..\module\Digini\NanoIP\inc\Interface\lib_class_ethernet_interface.h" />
 		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_arp.h" />
+		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_context.h" />
 		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_dhcp.h" />
 		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_ethernet_if.h" />
 		<Unit filename="..\module\Digini\NanoIP\inc\lib_class_icmp.h" />
@@ -374,6 +375,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\module\Digini\NanoIP\src\lib_class_arp.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\module\Digini\NanoIP\src\lib_class_context.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\module\Digini\NanoIP\src\lib_class_dhcp.cpp">
@@ -390,8 +394,6 @@
 		</Unit>
 		<Unit filename="..\module\Digini\NanoIP\src\lib_class_socket.cpp">
 			<Option compilerVar="CC" />
-			<Option compile="0" />
-			<Option link="0" />
 		</Unit>
 		<Unit filename="..\module\Digini\NanoIP\src\lib_class_udp.cpp">
 			<Option compilerVar="CC" />
