@@ -31,6 +31,7 @@
 //-------------------------------------------------------------------------------------------------
 
 #define VT100_SCREEN_WIDTH						132
+#define VT100_SCREEN_HEIGHT                     60
 
 #define VT100_STARTUP_MENU_CFG                  MenuMain                // User can choose another menu startup entry for VT100.
 #define VT100_MENU_MAIN_FALLBACK_CFG            VT100_MENU_NONE         // if you change the VT100_STARTUP_MENU_CFG to other menu, put the name of the menu here. Otherwisweit will exit the VT100 menu system.

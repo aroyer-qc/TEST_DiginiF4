@@ -64,9 +64,6 @@
 #define DIGINI_USE_VT100_MENU                           DEF_DISABLED
 #endif
 
-#define DIGINI_USE_DEBUG_IN_CONSOLE                     DEF_ENABLED//DEF_DISABLED        // seem to be a bug when enabled
-#define DIGINI_USE_HELP_IN_CONSOLE                      DEF_ENABLED         // Adding the help command to the command line
-
 #define DIGINI_USE_COMM_AS_A_TASK                       DEF_ENABLED         // Otherwise it is a process that need to be include in your choice of task
 #define TASK_COMM_PRIO                                  7
 #define TASK_COMM_STACK_SIZE                            256
