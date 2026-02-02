@@ -43,7 +43,7 @@
 // module connected to the serial port can send information for watching user or debugging purpose.
 // By enabling the feature the code will not parse a line with CON_TRAP_COMMENT_CHARACTER until the
 // CON_TRAP_COMMENT_END_OF_LINE_MARKER is detected.
-#define CON_TRAP_COMMENT_INCOMING_LINE          DEF_DISABLED
+#define CON_TRAP_INCOMING_COMMENT_LINE          DEF_DISABLED
 #define CON_TRAP_COMMENT_CHARACTER              '#'
 #define CON_TRAP_COMMENT_END_OF_LINE_MARKER     '\n'
 #define CON_TRAP_COMMENT_TIME_OUT               50

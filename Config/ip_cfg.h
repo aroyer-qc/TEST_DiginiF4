@@ -57,10 +57,10 @@
 //-------------------------------------------------------------------------------------------------
 // Protocol supported by the application
 
-#define IP_USE_DHCP							    DEF_ENABLED         // Need UDP
+#define IP_USE_DHCP							    DEF_ENABLED           // Need UDP
 #define IP_USE_ICMP							    DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
-#define IP_USE_SNTP							    DEF_DISABLED
+#define IP_USE_SNTP							    DEF_ENABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
 #define IP_USE_TCP 							    DEF_DISABLED
 #define IP_USE_UDP 							    DEF_ENABLED
@@ -91,9 +91,9 @@
 #define IP_IF_WIRED_PROTOCOL                    (IP_FLAG_USE_ARP | IP_FLAG_USE_DHCP | IP_FLAG_USE_ICMP | IP_FLAG_USE_TCP | IP_FLAG_USE_UDP)
 
 // MAC address configuration using GUID of the CPU.
-#define MAC_ADDR0                               (uint8_t)((((uint8_t*)0x1FFF7A10)[0] & 0xFE) | 0x02)
-#define MAC_ADDR1                               (((uint8_t*)0x1FFF7A10)[2])
-#define MAC_ADDR2                               (((uint8_t*)0x1FFF7A10)[4])
+#define MAC_ADDR0                               0x00//(uint8_t)((((uint8_t*)0x1FFF7A10)[0] & 0xFE) | 0x02)
+#define MAC_ADDR1                               0x19//(((uint8_t*)0x1FFF7A10)[2])
+#define MAC_ADDR2                               0x04//(((uint8_t*)0x1FFF7A10)[4])
 #define MAC_ADDR3                               (((uint8_t*)0x1FFF7A10)[6])
 #define MAC_ADDR4                               (((uint8_t*)0x1FFF7A10)[8])
 #define MAC_ADDR5                               (((uint8_t*)0x1FFF7A10)[10])
@@ -102,6 +102,7 @@
 
 #define SOCKET_MAX_COUNT                        10
 
+#define VENDOR_CLASS                            "Digini"
 
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
