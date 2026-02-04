@@ -245,15 +245,6 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_IP_Manager.Initialize(IF_WIRED);
-  //  struct netconn* conn;
- //   struct netconn* newconn;
-   // err_t           err;
-   // err_t           accept_err;
-   // struct netbuf*  buf;
-  //  void*           data;
-  //  u16_t           len;
-   // err_t           recv_err;
-
 
 #if 0  // need to reenable LWIP_NETCONN    1
     // Create a new connection identifier.

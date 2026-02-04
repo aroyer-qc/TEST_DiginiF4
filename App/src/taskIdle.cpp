@@ -96,6 +96,7 @@ static const uint16_t sine_wave[256] =
 //
 //-------------------------------------------------------------------------------------------------
 uint32_t Count = 0;
+static bool DNS_TestStarted = false;
 
 void TaskIdle(void)
 {
@@ -140,6 +141,32 @@ void TaskIdle(void)
         if (Count >= 32768)
         {
             Count = 0;
+
+            if(DNS_TestStarted == false)
+            {
+                DNS_TestStarted = true;
+
+                bool ok = pTaskNetwork->GetIP_Manager()->RequestDNS(IP_DEFAULT_NTP_SERVER_1,
+                    [](void* ctx, bool Success, IP_Address_t IP)
+                    {
+                        if(Success)
+                        {
+                            char Buffer[32];
+                            IP_Manager::IP_ToAscii(Buffer, IP);
+                            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Success -> %s\n", Buffer);
+                        }
+                        else
+                        {
+                            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Failed\n");
+                        }
+                    });
+
+                if(!ok)
+                {
+                    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Request rejected (busy)\n");
+                }
+            }
+
         }
 
       #ifdef STM32F429xx
