@@ -95,7 +95,7 @@ static const uint16_t sine_wave[256] =
 //  Note(s):
 //
 //-------------------------------------------------------------------------------------------------
-int Count = 0;
+uint32_t Count = 0;
 
 void TaskIdle(void)
 {
@@ -137,7 +137,10 @@ void TaskIdle(void)
 
 
         Count++;
-        if (Count >= 256) Count = 0;
+        if (Count >= 32768)
+        {
+            Count = 0;
+        }
 
       #ifdef STM32F429xx
         // VFD part test
