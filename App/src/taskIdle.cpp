@@ -95,7 +95,7 @@ static const uint16_t sine_wave[256] =
 //  Note(s):
 //
 //-------------------------------------------------------------------------------------------------
-uint32_t Count = 0;
+uint32_t Counter = 0;
 static bool DNS_TestStarted = false;
 
 void TaskIdle(void)
@@ -125,7 +125,7 @@ void TaskIdle(void)
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
      //   Value = sine_wave[Count];
 
-        if((Count & 0x01) == 0x00)
+        if((Counter & 0x01) == 0x00)
         {
             // IO_SetPinHigh(IO_LED_BLUE);
         }
@@ -137,10 +137,10 @@ void TaskIdle(void)
       //  DAC43508.WriteDAC(1, Value);
 
 
-        Count++;
-        if (Count >= 32768)
+        Counter++;
+        if (Counter >= 5)
         {
-            Count = 0;
+            Counter = 0;
 
             if(DNS_TestStarted == false)
             {
@@ -195,7 +195,7 @@ void TaskIdle(void)
       #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
         //pTaskNetwork->Process();
       #endif
-
-        nOS_Yield();
+        LIB_Delay_mSec(1000);
+        //nOS_Sleep(1);
     }
 }
