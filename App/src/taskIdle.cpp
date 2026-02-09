@@ -147,7 +147,7 @@ void TaskIdle(void)
                 DNS_TestStarted = true;
 
                 bool ok = pTaskNetwork->GetIP_Manager()->RequestDNS(IP_DEFAULT_NTP_SERVER_1,
-                    [](void* ctx, bool Success, IP_Address_t IP)
+                    [](IP_Manager* ctx, bool Success, IP_Address_t IP)
                     {
                         if(Success)
                         {
