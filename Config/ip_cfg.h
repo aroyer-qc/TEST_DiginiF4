@@ -40,7 +40,10 @@
 
 //-------------------------------------------------------------------------------------------------
 // Debug
-#define IP_DBG_DHCP                             DEF_ENABLED
+#define IP_DBG_DHCP                             DEF_DISABLED
+#define IP_DBG_DNS								DEF_ENABLED
+#define IP_DBG_ARP								DEF_DISABLED
+#define IP_DBG_ARP_RETRY_MSG					DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // Driver configuration  (may vary according to driver)

@@ -138,7 +138,7 @@ void TaskIdle(void)
 
 
         Counter++;
-        if (Counter >= 5)
+        if (Counter >= 2)
         {
             Counter = 0;
 
