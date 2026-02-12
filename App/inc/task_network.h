@@ -58,20 +58,40 @@ class ClassNetwork
 {
   public:
 
-    ClassNetwork(){};
-    ~ClassNetwork(){};
+                    ClassNetwork        ()                      {};
+                   ~ClassNetwork        ()                      {};
 
     // Task
-    void            Network                     (void);
+    void            Network             (void);
 //    void            WebServer                   (void);
 
 
 
-    SystemState_e   Initialize                  (void);
+    SystemState_e   Initialize          (void);
 
-   IP_Manager*      GetIP_Manager               (void)  { return &m_IP_Manager; }     // temporary until multi interface can work (maybe add ID)
+    IP_Manager*     GetIP_Manager       (void)                      { return &m_IP_Manager; }   // temporary until multi interface can work (maybe add ID)
+
+  #if (IP_USE_SNTP == DEF_ENABLED)
+    void            SetResolveIP        (IP_Address_t ResolveIP)    { m_NTP_ResolveIP = ResolveIP; }
+  #endif    
 
   private:
+
+    static void     DNS_Callback        (void* pContext, bool Success, IP_Address_t IP);
+
+      #if (IP_USE_SNTP == DEF_ENABLED)
+        SNTP_Client                     m_SNTP;                                                 // Simple Network Transport Protocol
+        bool                            m_NTP_DNS_Sent;
+        bool                            m_NTP_DNS_Resolve;
+        IP_Address_t                    m_NTP_ResolveIP;
+      #endif
+
+      #if (IP_USE_SOAP == DEF_ENABLED)
+        SOAP_Client                     m_SOAP                                                  // Simple Object Access Protocol
+        uint8_t                         m_SOAP_Server_1[IP_MAX_URL_SIZE];                       // Messaging protocol specification for exchanging structured information.
+        uint8_t                         m_SOAP_Server_2[IP_MAX_URL_SIZE];
+      #endif
+
 
     //void            WebServer_Serve             (void);
     //void            WebServer_DynamicPage       (void);
@@ -93,7 +113,6 @@ class ClassNetwork
 //-------------------------------------------------------------------------------------------------
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
-
 
 #ifdef TASK_NETWORK_GLOBAL
     class ClassNetwork  TaskNetwork;

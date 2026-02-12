@@ -140,21 +140,6 @@ void TaskIdle(void)
 
       //  DAC43508.WriteDAC(1, Value);
 
-#if (IP_USE_DNS == DEF_ENABLED)
-        Counter++;
-        if (Counter >= 2)
-        {
-            Counter = 0;
-
-            if(DNS_TestStarted == false)
-            {
-                DNS_TestStarted = true;
-
-                bool ok = pTaskNetwork->GetIP_Manager()->RequestDNS(IP_DEFAULT_NTP_SERVER_1, DNS_TestCallback);
-            }
-        }
-#endif
-
       #ifdef STM32F429xx
         // VFD part test
         //VFD.Send();

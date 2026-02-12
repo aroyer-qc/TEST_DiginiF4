@@ -178,6 +178,16 @@ extern "C" void TaskNetwork_Wrapper(void* pvParameters)
 //    (static_cast<ClassNetwork*>(pvParameters))->WebServer();
 //}
 
+
+// i may have to use ID for the DNS... has maybe few request might be sent in parallel
+#if (IP_USE_SNTP == DEF_ENABLED)
+void ClassNetwork::DNS_Callback(void* pContext, bool Success, IP_Address_t ResolveIP)
+{
+    ClassNetwork* pNetwork     = (ClassNetwork*)pContext;
+    pNetwork->SetResolveIP(ResolveIP);
+}
+#endif
+
 //-------------------------------------------------------------------------------------------------
 //
 //  Name:           Initialize
@@ -195,6 +205,10 @@ extern "C" void TaskNetwork_Wrapper(void* pvParameters)
 SystemState_e ClassNetwork::Initialize(void)
 {
     nOS_Error Error = NOS_OK;
+
+    m_NTP_DNS_Sent    = false;
+    m_NTP_DNS_Resolve = false;
+
 
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
@@ -245,6 +259,44 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_IP_Manager.Initialize(IF_WIRED);
+
+  #if (IP_USE_NTP == DEF_ENABLED)
+    m_NTP.Initialize(&m_Context);
+  #endif
+
+  #if (IP_USE_SNTP == DEF_ENABLED)
+    m_SNTP.Initialize(&m_Context);
+  #endif
+
+  #if (IP_USE_SOAP == DEF_ENABLED)
+    m_SOAP.Initialize(&m_Context);
+  #endif
+
+    for(;;)
+    {
+        /* Read a received packet from the Ethernet buffers and send it
+        to the lwIP for handling */
+        //ethernetif_input(&gnetif);
+
+      #if (IP_USE_DNS == DEF_ENABLED)
+        if(m_NTP_DNS_Sent == false)     // Retry every 5 minutes.
+        {
+            m_NTP_DNS_Sent = m_IP_Manager.RequestDNS(IP_DEFAULT_NTP_SERVER_1, ClassNetwork::DNS_Callback);
+
+            if(m_NTP_DNS_Sent == true)
+            {
+                m_NTP_DNS_Resolve;
+            }
+        }
+
+      //  if(m_NTP_DNS_Resolve == true)
+      #endif
+
+
+        nOS_Sleep(500);
+        LED_Toggle(IO_LED_GREEN);
+    }
+}
 
 #if 0  // need to reenable LWIP_NETCONN    1
     // Create a new connection identifier.
@@ -316,17 +368,6 @@ void ClassNetwork::Network(void)
   //      nOS_Sleep(1);
   //  }
   #endif
-
-    for(;;)
-    {
-        /* Read a received packet from the Ethernet buffers and send it
-        to the lwIP for handling */
-        //ethernetif_input(&gnetif);
-
-        nOS_Sleep(500);
-        LED_Toggle(IO_LED_GREEN);
-    }
-}
 
 //-------------------------------------------------------------------------------------------------
 //
