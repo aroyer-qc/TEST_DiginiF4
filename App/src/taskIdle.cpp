@@ -83,6 +83,8 @@ static const uint16_t sine_wave[256] =
 // Function(s)
 //-------------------------------------------------------------------------------------------------
 
+static void DNS_TestCallback(IP_Manager* ctx, bool Success, IP_Address_t IP);
+
 //-------------------------------------------------------------------------------------------------
 //
 //  Name:           TaskIdle
@@ -148,27 +150,8 @@ void TaskIdle(void)
             {
                 DNS_TestStarted = true;
 
-                bool ok = pTaskNetwork->GetIP_Manager()->RequestDNS(IP_DEFAULT_NTP_SERVER_1,
-                    [](IP_Manager* ctx, bool Success, IP_Address_t IP)
-                    {
-                        if(Success)
-                        {
-                            char Buffer[32];
-                            IP_Manager::IP_ToAscii(Buffer, IP);
-                            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Success -> %s\n", Buffer);
-                        }
-                        else
-                        {
-                            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Failed\n");
-                        }
-                    });
-
-                if(!ok)
-                {
-                    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "DNS TEST: Request rejected (busy)\n");
-                }
+                bool ok = pTaskNetwork->GetIP_Manager()->RequestDNS(IP_DEFAULT_NTP_SERVER_1, DNS_TestCallback);
             }
-
         }
 #endif
 
@@ -200,5 +183,21 @@ void TaskIdle(void)
       #endif
         LIB_Delay_mSec(1000);
         //nOS_Sleep(1);
+    }
+}
+
+static void DNS_TestCallback(IP_Manager* ctx, bool Success, IP_Address_t IP)
+{
+    if(Success)
+    {
+        char Buffer[32];
+        IP_Manager::IP_ToAscii(Buffer, IP);
+        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                             "DNS TEST: Success -> %s\n", Buffer);
+    }
+    else
+    {
+        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                             "DNS TEST: Failed\n");
     }
 }
