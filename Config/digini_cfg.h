@@ -37,8 +37,6 @@
 #define DIGINI_MAX_PRINT_SIZE                           256
 #define DIGINI_USE_ASSERT                               DEF_DISABLED
 
-//#define DIGINI_APP_USE_TICK_HOOK                      DEF_ENABLED
-
 //-------------------------------------------------------------------------------------------------
 // Database support
 //

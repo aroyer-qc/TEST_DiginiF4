@@ -56,34 +56,40 @@
 
 class ClassNetwork
 {
-  public:
+    public:
 
-                    ClassNetwork        ()                      {};
-                   ~ClassNetwork        ()                      {};
+                        ClassNetwork                ()                      {};
+                       ~ClassNetwork                ()                      {};
 
-    // Task
-    void            Network             (void);
-//    void            WebServer                   (void);
+        // Task
+        void            Network                     (void);
+      //void            WebServer                   (void);
 
+        SystemState_e   Initialize                  (void);
 
+        IP_Manager*     GetIP_Manager               (void)                      { return &m_IP_Manager; }   // temporary until multi interface can work (maybe add ID)
 
-    SystemState_e   Initialize          (void);
+      #if (IP_USE_SNTP == DEF_ENABLED)
+        void            SetNTP_ResolveIP            (IP_Address_t ResolveIP)     { m_NTP_ResolveIP = ResolveIP; }
+      #endif    
 
-    IP_Manager*     GetIP_Manager       (void)                      { return &m_IP_Manager; }   // temporary until multi interface can work (maybe add ID)
+    private:
 
-  #if (IP_USE_SNTP == DEF_ENABLED)
-    void            SetResolveIP        (IP_Address_t ResolveIP)    { m_NTP_ResolveIP = ResolveIP; }
-  #endif    
+      #if (IP_USE_SNTP == DEF_ENABLED)
+        static void     DNS_NTP_Callback            (void* pContext, bool Success, IP_Address_t IP);
+      #endif
 
-  private:
+      //void            WebServer_Serve             (void);
+      //void            WebServer_DynamicPage       (void);
 
-    static void     DNS_Callback        (void* pContext, bool Success, IP_Address_t IP);
+      //void            TCP_EchoServer_Initialize   (void);
+      //rr_t            TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
 
       #if (IP_USE_SNTP == DEF_ENABLED)
         SNTP_Client                     m_SNTP;                                                 // Simple Network Transport Protocol
-        bool                            m_NTP_DNS_Sent;
-        bool                            m_NTP_DNS_Resolve;
         IP_Address_t                    m_NTP_ResolveIP;
+        bool                            m_NTP_DNS_Resolved;
+        TickCount_t                     m_LastDNS_Request;
       #endif
 
       #if (IP_USE_SOAP == DEF_ENABLED)
@@ -93,21 +99,13 @@ class ClassNetwork
       #endif
 
 
-    //void            WebServer_Serve             (void);
-    //void            WebServer_DynamicPage       (void);
+      
+      //static nOS_Thread               m_WebServerHandle;
+      //static nOS_Stack                m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
+        static nOS_Thread               m_Handle;
+        static nOS_Stack                m_Stack                     [TASK_NETWORK_STACK_SIZE];
 
-    //void            TCP_EchoServer_Initialize   (void);
-    //rr_t           TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
-
-//    static nOS_Thread      m_WebServerHandle;
-    //static nOS_Stack       m_WebServerStack       [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
-    static nOS_Thread      m_Handle;
-    static nOS_Stack       m_Stack                  [TASK_NETWORK_STACK_SIZE];
-    //struct netconn*        m_WebServerConn;
-//    struct netconn*        m_WebServerNewConn;
-
-    class IP_Manager       m_IP_Manager;
-    //class ETH_IF_Driver    m_IF_Driver;
+        class IP_Manager                m_IP_Manager;
 };
 
 //-------------------------------------------------------------------------------------------------
