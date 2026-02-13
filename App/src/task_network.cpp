@@ -259,17 +259,18 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_IP_Manager.Initialize(IF_WIRED);
+    NetworkContext* pContext = m_IP_Manager.GetContext();
 
   #if (IP_USE_NTP == DEF_ENABLED)
-    m_NTP.Initialize(&m_Context);
+    m_NTP.Initialize(pContext);
   #endif
 
   #if (IP_USE_SNTP == DEF_ENABLED)
-    m_SNTP.Initialize(&m_Context);
+    m_SNTP.Initialize(pContext);
   #endif
 
   #if (IP_USE_SOAP == DEF_ENABLED)
-    m_SOAP.Initialize(&m_Context);
+    m_SOAP.Initialize(pContext);
   #endif
 
     for(;;)
@@ -285,7 +286,7 @@ void ClassNetwork::Network(void)
 
             if(m_NTP_DNS_Sent == true)
             {
-                m_NTP_DNS_Resolve;
+                //m_NTP_DNS_Resolve;
             }
         }
 

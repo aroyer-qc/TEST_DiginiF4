@@ -83,8 +83,6 @@ static const uint16_t sine_wave[256] =
 // Function(s)
 //-------------------------------------------------------------------------------------------------
 
-static void DNS_TestCallback(IP_Manager* ctx, bool Success, IP_Address_t IP);
-
 //-------------------------------------------------------------------------------------------------
 //
 //  Name:           TaskIdle
@@ -97,11 +95,6 @@ static void DNS_TestCallback(IP_Manager* ctx, bool Success, IP_Address_t IP);
 //  Note(s):
 //
 //-------------------------------------------------------------------------------------------------
-uint32_t Counter = 0;
-#if (IP_USE_DNS == DEF_ENABLED)
-static bool DNS_TestStarted = false;
-#endif
-
 void TaskIdle(void)
 {
   //  uint16_t Value;
@@ -128,15 +121,6 @@ void TaskIdle(void)
 
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
      //   Value = sine_wave[Count];
-
-        if((Counter & 0x01) == 0x00)
-        {
-            // IO_SetPinHigh(IO_LED_BLUE);
-        }
-        else
-        {
-             // if(Count == 128) IO_SetPinLow(IO_LED_BLUE);
-        }
 
       //  DAC43508.WriteDAC(1, Value);
 
@@ -168,21 +152,5 @@ void TaskIdle(void)
       #endif
         LIB_Delay_mSec(1000);
         //nOS_Sleep(1);
-    }
-}
-
-static void DNS_TestCallback(IP_Manager* ctx, bool Success, IP_Address_t IP)
-{
-    if(Success)
-    {
-        char Buffer[32];
-        IP_Manager::IP_ToAscii(Buffer, IP);
-        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
-                             "DNS TEST: Success -> %s\n", Buffer);
-    }
-    else
-    {
-        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
-                             "DNS TEST: Failed\n");
     }
 }

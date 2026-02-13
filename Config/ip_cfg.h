@@ -106,6 +106,8 @@
 
 #define SOCKET_MAX_COUNT                        10
 
+#define DNS_MAX_PENDING_COUNT                   4
+
 #define VENDOR_CLASS                            "Digini"
 
 // This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
