@@ -179,7 +179,6 @@ extern "C" void TaskNetwork_Wrapper(void* pvParameters)
 //}
 
 
-// i may have to use ID for the DNS... has maybe few request might be sent in parallel
 #if (IP_USE_SNTP == DEF_ENABLED)
 void ClassNetwork::DNS_NTP_Callback(void* pContext, bool Success, IP_Address_t IP)
 {
@@ -286,38 +285,34 @@ void ClassNetwork::Network(void)
 
     for(;;)
     {
-        /* Read a received packet from the Ethernet buffers and send it
-        to the lwIP for handling */
-        //ethernetif_input(&gnetif);
-
-      #if (IP_USE_DNS == DEF_ENABLED) 
-       #if (IP_USE_SNTP == DEF_ENABLED)
-        TickCount_t Tick = GetTick();
-
-        // DNS not resolved yet → try every 5 minutes
-        if(m_NTP_DNS_Resolved == false)
+        if(pContext->IsEthernetReady() == true)
         {
-            if(TickHasTimeOut(m_LastDNS_Request, 5 * 60 * 1000))
-            {
-                m_LastDNS_Request = Tick;
-                m_IP_Manager.RequestDNS(IP_DEFAULT_NTP_SERVER_1, ClassNetwork::DNS_NTP_Callback);
-            }
-        }
-        else
-        {
-            // DNS resolved → run SNTP normally
-            m_SNTP.Process();
+          #if (IP_USE_DNS == DEF_ENABLED)
+           #if (IP_USE_SNTP == DEF_ENABLED)
+            TickCount_t Tick = GetTick();
 
-            // Optional: redo DNS every 1 hour
-            if(TickHasTimeOut(m_LastDNS_Request, 60 * 60 * 1000))
+            if(m_NTP_DNS_Resolved == false)
             {
-                m_LastDNS_Request = Tick;
-                m_NTP_DNS_Resolved = false;   // Force DNS refresh
+                if((m_LastDNS_Request == 0) || TickHasTimeOut(m_LastDNS_Request, 5 * 60 * 1000))
+                {
+                    m_LastDNS_Request = Tick;
+                    m_IP_Manager.RequestDNS(IP_DEFAULT_NTP_SERVER_1, ClassNetwork::DNS_NTP_Callback, this);
+                }
             }
+            else
+            {
+                m_SNTP.Process();
+
+                if(TickHasTimeOut(m_LastDNS_Request, 60 * 60 * 1000))
+                {
+                    m_LastDNS_Request = Tick;
+                    m_NTP_DNS_Resolved = false;
+                }
+            }
+           #endif
+          #endif
         }
-       #endif
-      #endif
-        nOS_Sleep(500);
+        nOS_Sleep(10);
         LED_Toggle(IO_LED_GREEN);
     }
 }
