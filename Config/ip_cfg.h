@@ -66,7 +66,8 @@
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_ENABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
-#define IP_USE_TCP 							    DEF_DISABLED
+#define IP_USE_TCP_CLIENT                       DEF_DISABLED
+#define IP_USE_TCP_SERVER                       DEF_DISABLED
 #define IP_USE_UDP 							    DEF_ENABLED
 #define IP_USE_RAW                              DEF_DISABLED
 
@@ -107,6 +108,8 @@
 #define SOCKET_MAX_COUNT                        10
 
 #define DNS_MAX_PENDING_COUNT                   4
+
+#define TCP_DEFAULT_WINDOW_SIZE                 1024
 
 #define VENDOR_CLASS                            "Digini"
 
