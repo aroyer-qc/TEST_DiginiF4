@@ -64,7 +64,7 @@
 #define IP_USE_DNS							    DEF_ENABLED           // Need UDP
 #define IP_USE_ICMP							    DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
-#define IP_USE_SNTP							    DEF_ENABLED
+#define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
 #define IP_USE_TCP_CLIENT                       DEF_DISABLED
 #define IP_USE_TCP_SERVER                       DEF_DISABLED
@@ -85,13 +85,10 @@
 
 //-------------------------------------------------------------------------------------------------
 
-#define IP_MANAGER_PACKET_Q_SIZE  			    8
+#define IP_PACKET_Q_SIZE  			            8
 
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
-
-// If IP Interface use host name
-#define IP_USE_HOSTNAME                         DEF_ENABLED
 
 #define IP_IF_WIRED_PROTOCOL                    (IP_FLAG_USE_ARP | IP_FLAG_USE_DHCP | IP_FLAG_USE_ICMP | IP_FLAG_USE_TCP | IP_FLAG_USE_UDP)
 
@@ -113,7 +110,6 @@
 
 #define VENDOR_CLASS                            "Digini"
 
-// This configuration use the hostname           (IP_USE_HOSTNAME == DEF_ENABLED)
 #define IF_ETH_DEF(X_IF) \
 /*        ENUM ID       Hostname            Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
 /* Interface 1 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \

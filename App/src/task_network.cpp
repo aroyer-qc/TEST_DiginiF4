@@ -268,24 +268,12 @@ SystemState_e ClassNetwork::Initialize(void)
 //-------------------------------------------------------------------------------------------------
 void ClassNetwork::Network(void)
 {
-    m_IP_Manager.Initialize(IF_WIRED);
-    NetworkContext* pContext = m_IP_Manager.GetContext();
-
-  #if (IP_USE_NTP == DEF_ENABLED)
-    m_NTP.Initialize(pContext);
-  #endif
-
-  #if (IP_USE_SNTP == DEF_ENABLED)
-    m_SNTP.Initialize(pContext);
-  #endif
-
-  #if (IP_USE_SOAP == DEF_ENABLED)
-    m_SOAP.Initialize(pContext);
-  #endif
+    m_NetworkContext.Initialize(IF_WIRED);
+    // m_IP_Manager.GetContext();
 
     for(;;)
     {
-        if(pContext->IsEthernetReady() == true)
+        if(m_NetworkContext.IsEthernetReady() == true)
         {
           #if (IP_USE_DNS == DEF_ENABLED)
            #if (IP_USE_SNTP == DEF_ENABLED)
@@ -296,7 +284,7 @@ void ClassNetwork::Network(void)
                 if((m_LastDNS_Request == 0) || TickHasTimeOut(m_LastDNS_Request, 5 * 60 * 1000))
                 {
                     m_LastDNS_Request = Tick;
-                    m_IP_Manager.RequestDNS(IP_DEFAULT_NTP_SERVER_1, ClassNetwork::DNS_NTP_Callback, this);
+                    m_DNS.SendQuery(IP_DEFAULT_NTP_SERVER_1, ClassNetwork::DNS_NTP_Callback, this);
                 }
             }
             else

@@ -67,11 +67,11 @@ class ClassNetwork
 
         SystemState_e   Initialize                  (void);
 
-        IP_Manager*     GetIP_Manager               (void)                      { return &m_IP_Manager; }   // temporary until multi interface can work (maybe add ID)
+        NetworkContext* GetContext                  (void)                       { return &m_NetworkContext; }
 
       #if (IP_USE_SNTP == DEF_ENABLED)
         void            SetNTP_ResolveIP            (IP_Address_t ResolveIP)     { m_NTP_ResolveIP = ResolveIP; }
-      #endif    
+      #endif
 
     private:
 
@@ -86,10 +86,10 @@ class ClassNetwork
       //rr_t            TCP_EchoServer_Accept       (void* arg, struct tcp_pcb* newpcb, err_t err);
 
       #if (IP_USE_SNTP == DEF_ENABLED)
-        SNTP_Client                     m_SNTP;                                                 // Simple Network Transport Protocol
-        IP_Address_t                    m_NTP_ResolveIP;
-        bool                            m_NTP_DNS_Resolved;
-        TickCount_t                     m_LastDNS_Request;
+        //SNTP_Client                     m_SNTP;                                                 // Simple Network Transport Protocol
+        //IP_Address_t                    m_NTP_ResolveIP;
+        //bool                            m_NTP_DNS_Resolved;
+        //TickCount_t                     m_LastDNS_Request;
       #endif
 
       #if (IP_USE_SOAP == DEF_ENABLED)
@@ -99,13 +99,13 @@ class ClassNetwork
       #endif
 
 
-      
+
       //static nOS_Thread               m_WebServerHandle;
       //static nOS_Stack                m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
         static nOS_Thread               m_Handle;
         static nOS_Stack                m_Stack                     [TASK_NETWORK_STACK_SIZE];
 
-        class IP_Manager                m_IP_Manager;
+        class NetworkContext            m_NetworkContext;
 };
 
 //-------------------------------------------------------------------------------------------------
