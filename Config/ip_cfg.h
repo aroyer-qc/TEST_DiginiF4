@@ -66,7 +66,7 @@
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED
-#define IP_USE_TCP_CLIENT                       DEF_DISABLED
+#define IP_USE_TCP_CLIENT                       DEF_ENABLED
 #define IP_USE_TCP_SERVER                       DEF_DISABLED
 #define IP_USE_UDP 							    DEF_ENABLED
 #define IP_USE_RAW                              DEF_DISABLED
@@ -86,6 +86,8 @@
 //-------------------------------------------------------------------------------------------------
 
 #define IP_PACKET_Q_SIZE  			            8
+
+#define IP_TCP_MAX_LISTEN                       2
 
 //-------------------------------------------------------------------------------------------------
 // Interface configuration
