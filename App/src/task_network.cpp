@@ -38,6 +38,23 @@
 // Private variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
+//create a task for MQTT
+/*
+void Task_MQTT(void)
+{
+    mqtt.Initialize(...);
+
+    for(;;)
+    {
+        mqtt.Process();
+        nOS_Sleep(5);
+    }
+}
+*/
+
+
+
+
 /*
 u32_t nPageHits = 0;
 
