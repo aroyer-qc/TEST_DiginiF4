@@ -1,0 +1,229 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(Test_DiginiF4 C CXX ASM)
+
+#---------------------------------------------------------------------------------------
+# Toolchain / MCU configuration
+#---------------------------------------------------------------------------------------
+
+set(MCU_CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS ON)        # gnu11
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS ON)      # gnu++17
+
+# Default linker script (you can swap to stm32f401re_flash.ld, etc.)
+set(LINKER_SCRIPT "${CMAKE_CURRENT_SOURCE_DIR}/stm32f429zi_flash.ld" CACHE FILEPATH "Linker script")
+
+#---------------------------------------------------------------------------------------
+# Global compile options / definitions
+#---------------------------------------------------------------------------------------
+
+add_compile_options(
+    ${MCU_CPU_FLAGS}
+    -fno-strict-aliasing
+)
+
+# C options
+add_compile_options(
+    $<$<COMPILE_LANGUAGE:C>:-std=gnu11>
+    $<$<COMPILE_LANGUAGE:C>:-O0>
+    $<$<COMPILE_LANGUAGE:C>:-g3>
+)
+
+# C++ options
+add_compile_options(
+    $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
+    $<$<COMPILE_LANGUAGE:CXX>:-fschedule-insns2>
+    $<$<COMPILE_LANGUAGE:CXX>:-O0>
+    $<$<COMPILE_LANGUAGE:CXX>:-g3>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-psabi>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-literal-suffix>
+    $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-use-cxa-atexit>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wno-register>
+)
+
+# Assembler options
+add_compile_options(
+    $<$<COMPILE_LANGUAGE:ASM>:-Wa,--gdwarf-2>
+)
+
+# Global preprocessor symbols
+add_compile_definitions(
+    ARM_MATH_CM4
+    x__FPU_PRESENT=1
+    xUSE_USB_FS
+    STM32F4xx
+    STM32F429_439xx
+)
+
+# Global include dirs
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Config
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Module
+)
+
+#---------------------------------------------------------------------------------------
+# Sources
+#---------------------------------------------------------------------------------------
+
+set(SRC_FILES
+    # App
+    ../App/src/bsp.cpp
+    ../App/src/irq.cpp
+    ../App/src/main.cpp
+    ../App/src/task_network.cpp
+    ../App/src/taskIdle.cpp
+    ../App/startup_stm32f4xx.S
+
+    # CLI / Comm / Console / VT100
+    ../module/Digini/Comm/CmdLine/src/lib_cli.cpp
+    ../module/Digini/Comm/CmdLine/src/lib_cli_command.cpp
+    ../module/Digini/Comm/Comm/src/lib_comm.cpp
+    ../module/Digini/Comm/Console/src/lib_console.cpp
+    ../module/Digini/Comm/VT100/src/lib_vt100.cpp
+    ../module/Digini/Comm/VT100/src/lib_vt100_callback.cpp
+
+    # Database
+    ../module/Digini/Database/src/lib_class_database.cpp
+    ../module/Digini/Database/src/lib_class_hard_dbase.cpp
+    ../module/Digini/Database/src/lib_class_rom_dbase.cpp
+    ../module/Digini/Database/src/lib_database_wrapper.cpp
+
+    # Digini core
+    ../module/Digini/Digini/src/digini.cpp
+    ../module/Digini/Digini/src/lib_label.cpp
+
+    # Memory
+    ../module/Digini/Memory/src/lib_memory.cpp
+    ../module/Digini/Memory/src/lib_memory_node.cpp
+    ../module/Digini/Memory/src/lib_node_list.cpp
+
+    # NanoIP
+    ../module/Digini/NanoIP/src/Device/lib_class_PHY_LAN8742A.cpp
+    ../module/Digini/NanoIP/src/lib_class_arp.cpp
+    ../module/Digini/NanoIP/src/lib_class_context.cpp
+    ../module/Digini/NanoIP/src/lib_class_dhcp.cpp
+    ../module/Digini/NanoIP/src/lib_class_dns.cpp
+    ../module/Digini/NanoIP/src/lib_class_ethernet_if.cpp
+    ../module/Digini/NanoIP/src/lib_class_icmp.cpp
+    ../module/Digini/NanoIP/src/lib_class_IP_Manager.cpp
+    ../module/Digini/NanoIP/src/lib_class_sntp.cpp
+    ../module/Digini/NanoIP/src/lib_class_socket.cpp
+    ../module/Digini/NanoIP/src/lib_class_udp.cpp
+
+    # Peripheral / device
+    ../module/Digini/Peripheral/src/device/lib_class_pwm_WS281x.cpp
+    ../module/Digini/Peripheral/src/device/lib_class_spi_VFD.cpp
+
+    # Peripheral / STM32F4xx ports
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_crc.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_dma.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_eth.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_pwm.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_spi.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_tim.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_class_STM32F4_uart.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_STM32F4_io.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_STM32F4_isr.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_STM32F4_rng.cpp
+    ../module/Digini/Peripheral/src/port/STM32F4xx/lib_STM32F4_system_clock.c
+
+    # RTOS wrapper / nOS tick
+    ../module/Digini/RTOS_Wrapper/src/nOS/lib_nOS_Tick.c
+
+    # String
+    ../module/Digini/String/src/lib_string.cpp
+
+    # Utility
+    ../module/Digini/Utility/src/lib_bit_reversal.cpp
+    ../module/Digini/Utility/src/lib_class_bit_array.cpp
+    ../module/Digini/Utility/src/lib_class_crc.cpp
+    ../module/Digini/Utility/src/lib_fast_memcpy.cpp
+    ../module/Digini/Utility/src/lib_fifo.cpp
+    ../module/Digini/Utility/src/lib_stacktistic.cpp
+    ../module/Digini/Utility/src/lib_time_and_delay.cpp
+    ../module/Digini/Utility/src/port/STM32F4xx/lib_stacktistic_STM32F4.cpp
+
+    # nOS kernel
+    ../module/nOS/src/nOSAlarm.c
+    ../module/nOS/src/nOSBarrier.c
+    ../module/nOS/src/nOSEvent.c
+    ../module/nOS/src/nOSFlag.c
+    ../module/nOS/src/nOSList.c
+    ../module/nOS/src/nOSMem.c
+    ../module/nOS/src/nOSMutex.c
+    ../module/nOS/src/nOSQueue.c
+    ../module/nOS/src/nOSSched.c
+    ../module/nOS/src/nOSSem.c
+    ../module/nOS/src/nOSSignal.c
+    ../module/nOS/src/nOSThread.c
+    ../module/nOS/src/nOSTime.c
+    ../module/nOS/src/nOSTimer.c
+    ../module/nOS/src/port/GCC/ARM_Cortex_M4/nOSPort.c
+
+    # ebmon (only used in some Debug targets originally; include or guard as you wish)
+    ebmon.c
+)
+
+# Files disabled in EmBitz (compile=0/link=0) intentionally omitted:
+#   lib_class_spi_DACx3508.cpp
+#   lib_class_spi_IV_11.cpp
+
+#---------------------------------------------------------------------------------------
+# Target
+#---------------------------------------------------------------------------------------
+
+add_executable(${PROJECT_NAME}.elf
+    ${SRC_FILES}
+)
+
+target_include_directories(${PROJECT_NAME}.elf PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../App/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Config
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Comm/CmdLine/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Comm/Comm/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Comm/Console/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Comm/VT100/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Database/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Digini/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Memory/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/NanoIP/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Peripheral/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Peripheral/inc/device
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Peripheral/inc/device/core
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Peripheral/inc/device/port/STM32F4xx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/Digini/Peripheral/inc/port/STM32F4xx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/module_STM32F4xx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/nOS/inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/../module/nOS/inc/port/GCC/ARM_Cortex_M4
+)
+
+target_compile_definitions(${PROJECT_NAME}.elf PRIVATE
+    DEBUG           # emulate Debug; remove for Release
+    STM32F429xx     # choose per board: STM32F401xE / STM32F427xx / STM32F429xx
+)
+
+target_link_options(${PROJECT_NAME}.elf PRIVATE
+    ${MCU_CPU_FLAGS}
+    -T${LINKER_SCRIPT}
+    -Wl,--gc-sections
+    -Wl,--cref
+)
+
+target_link_libraries(${PROJECT_NAME}.elf
+    m
+    stdc++
+)
+
+add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${PROJECT_NAME}.hex
+    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${PROJECT_NAME}.elf> ${PROJECT_NAME}.bin
+    COMMENT "Generating HEX and BIN files"
+)

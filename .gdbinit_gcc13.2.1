@@ -1,0 +1,11 @@
+python
+
+import sys 
+
+#This must point to the gcc compiler python pretty printers. (Adjust it to the one you use)
+sys.path.insert(0, '../Compiler/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/share/gcc-13.2.1/python')
+
+from libstdcxx.v6.printers import register_libstdcxx_printers 
+register_libstdcxx_printers (None) 
+
+end

@@ -1,0 +1,49 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "Default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}"
+        },
+        {
+            "name": "mcu",
+            "hidden": true, 
+            "inherits": "Default",
+            "toolchainFile": "cmake/arm-none-eabi-gcc.cmake"
+        },        
+        {
+            "name": "Debug_TestF4",
+            "inherits": "mcu",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "BUILD_TESTF4": "TRUE"
+            },
+            "environment": {
+                "COMPILER_WANTED_VERSION": "13.2.1"
+            }
+        },
+        {
+            "name": "Release_TestF4",
+            "inherits": "mcu",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_TESTF4": "TRUE"
+            },
+            "environment": {
+                "COMPILER_WANTED_VERSION": "13.2.1"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug_TestF4",
+            "configurePreset": "Debug_TestF4"
+        },
+        {
+            "name": "Release_TestF4",
+            "configurePreset": "Release_TestF4"
+        }
+    ]
+}

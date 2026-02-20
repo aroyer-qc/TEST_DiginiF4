@@ -1,0 +1,38 @@
+{
+    "C_Cpp.intelliSenseEngine": "default", // Or "Tag Parser" if needed
+    "cmake.cmakePath": "${workspaceFolder}/../Tools/CMake/3.21.7/bin/cmake.exe",
+    //Use custom compiled openocd with st mods
+    "cortex-debug.openocdPath.windows": "${workspaceFolder}/../Tools/openocd/0.12.0-stm32h5x/bin/openocd.exe",
+    //For pretty printing, we need the gdb with python included, we use the one from xpack, since it includes everything and is packaged to be standalone
+    //Also we use a more recent gdb then 8.2.1 because it does not work with vscode
+    //Download the toolchain here : https://xpack.github.io/dev-tools/arm-none-eabi-gcc/releases/
+    "cortex-debug.armToolchainPath.windows": "${workspaceFolder}/../Compiler/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/bin",
+    "cortex-debug.gdbPath.windows": "${workspaceFolder}/../Compiler/xpack-arm-none-eabi-gcc-13.2.1-1.1-win32-x64/bin/arm-none-eabi-gdb-py3.exe",
+    
+    "cmake.copyCompileCommands": "${workspaceFolder}/build/ActiveCompileCommand.json",
+    "files.associations": {
+    },
+
+    "search.exclude": {
+    "**/*.log": true,
+    "**/*.tmp": true,
+    "**/*.bak": true,
+    "**/*.json": true,
+    "**/*.md": true,
+    "**/*.xml": true,
+    "**/*.rst": true,
+    "**/*.afp_xml": true,
+    "**/*.all_xml": true,
+    "**tdd*": true,
+    "**Tdd*": true,
+    "**Mock*": true,
+    "**mock*": true
+
+//        "**/Externals/MTAPPS/Externals/Infra/Externals/**": true,
+    },
+
+    "cortex-debug.variableUseNaturalFormat": false,
+    "editor.emptySelectionClipboard": false,
+    "editor.copyOnSelection": true
+}
+ 
