@@ -286,7 +286,6 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_NetworkContext.Initialize(IF_WIRED);
-    // m_IP_Manager.GetContext();
 
     for(;;)
     {
