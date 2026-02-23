@@ -239,10 +239,10 @@ SystemState_e ClassNetwork::Initialize(void)
 
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
-  #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-    myStacktistic.Register(&m_Stack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
- //   myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
-  #endif
+//  #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
+//    myStacktistic.Register(&m_Stack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
+//    myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
+//  #endif
 
 
     Error = nOS_ThreadCreate(&m_Handle,
@@ -250,7 +250,8 @@ SystemState_e ClassNetwork::Initialize(void)
                              this,
                              &m_Stack[0],
                              TASK_NETWORK_STACK_SIZE,
-                             TASK_NETWORK_PRIO);
+                             TASK_NETWORK_PRIO,
+                             "Network");
 
 
     // Webserver task
@@ -260,7 +261,8 @@ SystemState_e ClassNetwork::Initialize(void)
                              this,
                              &m_WebServerStack[0],
                              TASK_WEBSERVER_STACK_SIZE,
-                             TASK_WEBSERVER_PRIO};
+                             TASK_WEBSERVER_PRIO,
+                             "WEB Server"};
 */
 
     // tcp echo server Init

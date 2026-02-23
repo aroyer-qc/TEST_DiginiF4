@@ -11,6 +11,20 @@
 
 /**********************************************************************************************************************
  *                                                                                                                    *
+ * Enable or disable the thread creation hook. When enabled, the application is notified each time nOS_ThreadCreate   *
+ * successfully creates a thread, allowing the system to log creation events, attach metadata, or enforce             *
+ * application-specific policies. The hook is executed in the context of the caller and must not block.               *
+ *                                                                                                                    *
+ * Notes                                                                                                              *
+ *   1. Useful for debugging, monitoring, or integrating with external diagnostic tools.                              *
+ *   2. Must be disabled if the application does not provide nOS_ThreadCreateHook().                                  *
+ *                                                                                                                    *
+ **********************************************************************************************************************/
+
+#define NOS_CONFIG_THREAD_CREATE_HOOK               1
+
+/**********************************************************************************************************************
+ *                                                                                                                    *
  * Enable or disable arguments checking in nOS API.                                                                   *
  *                                                                                                                    *
  * Notes                                                                                                              *
@@ -157,7 +171,7 @@
  *   2. Thread name can be changed at run-time.                                                                       *
  *                                                                                                                    *
  **********************************************************************************************************************/
-#define NOS_CONFIG_THREAD_NAME_ENABLE               0
+#define NOS_CONFIG_THREAD_NAME_ENABLE               1
 
 /**********************************************************************************************************************
  *                                                                                                                    *
@@ -414,7 +428,7 @@
  *   1. Not used if timer thread is disabled.                                                                         *
  *                                                                                                                    *
  **********************************************************************************************************************/
-#define NOS_CONFIG_TIMER_THREAD_STACK_SIZE          128
+#define NOS_CONFIG_TIMER_THREAD_STACK_SIZE          256
 
 /**********************************************************************************************************************
  *                                                                                                                    *
