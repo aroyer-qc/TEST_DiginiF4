@@ -11,8 +11,8 @@
 // Static member(s)
 //-------------------------------------------------------------------------------------------------
 
-nOS_Thread     ClassMQTT_Task::m_MQTTHandle;
-nOS_Stack      ClassMQTT_Task::m_MQTTStack[TASK_MQTT_STACK_SIZE];
+nOS_Thread     ClassMQTT_Task::m_Handle;
+nOS_Stack      ClassMQTT_Task::m_Stack[TASK_MQTT_STACK_SIZE];
 
 //-------------------------------------------------------------------------------------------------
 // Local MQTT message callback (for testing)
@@ -31,16 +31,33 @@ static void MQTT_TestMessageCallback(void* pContext, const char* pTopic, const u
 }
 
 //-------------------------------------------------------------------------------------------------
+//
+//  Name:           TaskMQTT_Wrapper
+//
+//  Parameter(s):   void* pvParameters
+//  Return:         void
+//
+//  Description:    main() for the ClassNetwork
+//
+//  Note(s):
+//
+//-------------------------------------------------------------------------------------------------
+extern "C" void TaskMQTT_Wrapper(void* pvParameters)
+{
+    (static_cast<ClassMQTT*>(pvParameters))->Run();
+}
+
+//-------------------------------------------------------------------------------------------------
 // Initialize()
 //-------------------------------------------------------------------------------------------------
 
-SystemState_e ClassMQTT_Task::Initialize(void)
+SystemState_e ClassMQTT::Initialize(void)
 {
-    nOS_SemCreate(&m_MQTTSem, 0);
+    nOS_SemCreate(&m_Sem, 0);
 
     // Create task
-    nOS_ThreadCreate(&m_MQTTHandle,
-                     m_MQTTStack,
+    nOS_ThreadCreate(&m_Handle,
+                     m_Stack,
                      TASK_MQTT_STACK_SIZE,
                      TASK_MQTT_PRIO,
                      TaskMQTT_Wrapper,
@@ -53,7 +70,7 @@ SystemState_e ClassMQTT_Task::Initialize(void)
 // ConnectToBroker()
 //-------------------------------------------------------------------------------------------------
 
-bool ClassMQTT_Task::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port)
+bool ClassMQTT::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port)
 {
     if(m_Client.Initialize(*m_pContext) == false)
         return false;
@@ -67,7 +84,7 @@ bool ClassMQTT_Task::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port
 // SubscribeToTestTopic()
 //-------------------------------------------------------------------------------------------------
 
-bool ClassMQTT_Task::SubscribeToTestTopic(const char* pTopic)
+bool ClassMQTT::SubscribeToTestTopic(const char* pTopic)
 {
     return m_Client.Subscribe(pTopic, MQTT_QOS_0);
 }
@@ -76,19 +93,16 @@ bool ClassMQTT_Task::SubscribeToTestTopic(const char* pTopic)
 // PublishTestMessage()
 //-------------------------------------------------------------------------------------------------
 
-bool ClassMQTT_Task::PublishTestMessage(const char* pTopic, const char* pMsg)
+bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
 {
-    return m_Client.Publish(pTopic,
-                            (const uint8_t*)pMsg,
-                            strlen(pMsg),
-                            MQTT_QOS_0);
+    return m_Client.Publish(pTopic, (const uint8_t*)pMsg, strlen(pMsg), MQTT_QOS_0);
 }
 
 //-------------------------------------------------------------------------------------------------
 // Run()
 //-------------------------------------------------------------------------------------------------
 
-void ClassMQTT_Task::Run(void)
+void ClassMQTT::Run(void)
 {
     // Example broker IP (change as needed)
     IP_Address_t BrokerIP = IP_ADDRESS(192,168,1,199);
@@ -109,18 +123,8 @@ void ClassMQTT_Task::Run(void)
         m_Client.Process();
 
         // Wait or wake
-        nOS_SemTake(&m_MQTTSem, 100);
+        nOS_SemTake(&m_Sem, 100);
     }
-}
-
-//-------------------------------------------------------------------------------------------------
-// Wrapper
-//-------------------------------------------------------------------------------------------------
-
-extern "C" void TaskMQTT_Wrapper(void* pvParameters)
-{
-    ClassMQTT_Task* pThis = (ClassMQTT_Task*)pvParameters;
-    pThis->Run();
 }
 
 //-------------------------------------------------------------------------------------------------

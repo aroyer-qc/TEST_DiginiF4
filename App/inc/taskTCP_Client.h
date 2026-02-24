@@ -1,6 +1,6 @@
 //-------------------------------------------------------------------------------------------------
 //
-//  File : taskMQTT.h
+//  File : taskTCP_CLient.h
 //
 //-------------------------------------------------------------------------------------------------
 //
@@ -30,61 +30,55 @@
 // Global Macro
 //-------------------------------------------------------------------------------------------------
 
-#ifdef TASK_MQTT_GLOBAL
-    #define TASK_MQTT_EXTERN
+#ifdef TASK_TCP_CLIENT_GLOBAL
+    #define TASK_TCP_CLIENT_EXTERN
 #else
-    #define TASK_MQTT_EXTERN extern
+    #define TASK_TCP_CLIENT_EXTERN extern
 #endif
 
 //-------------------------------------------------------------------------------------------------
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define TASK_MQTT_STACK_SIZE               256
-#define TASK_MQTT_PRIO                     4
+#define TASK_TCP_CLIENT_STACK_SIZE               256
+#define TASK_TCP_CLIENT_PRIO                     4
 
 //-------------------------------------------------------------------------------------------------
 // Class definition(s)
 //-------------------------------------------------------------------------------------------------
 
-class ClassMQTT
+class TCP_Client
 {
     public:
 
         void            Run                         (void);
         SystemState_e   Initialize                  (void);
-        void            GiveToRunMQTT               (void)     { nOS_SemGive(&m_Sem); }
-
-        // MQTT test helpers
-        bool            ConnectToBroker             (const IP_Address_t& ServerIP, uint16_t Port);
-        bool            SubscribeToTestTopic        (const char* pTopic);
-        bool            PublishTestMessage          (const char* pTopic, const char* pMsg);
+        void            GiveToRun                   (void)      { nOS_SemGive(&m_Sem); }
 
     private:
 
         static nOS_Thread      m_Handle;
-        static nOS_Stack       m_Stack          [TASK_MQTT_STACK_SIZE];
-        nOS_Sem                m_Sem;
+        static nOS_Stack       m_Stack          [TASK_TCP_CLIENT_STACK_SIZE];
         
-        MQTT_Client            m_Client;            // The MQTT library instance
+        TCP_Socket             m_Socket;
 };
 
 //-------------------------------------------------------------------------------------------------
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
-TASK_MQTT_EXTERN   class ClassMQTT    TaskMQTT;
+TASK_TCP_CLIENT_EXTERN   class ClassTCP_Client    TaskTCP_Client;
 
-#ifdef TASK_MQTT_GLOBAL
-                    class ClassMQTT*  pTaskMQTT = &TaskMQTT;
+#ifdef TASK_TCP_CLIENT_GLOBAL
+                    class ClassTCP_Client*  pTaskTCP_Client = &TaskTCP_Client;
 #else
-    extern          class ClassMQTT*  pTaskMQTT;
+    extern          class ClassTCP_Client*  pTaskTCP_Client;
 #endif
 
 //-------------------------------------------------------------------------------------------------
 // Function prototype(s)
 //-------------------------------------------------------------------------------------------------
 
-extern "C" void TaskMQTT_Wrapper           (void* pvParameters);
+extern "C" void TaskTCP_Client_Wrapper           (void* pvParameters);
 
 //-------------------------------------------------------------------------------------------------

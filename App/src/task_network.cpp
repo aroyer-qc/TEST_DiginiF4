@@ -38,23 +38,6 @@
 // Private variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
-//create a task for MQTT
-/*
-void Task_MQTT(void)
-{
-    mqtt.Initialize(...);
-
-    for(;;)
-    {
-        mqtt.Process();
-        nOS_Sleep(5);
-    }
-}
-*/
-
-
-
-
 /*
 u32_t nPageHits = 0;
 
@@ -180,7 +163,7 @@ nOS_Stack  ClassNetwork::m_Stack[TASK_NETWORK_STACK_SIZE]           NOS_STACK_LO
 //  Parameter(s):   void* pvParameters
 //  Return:         void
 //
-//  Description:    main() for the taskNetwork
+//  Description:    main() for the ClassNetwork
 //
 //  Note(s):
 //
