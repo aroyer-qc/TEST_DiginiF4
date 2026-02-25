@@ -5,14 +5,19 @@
 //-------------------------------------------------------------------------------------------------
 
 #define TASK_MQTT_GLOBAL
+#include "./lib_digini.h"
+#undef  TASK_MQTT_GLOBAL
 #include "taskMQTT.h"
+
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------
 // Static member(s)
 //-------------------------------------------------------------------------------------------------
 
-nOS_Thread     ClassMQTT_Task::m_Handle;
-nOS_Stack      ClassMQTT_Task::m_Stack[TASK_MQTT_STACK_SIZE];
+nOS_Thread      ClassMQTT::m_Handle;
+nOS_Stack       ClassMQTT::m_Stack[TASK_MQTT_STACK_SIZE];
 
 //-------------------------------------------------------------------------------------------------
 // Local MQTT message callback (for testing)
@@ -51,17 +56,21 @@ extern "C" void TaskMQTT_Wrapper(void* pvParameters)
 // Initialize()
 //-------------------------------------------------------------------------------------------------
 
-SystemState_e ClassMQTT::Initialize(void)
+SystemState_e ClassMQTT::Initialize(NetworkContext& Context)
 {
-    nOS_SemCreate(&m_Sem, 0);
+    // Initialize MQTT library with the network context
+    m_pContext = &Context;
+
+    nOS_SemCreate(&m_Sem, 0, 1);
 
     // Create task
-    nOS_ThreadCreate(&m_Handle,
-                     m_Stack,
-                     TASK_MQTT_STACK_SIZE,
-                     TASK_MQTT_PRIO,
-                     TaskMQTT_Wrapper,
-                     this);
+    /*Error =*/ nOS_ThreadCreate(&m_Handle,
+                             TaskMQTT_Wrapper,
+                             this,
+                             &m_Stack[0],
+                             TASK_MQTT_STACK_SIZE,
+                             TASK_MQTT_PRIO,
+                             "MQTT Test");
 
     return SYS_READY;
 }
@@ -72,12 +81,7 @@ SystemState_e ClassMQTT::Initialize(void)
 
 bool ClassMQTT::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port)
 {
-    if(m_Client.Initialize(*m_pContext) == false)
-        return false;
-
-    m_Client.SetMessageCallback(MQTT_TestMessageCallback, nullptr);
-
-    return m_Client.Connect(&ServerIP, Port, "MyTestClient", 30);
+    return m_Client.Connect(&ServerIP, Port, "MQTT_TestClient", 30);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -128,3 +132,5 @@ void ClassMQTT::Run(void)
 }
 
 //-------------------------------------------------------------------------------------------------
+
+#endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)

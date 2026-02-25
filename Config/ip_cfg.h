@@ -63,6 +63,7 @@
 #define IP_USE_DHCP							    DEF_ENABLED           // Need UDP
 #define IP_USE_DNS							    DEF_ENABLED           // Need UDP
 #define IP_USE_ICMP							    DEF_ENABLED
+#define IP_USE_MQTT 						    DEF_ENABLED
 #define IP_USE_NTP							    DEF_DISABLED
 #define IP_USE_SNTP							    DEF_DISABLED
 #define IP_USE_SOAP 						    DEF_DISABLED

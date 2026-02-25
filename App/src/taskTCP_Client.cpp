@@ -7,6 +7,9 @@
 #define TASK_TCP_CLIENT_GLOBAL
 #include "./lib_digini.h"
 #undef  TASK_TCP_CLIENT_GLOBAL
+#include "taskTCP_Client.h"
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------
 // Static member(s)
@@ -36,17 +39,21 @@ extern "C" void TaskTCP_CLient_Wrapper(void* pvParameters)
 // Initialize()
 //-------------------------------------------------------------------------------------------------
 
-SystemState_e TCP_Client::Initialize(void)
+SystemState_e TCP_Client::Initialize(NetworkContext& Context)
 {
-    nOS_SemCreate(&m_Sem, 0);
+    m_pContext = &Context;
+    m_pSocket  = nullptr;
+
+    nOS_SemCreate(&m_Sem, 0, 1);
 
     // Create task
-    nOS_ThreadCreate(&m_Handle,
-                     m_Stack,
-                     TASK_TCP_CLIENT_STACK_SIZE,
-                     TASK_TCP_CLIENT_PRIO,
-                     TaskTCP_CLient_Wrapper,
-                     this);
+    /*Error =*/ nOS_ThreadCreate(&m_Handle,
+                             TaskTCP_CLient_Wrapper,
+                             this,
+                             &m_Stack[0],
+                             TASK_TCP_CLIENT_STACK_SIZE,
+                             TASK_TCP_CLIENT_PRIO,
+                             "TCP CLient Test");
 
     return SYS_READY;
 }
@@ -55,49 +62,58 @@ SystemState_e TCP_Client::Initialize(void)
 
 void TCP_Client::Run(void)
 {
-    IP_Address_t ServerIP = IP_ADDRESS(192,168,1,50);   // Echo server or test server
+    IP_Address_t ServerIP = IP_ADDRESS(192,168,1,50);
     uint16_t     Port     = 1234;
 
     while(1)
     {
-        // 1) Create socket
-        m_Socket.Create(TCP_MODE_CLIENT);
+        // 1) Create TCP socket via TCP_Manager (same pattern as MQTT_Client)
+        TCP_Manager* pTCP = &m_pContext->GetTCP();
+        m_pSocket = pTCP->Connect(ServerIP, Port);
 
-        // 2) Connect
-        if(m_Socket.Connect(&ServerIP, Port) == false)
+        if(m_pSocket == nullptr)
         {
-            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: Connect failed\n");
-            m_Socket.Close();
+            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: Connect() returned NULL\n");
             nOS_Sleep(1000);
             continue;
         }
 
-        // 3) Wait until connected
-        while(m_Socket.GetState() != TCP_STATE_CONNECTED)
+        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: Connecting...\n");
+
+        // 2) Wait until connected
+        while(m_pSocket->GetState() != TCP_STATE_ESTABLISHED)
         {
             nOS_Sleep(10);
         }
 
-        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION,
-                             "TCPTest: Connected!\n");
+        DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: Connected!\n");
 
-        // 4) Send test message
+        // 3) Send test message
         const char* pMsg = "Hello TCP Server!";
-        m_Socket.Send((uint8_t*)pMsg, strlen(pMsg));
+        m_pSocket->Send((const uint8_t*)pMsg, strlen(pMsg));
 
-        // 5) Wait for response
+        // 4) Receive response
         uint8_t Buffer[128];
-        int Len = m_Socket.Receive(Buffer, sizeof(Buffer));
+        int Len = m_pSocket->Receive(Buffer, sizeof(Buffer));
 
         if(Len > 0)
         {
             DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: RX (%d bytes): %.*s\n", Len, Len, Buffer);
         }
+        else
+        {
+            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION, "TCPTest: No data received\n");
+        }
 
-        // 6) Close
-        m_Socket.Close();
+        // 5) Close socket
+        m_pSocket->Close();
+        m_pSocket = nullptr;
 
-        // 7) Sleep before next test
+        // 6) Wait before next test
         nOS_Sleep(2000);
     }
 }
+
+//-------------------------------------------------------------------------------------------------
+
+#endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED)

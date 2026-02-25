@@ -27,6 +27,10 @@
 #pragma once
 
 //-------------------------------------------------------------------------------------------------
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
+
+//-------------------------------------------------------------------------------------------------
 // Global Macro
 //-------------------------------------------------------------------------------------------------
 
@@ -51,8 +55,8 @@ class ClassMQTT
 {
     public:
 
+        SystemState_e   Initialize                  (NetworkContext& Context);
         void            Run                         (void);
-        SystemState_e   Initialize                  (void);
         void            GiveToRunMQTT               (void)     { nOS_SemGive(&m_Sem); }
 
         // MQTT test helpers
@@ -65,7 +69,8 @@ class ClassMQTT
         static nOS_Thread      m_Handle;
         static nOS_Stack       m_Stack          [TASK_MQTT_STACK_SIZE];
         nOS_Sem                m_Sem;
-        
+
+        NetworkContext*        m_pContext;
         MQTT_Client            m_Client;            // The MQTT library instance
 };
 
@@ -82,9 +87,5 @@ TASK_MQTT_EXTERN   class ClassMQTT    TaskMQTT;
 #endif
 
 //-------------------------------------------------------------------------------------------------
-// Function prototype(s)
-//-------------------------------------------------------------------------------------------------
 
-extern "C" void TaskMQTT_Wrapper           (void* pvParameters);
-
-//-------------------------------------------------------------------------------------------------
+#endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)

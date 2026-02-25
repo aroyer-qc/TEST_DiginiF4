@@ -57,6 +57,7 @@
 #define SYS_DEBUG_LEVEL_ETHERNET                SYS_DEBUG_LEVEL_6
 #define SYS_DEBUG_LEVEL_NANO_IP                 SYS_DEBUG_LEVEL_7
 #define SYS_DEBUG_LEVEL_MEMORY_POOL             SYS_DEBUG_LEVEL_8
+#define SYS_DEBUG_LEVEL_APPLICATION             SYS_DEBUG_LEVEL_9
 
 //-------------------------------------------------------------------------------------------------
 

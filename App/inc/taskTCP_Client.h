@@ -27,6 +27,10 @@
 #pragma once
 
 //-------------------------------------------------------------------------------------------------
+
+#if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED)
+
+//-------------------------------------------------------------------------------------------------
 // Global Macro
 //-------------------------------------------------------------------------------------------------
 
@@ -52,33 +56,31 @@ class TCP_Client
     public:
 
         void            Run                         (void);
-        SystemState_e   Initialize                  (void);
+        SystemState_e   Initialize                  (NetworkContext& Context);
         void            GiveToRun                   (void)      { nOS_SemGive(&m_Sem); }
 
     private:
 
         static nOS_Thread      m_Handle;
         static nOS_Stack       m_Stack          [TASK_TCP_CLIENT_STACK_SIZE];
-        
-        TCP_Socket             m_Socket;
+        nOS_Sem                m_Sem;
+
+        NetworkContext*        m_pContext;
+        TCP_Socket*            m_pSocket;
 };
 
 //-------------------------------------------------------------------------------------------------
 // Global variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
-TASK_TCP_CLIENT_EXTERN   class ClassTCP_Client    TaskTCP_Client;
+TASK_TCP_CLIENT_EXTERN   class TCP_Client    TaskTCP_Client;
 
 #ifdef TASK_TCP_CLIENT_GLOBAL
-                    class ClassTCP_Client*  pTaskTCP_Client = &TaskTCP_Client;
+                    class TCP_Client*  pTaskTCP_Client = &TaskTCP_Client;
 #else
-    extern          class ClassTCP_Client*  pTaskTCP_Client;
+    extern          class TCP_Client*  pTaskTCP_Client;
 #endif
 
 //-------------------------------------------------------------------------------------------------
-// Function prototype(s)
-//-------------------------------------------------------------------------------------------------
 
-extern "C" void TaskTCP_Client_Wrapper           (void* pvParameters);
-
-//-------------------------------------------------------------------------------------------------
+#endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED)
