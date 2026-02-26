@@ -134,7 +134,7 @@
 //
 //          Parameter 1:  This is the ID of the IO pin
 //          Parameter 2:  Port for the PIN
-//                          GPIOx
+//                          GPIOx to invalidate this IO temporarily
 //          Parameter 3:  IO number for the PIN
 //          Parameter 4:  IO CFG to used for this pin
 //

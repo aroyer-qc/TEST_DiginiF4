@@ -98,7 +98,9 @@ class ClassNetwork
         uint8_t                         m_SOAP_Server_2[IP_MAX_URL_SIZE];
       #endif
 
-
+      #if (IP_USE_TCP_SERVER == DEF_ENABLED) || (IP_USE_TCP_CLIENT == DEF_ENABLED)
+        TCP_ManagerSystem               m_TCP;
+      #endif
 
       //static nOS_Thread               m_WebServerHandle;
       //static nOS_Stack                m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;

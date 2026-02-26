@@ -68,7 +68,7 @@ void TCP_Client::Run(void)
     while(1)
     {
         // 1) Create TCP socket via TCP_Manager (same pattern as MQTT_Client)
-        TCP_Manager* pTCP = &m_pContext->GetTCP();
+        TCP_Manager* pTCP = m_pContext->GetTCP();
         m_pSocket = pTCP->Connect(ServerIP, Port);
 
         if(m_pSocket == nullptr)
