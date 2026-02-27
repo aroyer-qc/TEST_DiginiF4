@@ -119,6 +119,9 @@ class ClassNetwork
     class ClassNetwork* pTaskNetwork = &TaskNetwork;
 #else
     extern       class ClassNetwork* pTaskNetwork;
+    extern ETH_LinkDriver* pSTM32_LinkDriver;
+
+
 #endif
 
 //-------------------------------------------------------------------------------------------------

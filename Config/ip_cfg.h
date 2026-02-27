@@ -34,9 +34,11 @@
 // Driver
 
 // Include file for the ETH PHY Driver
-#define PHY_DRIVER_INCLUDE                      "./NanoIP/inc/device/lib_class_PHY_LAN8742A.h"
+#define PHY_DRIVER_INCLUDE                      "./NanoIP/inc/driver/MAC/lib_class_PHY_LAN8742A.h"
 
-
+// Enable the STM32 Ethernet MAC-to-LinkDriver adapter.
+// When enabled, the network stack uses the STM32 MAC + PHY through the ETH_STM32_Adapter to expose a unified ETH_LinkDriver interface to the IP layer.
+#define ETH_USE_STM32_ADAPTER                   DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // Debug
@@ -106,41 +108,15 @@
 
 
 #define SOCKET_MAX_COUNT                        10
-
 #define DNS_MAX_PENDING_COUNT                   4
-
 #define TCP_DEFAULT_WINDOW_SIZE                 1024
-
 #define VENDOR_CLASS                            "Digini"
 
 #define IF_ETH_DEF(X_IF) \
-/*        ENUM ID       Hostname            Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH Driver,    PHY Driver     PHY Address */ \
-/* Interface 1 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
-    X_IF( IF_WIRED,     "Digini_Wired",     IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,1,199), IP_ADDRESS(192,168,1,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,1,1), IP_MAC_ADDRESS_WIRED, &myETH_Driver, &myPHY_Driver, 0 )            \
-
-
+/*        ENUM ID       Hostname            Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH LinkDriver          */ \
+/* Interface 1 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
+    X_IF( IF_WIRED,     "Digini_Wired",     IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,1,199), IP_ADDRESS(192,168,1,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,1,1), IP_MAC_ADDRESS_WIRED, pSTM32_LinkDriver       )  \
 
 #define IP_NET_IF_MTU                           1536
 
-/*
-
-//--- Socket allocation -----------------------------------
-// in this stack socket can be allocated statically.
-// It is useful for NIC with hardwired IP Stack like
-// Wiznet W5100S with limited number of socket and
-// configurable socket memory size
-
-#define IP_USE_STATIC_SOCKET					DEF_DISABLED
-
-#if (IP_USE_STATIC_SOCKET == DEF_ENABLED)
-
-// Socket use on for DHCP business
-#define IP_SOCKET_DHCP                     		3
-
 //-------------------------------------------------------------------------------------------------
-
-#define ETH_DEBUG_PACKET_COUNT
-
-//-------------------------------------------------------------------------------------------------
-
-*/

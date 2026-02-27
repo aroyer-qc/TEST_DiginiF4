@@ -38,6 +38,15 @@
 // Private variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
 
+// Hardware drivers
+static ETH_Driver           myETH_Driver;
+static PHY_LAN8742A_Driver  myPHY_Driver;
+
+// Adapter
+static ETH_STM32_Adapter    mySTM32_LinkDriver(&myETH_Driver, &myPHY_Driver, 0);
+
+ETH_LinkDriver*             pSTM32_LinkDriver = &mySTM32_LinkDriver;
+
 /*
 u32_t nPageHits = 0;
 
@@ -222,12 +231,6 @@ SystemState_e ClassNetwork::Initialize(void)
 
     DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET, "Initializing ClassNetwork\n");
 
-//  #if (DIGINI_USE_STACKTISTIC == DEF_ENABLED)
-//    myStacktistic.Register(&m_Stack[0],   TASK_NETWORK_STACK_SIZE,   "Network");
-//    myStacktistic.Register(&m_WebServerStack[0], TASK_WEBSERVER_STACK_SIZE, "WEB Server");
-//  #endif
-
-
     Error = nOS_ThreadCreate(&m_Handle,
                              TaskNetwork_Wrapper,
                              this,
@@ -271,7 +274,7 @@ SystemState_e ClassNetwork::Initialize(void)
 void ClassNetwork::Network(void)
 {
     m_NetworkContext.Initialize(IF_WIRED);
-    
+
   #if (IP_USE_TCP_SERVER == DEF_ENABLED) || (IP_USE_TCP_CLIENT == DEF_ENABLED)
     m_NetworkContext.SetTCP_Manager(&m_TCP);
   #endif
