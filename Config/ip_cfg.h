@@ -113,9 +113,9 @@
 #define VENDOR_CLASS                            "Digini"
 
 #define IF_ETH_DEF(X_IF) \
-/*        ENUM ID       Hostname            Stack variable     Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH LinkDriver          */ \
-/* Interface 1 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
-    X_IF( IF_WIRED,     "Digini_Wired",     IP_WiredStack,     IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,1,199), IP_ADDRESS(192,168,1,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,1,1), IP_MAC_ADDRESS_WIRED, pSTM32_LinkDriver       )  \
+/*        ENUM ID       Hostname            Protocol Flag         Default static IP,         Default Gateway,         Default subnet,            Default Static DNS,      MAC Address,          ETH LinkDriver          */ \
+/* Interface 1 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/ \
+    X_IF( IF_WIRED,     "LAN1 Digini",      IP_IF_WIRED_PROTOCOL, IP_ADDRESS(192,168,1,199), IP_ADDRESS(192,168,1,1), IP_ADDRESS(255,255,255,0), IP_ADDRESS(192,168,1,1), IP_MAC_ADDRESS_WIRED, pSTM32_LinkDriver       )  \
 
 #define IP_NET_IF_MTU                           1536
 

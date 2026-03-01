@@ -47,7 +47,7 @@
 //#define TASK_WEBSERVER_STACK_SIZE            500
 //#define TASK_WEBSERVER_PRIO                  6
 
-#define TASK_NETWORK_STACK_SIZE              512
+#define TASK_NETWORK_STACK_SIZE              128
 #define TASK_NETWORK_PRIO                    4
 
 //-------------------------------------------------------------------------------------------------
@@ -102,10 +102,10 @@ class ClassNetwork
         TCP_ManagerSystem               m_TCP;
       #endif
 
-      //static nOS_Thread               m_WebServerHandle;
-      //static nOS_Stack                m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
-        static nOS_Thread               m_Handle;
-        static nOS_Stack                m_Stack                     [TASK_NETWORK_STACK_SIZE];
+      // nOS_Thread                     m_WebServerHandle;
+      //nOS_Stack                       m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
+        nOS_Thread                      m_Handle;
+        nOS_Stack                       m_Stack                     [TASK_NETWORK_STACK_SIZE];
 
         class NetworkContext            m_NetworkContext;
 };
@@ -120,8 +120,6 @@ class ClassNetwork
 #else
     extern       class ClassNetwork* pTaskNetwork;
     extern ETH_LinkDriver* pSTM32_LinkDriver;
-
-
 #endif
 
 //-------------------------------------------------------------------------------------------------
