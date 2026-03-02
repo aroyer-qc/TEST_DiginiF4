@@ -29,6 +29,7 @@
 //-------------------------------------------------------------------------------------------------
 // Define(s)
 //-------------------------------------------------------------------------------------------------
+
 #define TIM_USE_PWM_FEATURE_CFG                         DEF_ENABLED
 
 #define TIM_DRIVER_SUPPORT_TIM1_CFG                     DEF_ENABLED     // Timer NEO data Led in PWM mode
