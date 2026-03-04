@@ -14,22 +14,20 @@
             "toolchainFile": "cmake/arm-none-eabi-gcc.cmake"
         },        
         {
-            "name": "Debug_TestF4",
+            "name": "Debug_F429",
             "inherits": "mcu",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "BUILD_TESTF4": "TRUE"
+                "CMAKE_BUILD_TYPE": "Debug"
             },
             "environment": {
                 "COMPILER_WANTED_VERSION": "13.2.1"
             }
         },
         {
-            "name": "Release_TestF4",
+            "name": "Release_F429",
             "inherits": "mcu",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "BUILD_TESTF4": "TRUE"
+                "CMAKE_BUILD_TYPE": "Release"
             },
             "environment": {
                 "COMPILER_WANTED_VERSION": "13.2.1"
@@ -38,12 +36,12 @@
     ],
     "buildPresets": [
         {
-            "name": "Debug_TestF4",
-            "configurePreset": "Debug_TestF4"
+            "name": "Debug_F429",
+            "configurePreset": "Debug_F429"
         },
         {
-            "name": "Release_TestF4",
-            "configurePreset": "Release_TestF4"
+            "name": "Release_F429",
+            "configurePreset": "Release_F429"
         }
     ]
 }
