@@ -69,7 +69,7 @@
 //-------------------------------------------------------------------------------------------------
 // Ethernet
 //
-#define DIGINI_USE_ETHERNET                             DEF_DISABLED //DEF_ENABLED
+#define DIGINI_USE_ETHERNET                             DEF_ENABLED
 
 //-------------------------------------------------------------------------------------------------
 // High level Peripheral
