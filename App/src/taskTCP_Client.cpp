@@ -39,9 +39,9 @@ extern "C" void TaskTCP_CLient_Wrapper(void* pvParameters)
 // Initialize()
 //-------------------------------------------------------------------------------------------------
 
-SystemState_e TCP_Client::Initialize(NetworkContext& Context)
+SystemState_e TCP_Client::Initialize(NetworkContext* pContext)
 {
-    m_pContext = &Context;
+    m_pContext = pContext;
     m_pSocket  = nullptr;
 
     nOS_SemCreate(&m_Sem, 0, 1);

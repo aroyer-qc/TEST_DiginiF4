@@ -56,7 +56,7 @@ class TCP_Client
     public:
 
         void            Run                         (void);
-        SystemState_e   Initialize                  (NetworkContext& Context);
+        SystemState_e   Initialize                  (NetworkContext* pContext);
         void            GiveToRun                   (void)      { nOS_SemGive(&m_Sem); }
 
     private:
