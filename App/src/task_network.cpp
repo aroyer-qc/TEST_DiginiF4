@@ -152,10 +152,6 @@ void ClassNetwork::Network(void)
 {
     m_NetworkContext.Initialize(IF_WIRED);
 
-  #if (IP_USE_TCP_SERVER == DEF_ENABLED) || (IP_USE_TCP_CLIENT == DEF_ENABLED)
-    m_NetworkContext.SetTCP_Manager(&m_TCP);
-  #endif
-
     for(;;)
     {
         if(m_NetworkContext.IsEthernetReady() == true)
