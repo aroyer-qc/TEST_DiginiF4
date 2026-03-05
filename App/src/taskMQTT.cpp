@@ -60,6 +60,7 @@ SystemState_e ClassMQTT::Initialize(NetworkContext* pContext)
 {
     // Initialize MQTT library with the network context
     m_pContext = pContext;
+    m_Client.Initialize(pContext);
 
     nOS_SemCreate(&m_WakeSem, 0, 1);
 
