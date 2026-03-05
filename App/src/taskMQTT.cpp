@@ -4,20 +4,20 @@
 //
 //-------------------------------------------------------------------------------------------------
 
-#define TASK_MQTT_GLOBAL
 #include "./lib_digini.h"
-#undef  TASK_MQTT_GLOBAL
+#define TASK_MQTT_GLOBAL
 #include "taskMQTT.h"
+#undef  TASK_MQTT_GLOBAL
 
 
 #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------
-// Static member(s)
+// Define(s)
 //-------------------------------------------------------------------------------------------------
 
-nOS_Thread      ClassMQTT::m_Handle;
-nOS_Stack       ClassMQTT::m_Stack[TASK_MQTT_STACK_SIZE];
+#define MQTT_TASK_PERIOD_MS                 100
+#define MQTT_TASK_DISCONNECTED_PERIOD_MS    500
 
 //-------------------------------------------------------------------------------------------------
 // Local MQTT message callback (for testing)
@@ -56,12 +56,12 @@ extern "C" void TaskMQTT_Wrapper(void* pvParameters)
 // Initialize()
 //-------------------------------------------------------------------------------------------------
 
-SystemState_e ClassMQTT::Initialize(NetworkContext& Context)
+SystemState_e ClassMQTT::Initialize(NetworkContext* pContext)
 {
     // Initialize MQTT library with the network context
-    m_pContext = &Context;
+    m_pContext = pContext;
 
-    nOS_SemCreate(&m_Sem, 0, 1);
+    nOS_SemCreate(&m_WakeSem, 0, 1);
 
     // Create task
     /*Error =*/ nOS_ThreadCreate(&m_Handle,
@@ -76,12 +76,71 @@ SystemState_e ClassMQTT::Initialize(NetworkContext& Context)
 }
 
 //-------------------------------------------------------------------------------------------------
+// Run()
+//-------------------------------------------------------------------------------------------------
+
+void ClassMQTT::Run(void)
+{
+    IP_Address_t BrokerIP = MQTT_BROKER_IP;
+    bool Connected = false;
+
+    while(1)
+    {
+        if(m_pContext->IsEthernetReady() == false)
+        {
+            if(Connected == true)
+            {
+                m_Client.Disconnect();
+                Connected = false;
+            }
+
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
+        }
+
+        if(Connected == false)
+        {
+            if(m_Client.IsConnected() == false)
+            {
+                ConnectToBroker(BrokerIP, MQTT_BROKER_PORT);
+                nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+                continue;
+            }
+
+             if(m_Client.GetState() != MQTT_STATE_CONNECTED)
+            {
+                m_Client.Process();
+                nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+                continue;
+            }
+
+            SubscribeToTestTopic("test/topic");
+            PublishTestMessage("test/topic", "Hello from MQTT task!");
+            Connected = true;
+        }
+
+        m_Client.Process();
+        nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+    }
+}
+
+//-------------------------------------------------------------------------------------------------
 // ConnectToBroker()
 //-------------------------------------------------------------------------------------------------
 
 bool ClassMQTT::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port)
 {
-    return m_Client.Connect(&ServerIP, Port, "MQTT_TestClient", 30);
+    if(m_Client.Connect(&ServerIP, Port, "MQTT_TestClient", 30) == false)
+        return false;
+
+    TCP_Socket* pSocket = m_Client.GetSocket();
+
+    if(pSocket != nullptr)
+    {
+        pSocket->SetEventHandler(this);
+    }
+
+    return true;
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -102,34 +161,6 @@ bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
     return m_Client.Publish(pTopic, (const uint8_t*)pMsg, strlen(pMsg), MQTT_QOS_0);
 }
 
-//-------------------------------------------------------------------------------------------------
-// Run()
-//-------------------------------------------------------------------------------------------------
-
-void ClassMQTT::Run(void)
-{
-    // Example broker IP (change as needed)
-    IP_Address_t BrokerIP = IP_ADDRESS(192,168,1,199);
-
-    // Initial connection
-    ConnectToBroker(BrokerIP, 1883);
-
-    // Subscribe to a test topic
-    SubscribeToTestTopic("test/topic");
-
-    // Publish a test message
-    PublishTestMessage("test/topic", "Hello from MQTT task!");
-
-    // Main loop
-    while(1)
-    {
-        // Process MQTT state machine
-        m_Client.Process();
-
-        // Wait or wake
-        nOS_SemTake(&m_Sem, 100);
-    }
-}
 
 //-------------------------------------------------------------------------------------------------
 

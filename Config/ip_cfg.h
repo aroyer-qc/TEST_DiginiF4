@@ -86,6 +86,9 @@
 #define IP_ARP_TIME_OUT							120
 #define IP_ARP_TABLE_SIZE						8                           // how many address in the ARP table
 
+
+#define MQTT_BROKER_IP                          IP_ADDRESS(192,168,1,186)
+
 //-------------------------------------------------------------------------------------------------
 
 #define IP_PACKET_Q_SIZE  			            8

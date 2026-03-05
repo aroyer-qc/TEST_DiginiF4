@@ -51,27 +51,28 @@
 // Class definition(s)
 //-------------------------------------------------------------------------------------------------
 
-class ClassMQTT
+class ClassMQTT : TCP_SocketEventHandler
 {
     public:
 
-        SystemState_e   Initialize                  (NetworkContext& Context);
+        SystemState_e   Initialize                  (NetworkContext* pContext);
         void            Run                         (void);
-        void            GiveToRunMQTT               (void)     { nOS_SemGive(&m_Sem); }
+        void            GiveToRunMQTT               (void)     { nOS_SemGive(&m_WakeSem); }
 
         // MQTT test helpers
-        bool            ConnectToBroker             (const IP_Address_t& ServerIP, uint16_t Port);
+        bool            ConnectToBroker             (const IP_Address_t& ServerIP, IP_Port_t Port);
         bool            SubscribeToTestTopic        (const char* pTopic);
         bool            PublishTestMessage          (const char* pTopic, const char* pMsg);
+        void            OnSocketEvent               (TCP_Socket* pSocket, SocketEvent_e Event) override     { GiveToRunMQTT(); }
 
     private:
 
-        static nOS_Thread      m_Handle;
-        static nOS_Stack       m_Stack          [TASK_MQTT_STACK_SIZE];
-        nOS_Sem                m_Sem;
+        nOS_Thread              m_Handle;
+        nOS_Stack               m_Stack          [TASK_MQTT_STACK_SIZE];
+        nOS_Sem                 m_WakeSem;
 
-        NetworkContext*        m_pContext;
-        MQTT_Client            m_Client;            // The MQTT library instance
+        NetworkContext*         m_pContext;
+        MQTT_Client             m_Client;            // The MQTT library instance
 };
 
 //-------------------------------------------------------------------------------------------------

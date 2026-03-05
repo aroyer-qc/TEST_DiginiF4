@@ -43,6 +43,10 @@
 
 #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
 #include "Task_network.h"
+
+#if(IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
+#include "TaskMQTT.h"
+#endif
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)
 
 //-------------------------------------------------------------------------------------------------
@@ -104,6 +108,11 @@ SystemState_e BSP_PostOS_Initialize(void)
   #endif
 
     State = DIGINI_PostInitialize();
+
+ #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
+    pTaskMQTT->Initialize(pTaskNetwork->GetContext());
+ #endif
+
 
 //ISR_Enable();
 
