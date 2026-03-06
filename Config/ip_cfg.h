@@ -86,8 +86,18 @@
 #define IP_ARP_TIME_OUT							120
 #define IP_ARP_TABLE_SIZE						8                           // how many address in the ARP table
 
+//---------------------------------------------------------
+// MQTT Configuration
 
 #define MQTT_BROKER_IP                          IP_ADDRESS(192,168,1,186)
+#define MQTT_RX_BUFFER_SIZE                     256
+#define MQTT_USE_UNSUBSCRIBE                    DEF_ENABLED
+
+//---------------------------------------------------------
+// TCP Configuration
+
+#define TCP_MAX_TX_SEGMENTS                     2
+#define TCP_MSS                                 1460
 
 //-------------------------------------------------------------------------------------------------
 
