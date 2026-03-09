@@ -15,9 +15,6 @@
 // Static member(s)
 //-------------------------------------------------------------------------------------------------
 
-nOS_Thread     TCP_Client::m_Handle;
-nOS_Stack      TCP_Client::m_Stack[TASK_TCP_CLIENT_STACK_SIZE];
-
 //-------------------------------------------------------------------------------------------------
 //
 //  Name:           TaskTCP_CLient_Wrapper

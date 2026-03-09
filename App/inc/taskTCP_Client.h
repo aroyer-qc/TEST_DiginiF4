@@ -61,12 +61,12 @@ class TCP_Client
 
     private:
 
-        static nOS_Thread      m_Handle;
-        static nOS_Stack       m_Stack          [TASK_TCP_CLIENT_STACK_SIZE];
-        nOS_Sem                m_Sem;
+        nOS_Thread      m_Handle;
+        nOS_Stack       m_Stack          [TASK_TCP_CLIENT_STACK_SIZE];
+        nOS_Sem         m_Sem;
 
-        NetworkContext*        m_pContext;
-        TCP_Socket*            m_pSocket;
+        NetworkContext* m_pContext;
+        TCP_Socket*     m_pSocket;
 };
 
 //-------------------------------------------------------------------------------------------------
