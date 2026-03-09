@@ -103,9 +103,12 @@ void ClassMQTT::Run(void)
         {
             if(m_Client.IsConnected() == false)
             {
-                ConnectToBroker(BrokerIP, MQTT_BROKER_PORT);
-                nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-                continue;
+                if(m_Client.GetState() == MQTT_STATE_IDLE)
+                {
+                    ConnectToBroker(BrokerIP, MQTT_BROKER_PORT);
+                    nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+                    continue;
+                }
             }
 
              if(m_Client.GetState() != MQTT_STATE_CONNECTED)
@@ -160,6 +163,34 @@ bool ClassMQTT::SubscribeToTestTopic(const char* pTopic)
 bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
 {
     return m_Client.Publish(pTopic, (const uint8_t*)pMsg, strlen(pMsg), MQTT_QOS_0);
+}
+
+//-------------------------------------------------------------------------------------------------
+
+void ClassMQTT::OnSocketEvent(TCP_Socket* pSocket, SocketEvent_e Event)
+{
+    switch(Event)
+    {
+        case SOCKET_EVENT_ERROR:
+        case SOCKET_EVENT_CLOSED:
+        {
+            if(pSocket == m_Client.GetSocket())
+            {
+                m_Client.ClearSocket();
+                m_Client.SetState(MQTT_STATE_IDLE);
+            }
+        }
+        break;
+
+        case SOCKET_EVENT_RX_READY:
+        case SOCKET_EVENT_CONNECTED:
+        {
+            GiveToRunMQTT();
+        }
+        break;
+
+        default: break;
+    }
 }
 
 

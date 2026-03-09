@@ -44,7 +44,7 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define TASK_MQTT_STACK_SIZE               256
+#define TASK_MQTT_STACK_SIZE               512//320
 #define TASK_MQTT_PRIO                     4
 
 //-------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ class ClassMQTT : TCP_SocketEventHandler
         bool            ConnectToBroker             (const IP_Address_t& ServerIP, IP_Port_t Port);
         bool            SubscribeToTestTopic        (const char* pTopic);
         bool            PublishTestMessage          (const char* pTopic, const char* pMsg);
-        void            OnSocketEvent               (TCP_Socket* pSocket, SocketEvent_e Event) override     { GiveToRunMQTT(); }
+        void            OnSocketEvent               (TCP_Socket* pSocket, SocketEvent_e Event) override;
 
     private:
 

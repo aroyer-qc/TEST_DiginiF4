@@ -43,7 +43,6 @@
 // Note(s):        Here we create the task that will start all the other
 //
 //-------------------------------------------------------------------------------------------------
-
 int main()
 {
     ISR_Disable();
