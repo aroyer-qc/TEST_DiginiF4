@@ -9,6 +9,7 @@
 #include "taskMQTT.h"
 #undef  TASK_MQTT_GLOBAL
 
+//-------------------------------------------------------------------------------------------------
 
 #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
 
@@ -99,30 +100,74 @@ void ClassMQTT::Run(void)
             continue;
         }
 
-        if(Connected == false)
+        MQTT_State_e state = m_Client.GetState();
+
+        // ----------------------------------------------------
+        // 1. IDLE → lancer la connexion MQTT (TCP + CONNECT)
+        // ----------------------------------------------------
+        if(state == MQTT_STATE_IDLE)
         {
-            if(m_Client.IsConnected() == false)
-            {
-                if(m_Client.GetState() == MQTT_STATE_IDLE)
-                {
-                    ConnectToBroker(BrokerIP, MQTT_BROKER_PORT);
-                    nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-                    continue;
-                }
-            }
+            m_Client.Connect(&BrokerIP, MQTT_BROKER_PORT, "NanoIP-Client",  60);   // KeepAlive
 
-             if(m_Client.GetState() != MQTT_STATE_CONNECTED)
-            {
-                m_Client.Process();
-                nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-                continue;
-            }
-
-            SubscribeToTestTopic("test/topic");
-            PublishTestMessage("test/topic", "Hello from MQTT task!");
-            Connected = true;
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
         }
 
+        // ----------------------------------------------------
+        // 2. CONNECTING / WAIT_CONNACK → laisser Process() bosser
+        // ----------------------------------------------------
+        if((state == MQTT_STATE_CONNECTING) ||
+           (state == MQTT_STATE_WAIT_CONNACK))
+        {
+            m_Client.Process();
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
+        }
+
+        // ----------------------------------------------------
+        // 3. CONNECTED pour la première fois → subscribe + publish
+        // ----------------------------------------------------
+        if((Connected == false) && (state == MQTT_STATE_CONNECTED))
+        {
+            m_Client.Subscribe("test/topic", MQTT_QOS_0);
+            m_Client.Publish("test/topic",
+                             reinterpret_cast<const uint8_t*>("Hello from MQTT task!"),
+                             strlen("Hello from MQTT task!"),
+                             MQTT_QOS_0);
+
+            Connected = true;
+
+            m_Client.Process();
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
+        }
+
+        // ----------------------------------------------------
+        // 4. CONNECTED en régime normal
+        // ----------------------------------------------------
+        if(state == MQTT_STATE_CONNECTED)
+        {
+            m_Client.Process();
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
+        }
+
+        // ----------------------------------------------------
+        // 5. RECONNECT / ERROR → repartir propre
+        // ----------------------------------------------------
+        if((state == MQTT_STATE_RECONNECTING) ||
+           (state == MQTT_STATE_ERROR))
+        {
+            m_Client.Disconnect();
+            Connected = false;
+
+            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            continue;
+        }
+
+        // ----------------------------------------------------
+        // 6. Par défaut : laisser Process() avancer la machine
+        // ----------------------------------------------------
         m_Client.Process();
         nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
     }
@@ -169,28 +214,34 @@ bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
 
 void ClassMQTT::OnSocketEvent(TCP_Socket* pSocket, SocketEvent_e Event)
 {
+    GiveToRunMQTT();
+
+/*
     switch(Event)
     {
         case SOCKET_EVENT_ERROR:
+        {
+        }
+        break;
+
         case SOCKET_EVENT_CLOSED:
         {
-            if(pSocket == m_Client.GetSocket())
-            {
-                m_Client.ClearSocket();
-                m_Client.SetState(MQTT_STATE_IDLE);
-            }
         }
         break;
 
         case SOCKET_EVENT_RX_READY:
+        {
+        }
+        break;
+
         case SOCKET_EVENT_CONNECTED:
         {
-            GiveToRunMQTT();
         }
         break;
 
         default: break;
     }
+*/
 }
 
 

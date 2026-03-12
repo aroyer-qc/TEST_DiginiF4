@@ -43,9 +43,11 @@
 //-------------------------------------------------------------------------------------------------
 // Debug
 #define IP_DBG_DHCP                             DEF_DISABLED
-#define IP_DBG_DNS								DEF_ENABLED
-#define IP_DBG_ARP								DEF_ENABLED
-#define IP_DBG_ARP_RETRY_MSG					DEF_ENABLED
+#define IP_DBG_DNS								DEF_DISABLED
+#define IP_DBG_ARP								DEF_DISABLED
+#define IP_DBG_TCP 								DEF_DISABLED
+#define IP_DBG_MQTT								DEF_ENABLED
+#define IP_DBG_ARP_RETRY_MSG					DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
 // Driver configuration  (may vary according to driver)
@@ -89,7 +91,7 @@
 //---------------------------------------------------------
 // MQTT Configuration
 
-#define MQTT_BROKER_IP                          IP_ADDRESS(192,168,1,144/*186*/)
+#define MQTT_BROKER_IP                          IP_ADDRESS(192,168,1,186)
 #define MQTT_RX_BUFFER_SIZE                     256
 #define MQTT_USE_UNSUBSCRIBE                    DEF_ENABLED
 
@@ -123,7 +125,7 @@
 
 #define SOCKET_MAX_COUNT                        10
 #define DNS_MAX_PENDING_COUNT                   4
-#define TCP_DEFAULT_WINDOW_SIZE                 1024
+#define TCP_DEFAULT_WINDOW_SIZE                 HTONS(4 * TCP_MSS)
 #define VENDOR_CLASS                            "Digini"
 
 #define IF_ETH_DEF(X_IF) \
