@@ -17,8 +17,10 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define MQTT_TASK_PERIOD_MS                 100
-#define MQTT_TASK_DISCONNECTED_PERIOD_MS    500
+#define MQTT_TASK_PERIOD_MS                                 100
+#define MQTT_TASK_DISCONNECTED_PERIOD_MS                    500
+#define MQTT_CONNECT_TO_BROKER_KEEP_ALIVE_SEC               30
+#define MQTT_TASK_KEEP_ALIVE_SEC                            60
 
 //-------------------------------------------------------------------------------------------------
 // Local MQTT message callback (for testing)
@@ -61,7 +63,7 @@ SystemState_e ClassMQTT::Initialize(NetworkContext* pContext)
 {
     // Initialize MQTT library with the network context
     m_pContext = pContext;
-    m_Client.Initialize(pContext);
+    m_Client.Initialize(pContext, this);
 
     nOS_SemCreate(&m_WakeSem, 0, 1);
 
@@ -107,7 +109,7 @@ void ClassMQTT::Run(void)
         // ----------------------------------------------------
         if(state == MQTT_STATE_IDLE)
         {
-            m_Client.Connect(&BrokerIP, MQTT_BROKER_PORT, "NanoIP-Client",  60);   // KeepAlive
+            m_Client.Connect(&BrokerIP, MQTT_BROKER_PORT, "NanoIP-Client",  MQTT_TASK_KEEP_ALIVE_SEC);   // KeepAlive
 
             nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
             continue;
@@ -179,17 +181,7 @@ void ClassMQTT::Run(void)
 
 bool ClassMQTT::ConnectToBroker(const IP_Address_t& ServerIP, uint16_t Port)
 {
-    if(m_Client.Connect(&ServerIP, Port, "MQTT_TestClient", 30) == false)
-        return false;
-
-    TCP_Socket* pSocket = m_Client.GetSocket();
-
-    if(pSocket != nullptr)
-    {
-        pSocket->SetEventHandler(this);
-    }
-
-    return true;
+    return m_Client.Connect(&ServerIP, Port, "MQTT_TestClient", MQTT_CONNECT_TO_BROKER_KEEP_ALIVE_SEC);
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -212,39 +204,12 @@ bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
 
 //-------------------------------------------------------------------------------------------------
 
-void ClassMQTT::OnSocketEvent(TCP_Socket* pSocket, SocketEvent_e Event)
+void ClassMQTT::OnEvent(MQTT_Event_e MQTT_Event)
 {
+    VAR_UNUSED(MQTT_Event);     // nothing to do at this point with it
     GiveToRunMQTT();
 
-/*
-    switch(Event)
-    {
-        case SOCKET_EVENT_ERROR:
-        {
-        }
-        break;
-
-        case SOCKET_EVENT_CLOSED:
-        {
-        }
-        break;
-
-        case SOCKET_EVENT_RX_READY:
-        {
-        }
-        break;
-
-        case SOCKET_EVENT_CONNECTED:
-        {
-        }
-        break;
-
-        default: break;
-    }
-*/
 }
-
-
 //-------------------------------------------------------------------------------------------------
 
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)

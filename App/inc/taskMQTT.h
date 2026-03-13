@@ -51,7 +51,7 @@
 // Class definition(s)
 //-------------------------------------------------------------------------------------------------
 
-class ClassMQTT : TCP_SocketEventHandler
+class ClassMQTT : MQTT_EventHandler
 {
     public:
 
@@ -63,9 +63,10 @@ class ClassMQTT : TCP_SocketEventHandler
         bool            ConnectToBroker             (const IP_Address_t& ServerIP, IP_Port_t Port);
         bool            SubscribeToTestTopic        (const char* pTopic);
         bool            PublishTestMessage          (const char* pTopic, const char* pMsg);
-        void            OnSocketEvent               (TCP_Socket* pSocket, SocketEvent_e Event) override;
 
     private:
+
+        void            OnEvent                     (MQTT_Event_e MQTT_Event);
 
         nOS_Thread              m_Handle;
         nOS_Stack               m_Stack          [TASK_MQTT_STACK_SIZE];
