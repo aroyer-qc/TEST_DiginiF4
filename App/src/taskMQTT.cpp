@@ -17,26 +17,10 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define MQTT_TASK_PERIOD_MS                                 100
-#define MQTT_TASK_DISCONNECTED_PERIOD_MS                    500
+#define MQTT_TASK_PERIOD_MS                                 200
+#define MQTT_ETEHERNET_READY_RETRY_MS                       1000
 #define MQTT_CONNECT_TO_BROKER_KEEP_ALIVE_SEC               30
 #define MQTT_TASK_KEEP_ALIVE_SEC                            60
-
-//-------------------------------------------------------------------------------------------------
-// Local MQTT message callback (for testing)
-//-------------------------------------------------------------------------------------------------
-
-static void MQTT_TestMessageCallback(void* pContext, const char* pTopic, const uint8_t* pPayload, size_t Length)
-{
-    (void)pContext;
-
-    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_APPLICATION,
-                         "MQTT RX Topic: %s | Payload (%u bytes): %.*s\n",
-                         pTopic,
-                         (unsigned)Length,
-                         (int)Length,
-                         (const char*)pPayload);
-}
 
 //-------------------------------------------------------------------------------------------------
 //
@@ -45,7 +29,7 @@ static void MQTT_TestMessageCallback(void* pContext, const char* pTopic, const u
 //  Parameter(s):   void* pvParameters
 //  Return:         void
 //
-//  Description:    main() for the ClassNetwork
+//  Description:    main() for the ClassMQTT
 //
 //  Note(s):
 //
@@ -82,96 +66,76 @@ SystemState_e ClassMQTT::Initialize(NetworkContext* pContext)
 //-------------------------------------------------------------------------------------------------
 // Run()
 //-------------------------------------------------------------------------------------------------
-
 void ClassMQTT::Run(void)
 {
     IP_Address_t BrokerIP = MQTT_BROKER_IP;
     bool Connected = false;
+    bool FirstTimeConnected = false;
+    TickCount_t m_LastPublishTick = 0;
+
 
     while(1)
     {
+        // Wait for an event or a periodic timeout
+        nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+
+        // If Ethernet is down, ensure we are disconnected
         if(m_pContext->IsEthernetReady() == false)
         {
             if(Connected == true)
             {
-                m_Client.Disconnect();
+                m_Client.Disconnect();   // Application-level disconnect request
                 Connected = false;
+                FirstTimeConnected = false;
             }
 
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            nOS_Sleep(MQTT_ETEHERNET_READY_RETRY_MS);
             continue;
         }
 
+        // Ethernet is ready
+        Connected = true;
+
+        // Query the current MQTT state (managed by the internal MQTT task)
         MQTT_State_e state = m_Client.GetState();
 
-        // ----------------------------------------------------
-        // 1. IDLE → lancer la connexion MQTT (TCP + CONNECT)
-        // ----------------------------------------------------
+        // If the client is idle, trigger the initial connection
         if(state == MQTT_STATE_IDLE)
         {
-            m_Client.Connect(&BrokerIP, MQTT_BROKER_PORT, "NanoIP-Client",  MQTT_TASK_KEEP_ALIVE_SEC);   // KeepAlive
-
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            m_Client.Connect(&BrokerIP,
+                             MQTT_BROKER_PORT,
+                             "NanoIP-Client",
+                             MQTT_TASK_KEEP_ALIVE_SEC);
             continue;
         }
 
-        // ----------------------------------------------------
-        // 2. CONNECTING / WAIT_CONNACK → laisser Process() bosser
-        // ----------------------------------------------------
-        if((state == MQTT_STATE_CONNECTING) ||
-           (state == MQTT_STATE_WAIT_CONNACK))
-        {
-            m_Client.Process();
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-            continue;
-        }
-
-        // ----------------------------------------------------
-        // 3. CONNECTED pour la première fois → subscribe + publish
-        // ----------------------------------------------------
-        if((Connected == false) && (state == MQTT_STATE_CONNECTED))
-        {
-            m_Client.Subscribe("test/topic", MQTT_QOS_0);
-            m_Client.Publish("test/topic",
-                             reinterpret_cast<const uint8_t*>("Hello from MQTT task!"),
-                             strlen("Hello from MQTT task!"),
-                             MQTT_QOS_0);
-
-            Connected = true;
-
-            m_Client.Process();
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-            continue;
-        }
-
-        // ----------------------------------------------------
-        // 4. CONNECTED en régime normal
-        // ----------------------------------------------------
+        // First time entering CONNECTED -> perform application logic once
         if(state == MQTT_STATE_CONNECTED)
         {
-            m_Client.Process();
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+            if(FirstTimeConnected == false)
+            {
+                FirstTimeConnected = true;
+
+                // Subscribe to test topic
+                m_Client.Subscribe("test/topic", MQTT_QOS_0);
+            }
+
+            if((GetTick() - m_LastPublishTick) >= (2 * TICKS_PER_SECOND))
+            {
+                m_LastPublishTick = GetTick();
+
+                m_Client.Publish("test/topic",
+                                 (const uint8_t*)"Hello from MQTT task!",
+                                 strlen("Hello from MQTT task!"),
+                                 MQTT_QOS_0);
+            }
+
             continue;
         }
 
-        // ----------------------------------------------------
-        // 5. RECONNECT / ERROR → repartir propre
-        // ----------------------------------------------------
-        if((state == MQTT_STATE_RECONNECTING) ||
-           (state == MQTT_STATE_ERROR))
-        {
-            m_Client.Disconnect();
-            Connected = false;
 
-            nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
-            continue;
-        }
-
-        // ----------------------------------------------------
-        // 6. Par défaut : laisser Process() avancer la machine
-        // ----------------------------------------------------
-        m_Client.Process();
-        nOS_SemTake(&m_WakeSem, MQTT_TASK_PERIOD_MS);
+        // All other states (WAIT_CONNACK, WAIT_SUBACK, etc.)
+        // -> do nothing, let the internal MQTT task handle them
     }
 }
 
@@ -204,12 +168,25 @@ bool ClassMQTT::PublishTestMessage(const char* pTopic, const char* pMsg)
 
 //-------------------------------------------------------------------------------------------------
 
-void ClassMQTT::OnEvent(MQTT_Event_e MQTT_Event)
+void ClassMQTT::OnEvent(void)
 {
-    VAR_UNUSED(MQTT_Event);     // nothing to do at this point with it
-    GiveToRunMQTT();
-
+    nOS_SemGive(&m_WakeSem);
 }
+
+//-------------------------------------------------------------------------------------------------
+
+
+void ClassMQTT::ReceivedTopic(const char* pTopic, const uint8_t* pPayload, size_t Length)
+{
+    DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                         "MQTT RX Topic: %s | Payload (%u bytes): %.*s\n",
+                         pTopic,
+                         (unsigned)Length,
+                         (int)Length,
+                         (const char*)pPayload);
+}
+
+
 //-------------------------------------------------------------------------------------------------
 
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)

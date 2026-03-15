@@ -44,20 +44,19 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define TASK_MQTT_STACK_SIZE               1024//320
+#define TASK_MQTT_STACK_SIZE               320
 #define TASK_MQTT_PRIO                     4
 
 //-------------------------------------------------------------------------------------------------
 // Class definition(s)
 //-------------------------------------------------------------------------------------------------
 
-class ClassMQTT : MQTT_EventHandler
+class ClassMQTT : MQTT_Handler
 {
     public:
 
         SystemState_e   Initialize                  (NetworkContext* pContext);
         void            Run                         (void);
-        void            GiveToRunMQTT               (void)     { nOS_SemGive(&m_WakeSem); }
 
         // MQTT test helpers
         bool            ConnectToBroker             (const IP_Address_t& ServerIP, IP_Port_t Port);
@@ -66,7 +65,8 @@ class ClassMQTT : MQTT_EventHandler
 
     private:
 
-        void            OnEvent                     (MQTT_Event_e MQTT_Event);
+        void            OnEvent                     (void);
+        void            ReceivedTopic               (const char* pTopic, const uint8_t* pPayload, size_t Length);
 
         nOS_Thread              m_Handle;
         nOS_Stack               m_Stack          [TASK_MQTT_STACK_SIZE];

@@ -54,7 +54,7 @@
 
 #ifdef STM32F429xx
 #define DIGINI_USE_CONSOLE                              DEF_ENABLED
-#define DIGINI_USE_CMD_LINE                             DEF_ENABLED
+#define DIGINI_USE_CMD_LINE                             DEF_DISABLED
 #define DIGINI_USE_VT100_MENU                           DEF_ENABLED
 #else
 #define DIGINI_USE_CONSOLE                              DEF_DISABLED

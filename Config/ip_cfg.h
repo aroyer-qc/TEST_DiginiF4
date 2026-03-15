@@ -42,7 +42,7 @@
 
 //-------------------------------------------------------------------------------------------------
 // Debug
-#define IP_DBG_DHCP                             DEF_DISABLED
+#define IP_DBG_DHCP                             DEF_ENABLED
 #define IP_DBG_DNS								DEF_DISABLED
 #define IP_DBG_ARP								DEF_DISABLED
 #define IP_DBG_TCP 								DEF_DISABLED
