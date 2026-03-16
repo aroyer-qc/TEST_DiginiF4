@@ -3,6 +3,113 @@
 //  File : taskMQTT.cpp
 //
 //-------------------------------------------------------------------------------------------------
+//
+// Copyright(c) 2026 Alain Royer.
+// Email: aroyer.qc@gmail.com
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+// and associated documentation files (the "Software"), to deal in the Software without
+// restriction, including without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+// Software is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+// AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//-------------------------------------------------------------------------------------------------
+//
+//                      ===========================
+//                         MQTT SUBSCRIPTION TODO
+//                         (Final Architecture: Topic + Queue)
+//                      ===========================
+//                      
+//                      1. Define the subscription structure
+//                      
+//                         struct MQTT_Subscription
+//                         {
+//                             const char*     Topic;       // Topic string to match
+//                             QueueHandle_t   UserQueue;   // Queue where messages will be delivered
+//                         };
+//                      
+//                      
+//                      2. Create an array or list of subscriptions
+//                         MQTT_Subscription* m_Subscriptions[MAX_SUBS];
+//                         size_t m_SubCount = 0;
+//                      
+//                      
+//                      3. Implement RegisterTopic(topic, userQueue)
+//                         - Allocate an MQTT_Subscription via pMemoryPool
+//                         - Copy or reference the topic
+//                         - Store the userQueue pointer
+//                         - Add it to m_Subscriptions[]
+//                         - Increment m_SubCount
+//                         - (Topics may be registered BEFORE MQTT_Client exists or connects)
+//                      
+//                      
+//                      4. Implement UnregisterTopic(topic)
+//                         - Iterate through m_Subscriptions[]
+//                         - Find the entry with Topic == topic (or strcmp)
+//                         - Free it via pMemoryPool
+//                         - Compact the list (shift left)
+//                         - Decrement m_SubCount
+//                      
+//                      
+//                      5. Implement MatchTopic(subTopic, incomingTopic)
+//                         - Support:
+//                             - Exact match
+//                             - Wildcard '+'
+//                             - Wildcard '#'
+//                         - Return true if the topic matches
+//                      
+//                      
+//                      6. Add a message structure for queue delivery
+//                      
+//                         struct MQTT_Message
+//                         {
+//                             const char* Topic;
+//                             uint8_t*    Payload;
+//                             size_t      Length;
+//                         };
+//                      
+//                      
+//                      7. Update TaskMQTT (RX loop)
+//                         - When a message arrives:
+//                             - Extract topic, payload, length
+//                             - For each subscription:
+//                                   if MatchTopic(sub->Topic, incomingTopic):
+//                                       Create MQTT_Message
+//                                       Push it into sub->UserQueue
+//                                       (DO NOT call user code directly)
+//                      
+//                      
+//                      8. Add MQTT_Client connection handling
+//                         - When MQTT_Client becomes connected:
+//                             - TaskMQTT iterates through m_Subscriptions[]
+//                             - Sends SUBSCRIBE for each Topic
+//                             - Handles SUBACK
+//                         - On reconnect:
+//                             - Repeat the SUBSCRIBE procedure automatically
+//                      
+//                      
+//                      9. Add protection mechanisms
+//                         - Prevent registering the same topic twice
+//                         - Prevent overflow if m_SubCount == MAX_SUBS
+//                         - Prevent queue overflow (drop or overwrite policy)
+//                      
+//                      
+//                      10. (Optional) Add UnregisterAll()
+//                          - Free all subscriptions
+//                          - Reset m_SubCount to 0
+//                          - Optionally flush user queues
+//                      
+//                      //          
+//-------------------------------------------------------------------------------------------------
 
 #include "./lib_digini.h"
 #define TASK_MQTT_GLOBAL
