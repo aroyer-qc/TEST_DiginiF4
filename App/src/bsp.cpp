@@ -109,11 +109,6 @@ SystemState_e BSP_PostOS_Initialize(void)
 
     State = DIGINI_PostInitialize();
 
- #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
-    pTaskMQTT->Initialize(pTaskNetwork->GetContext());
- #endif
-
-
 //ISR_Enable();
 
     // WS2812 LED stream
