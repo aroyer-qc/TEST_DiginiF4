@@ -39,20 +39,9 @@
 // Define(s)
 //-------------------------------------------------------------------------------------------------
 
-#define MQTT_Q_TEST_BUFFER          4
-
 //-------------------------------------------------------------------------------------------------
 // Variable(s) and constant(s)
 //-------------------------------------------------------------------------------------------------
-
-nOS_Queue  MQTT_TestQ_1;
-nOS_Queue  MQTT_TestQ_2;
-nOS_Queue  MQTT_TestQ_3;
-MQTT_Message_t* pQ_Buffer1[MQTT_Q_TEST_BUFFER];
-MQTT_Message_t* pQ_Buffer2[MQTT_Q_TEST_BUFFER];
-MQTT_Message_t* pQ_Buffer3[MQTT_Q_TEST_BUFFER];
-
-
 
 
 static const uint16_t sine_wave[256] =
@@ -109,23 +98,6 @@ static const uint16_t sine_wave[256] =
 //-------------------------------------------------------------------------------------------------
 void TaskIdle(void)
 {
-  #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
-    static bool MQTT_Test = false;
-
-    if(MQTT_Test == false)
-    {
-        MQTT_Test = true;
-        nOS_QueueCreate(&MQTT_TestQ_1, pQ_Buffer1, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
-        nOS_QueueCreate(&MQTT_TestQ_2, pQ_Buffer2, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
-        nOS_QueueCreate(&MQTT_TestQ_3, pQ_Buffer3, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
-
-        pTaskMQTT->Initialize(pTaskNetwork->GetContext(), "MQTT_Test_Client", MQTT_BROKER_IP, MQTT_BROKER_PORT);
-        pTaskMQTT->RegisterTopic("Test1/#", &MQTT_TestQ_1);
-        pTaskMQTT->RegisterTopic("Test2/#", &MQTT_TestQ_2);
-        pTaskMQTT->RegisterTopic("Test3/#", &MQTT_TestQ_3);
-    }
-  #endif
-
   //  uint16_t Value;
  //   uint8_t Test[3];
 
@@ -142,50 +114,6 @@ void TaskIdle(void)
     // Low level main control loop
     while(1)
     {
-      #if (DIGINI_USE_COMM_MODULE == DEF_ENABLED) && (DIGINI_USE_CONSOLE == DEF_ENABLED) && (DIGINI_USE_COMM_AS_A_TASK == DEF_DISABLED)
-        pTaskCOMM->Process();       // to test pTaskComm as a process.. at this time it crash!!
-      #endif
-
-      #if (DIGINI_USE_ETHERNET == DEF_ENABLED) && (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
-        MQTT_Message_t* pTopicMessage;
-
-        // Test1
-        if(nOS_QueueRead(&MQTT_TestQ_1, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
-        {
-            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
-                                 "[MQTT][Test1] Topic: %s | Payload (%u bytes): %.*s\n",
-                                 pTopicMessage->pTopic,
-                                 (unsigned)pTopicMessage->Length,
-                                 (int)pTopicMessage->Length,
-                                 (const char*)pTopicMessage->pPayload);
-            ClassMQTT::FreeTopicMessage(pTopicMessage);
-        }
-
-        // Test2
-        if(nOS_QueueRead(&MQTT_TestQ_2, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
-        {
-            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
-                                 "[MQTT][Test2] Topic: %s | Payload (%u bytes): %.*s\n",
-                                 pTopicMessage->pTopic,
-                                 (unsigned)pTopicMessage->Length,
-                                 (int)pTopicMessage->Length,
-                                 (const char*)pTopicMessage->pPayload);
-            ClassMQTT::FreeTopicMessage(pTopicMessage);
-        }
-
-        // Test3
-        if(nOS_QueueRead(&MQTT_TestQ_3, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
-        {
-            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
-                                 "[MQTT][Test3] Topic: %s | Payload (%u bytes): %.*s\n",
-                                 pTopicMessage->pTopic,
-                                 (unsigned)pTopicMessage->Length,
-                                 (int)pTopicMessage->Length,
-                                 (const char*)pTopicMessage->pPayload);
-            ClassMQTT::FreeTopicMessage(pTopicMessage);
-        }
-      #endif
-
 
         // DAC part test ( output a sine wave onto channel 1 of the DAC)
      //   Value = sine_wave[Count];

@@ -132,6 +132,24 @@ SystemState_e ClassNetwork::Initialize(void)
                              "WEB Server"};
 */
 
+
+  #if (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
+    static bool MQTT_Test = false;
+
+    if(MQTT_Test == false)
+    {
+        MQTT_Test = true;
+        nOS_QueueCreate(&m_MQTT_TestQ_1, m_pQ_Buffer1, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
+        nOS_QueueCreate(&m_MQTT_TestQ_2, m_pQ_Buffer2, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
+        nOS_QueueCreate(&m_MQTT_TestQ_3, m_pQ_Buffer3, sizeof(MQTT_Message_t*), MQTT_Q_TEST_BUFFER);
+
+        pTaskMQTT->Initialize(pTaskNetwork->GetContext(), "MQTT_Test_Client", MQTT_BROKER_IP, MQTT_BROKER_PORT);
+        pTaskMQTT->SubscribeTopic("Test1/#", &m_MQTT_TestQ_1);
+        pTaskMQTT->SubscribeTopic("Test2/#", &m_MQTT_TestQ_2);
+        pTaskMQTT->SubscribeTopic("Test3/#", &m_MQTT_TestQ_3);
+    }
+  #endif
+
     return (Error != NOS_OK) ? SYS_ERROR : SYS_READY;  // TODO  improve error handling
 }
 
@@ -181,6 +199,48 @@ void ClassNetwork::Network(void)
            #endif
           #endif
         }
+        
+      #if (IP_USE_TCP_CLIENT == DEF_ENABLED) && (IP_USE_MQTT == DEF_ENABLED)
+        MQTT_Message_t* pTopicMessage;
+
+        // Test1
+        if(nOS_QueueRead(&m_MQTT_TestQ_1, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
+        {
+            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                                 "[MQTT][Test1] Topic: %s | Payload (%u bytes): %.*s\n",
+                                 pTopicMessage->pTopic,
+                                 (unsigned)pTopicMessage->Length,
+                                 (int)pTopicMessage->Length,
+                                 (const char*)pTopicMessage->pPayload);
+            ClassMQTT::FreeTopicMessage(pTopicMessage);
+        }
+
+        // Test2
+        if(nOS_QueueRead(&m_MQTT_TestQ_2, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
+        {
+            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                                 "[MQTT][Test2] Topic: %s | Payload (%u bytes): %.*s\n",
+                                 pTopicMessage->pTopic,
+                                 (unsigned)pTopicMessage->Length,
+                                 (int)pTopicMessage->Length,
+                                 (const char*)pTopicMessage->pPayload);
+            ClassMQTT::FreeTopicMessage(pTopicMessage);
+        }
+
+        // Test3
+        if(nOS_QueueRead(&m_MQTT_TestQ_3, &pTopicMessage, NOS_NO_WAIT) == NOS_OK)
+        {
+            DEBUG_PrintSerialLog(SYS_DEBUG_LEVEL_ETHERNET,
+                                 "[MQTT][Test3] Topic: %s | Payload (%u bytes): %.*s\n",
+                                 pTopicMessage->pTopic,
+                                 (unsigned)pTopicMessage->Length,
+                                 (int)pTopicMessage->Length,
+                                 (const char*)pTopicMessage->pPayload);
+            ClassMQTT::FreeTopicMessage(pTopicMessage);
+        }
+      #endif
+        
+        
         nOS_Sleep(10);
         LED_Toggle(IO_LED_GREEN);
     }

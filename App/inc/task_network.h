@@ -50,6 +50,8 @@
 #define TASK_NETWORK_STACK_SIZE              128
 #define TASK_NETWORK_PRIO                    4
 
+#define MQTT_Q_TEST_BUFFER                   4
+
 //-------------------------------------------------------------------------------------------------
 // Class definition(s)
 //-------------------------------------------------------------------------------------------------
@@ -102,6 +104,13 @@ class ClassNetwork
       //nOS_Stack                       m_WebServerStack            [TASK_WEBSERVER_STACK_SIZE]     NOS_STACK_LOCATION;
         nOS_Thread                      m_Handle;
         nOS_Stack                       m_Stack                     [TASK_NETWORK_STACK_SIZE];
+
+        nOS_Queue                       m_MQTT_TestQ_1;
+        nOS_Queue                       m_MQTT_TestQ_2;
+        nOS_Queue                       m_MQTT_TestQ_3;
+        MQTT_Message_t*                 m_pQ_Buffer1[MQTT_Q_TEST_BUFFER];
+        MQTT_Message_t*                 m_pQ_Buffer2[MQTT_Q_TEST_BUFFER];
+        MQTT_Message_t*                 m_pQ_Buffer3[MQTT_Q_TEST_BUFFER];
 
         class NetworkContext            m_NetworkContext;
 };

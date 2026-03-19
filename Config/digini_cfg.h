@@ -62,8 +62,6 @@
 #define DIGINI_USE_VT100_MENU                           DEF_DISABLED
 #endif
 
-#define DIGINI_USE_COMM_AS_A_TASK                       DEF_ENABLED     // Otherwise it is a process that need to be include in your choice of task
-
 //-------------------------------------------------------------------------------------------------
 // Ethernet
 //
@@ -113,3 +111,5 @@
 #define DIGINI_DEBUG_SDCARD_INFO_ON_VT100               DEF_DISABLED
 
 //-------------------------------------------------------------------------------------------------
+
+#define DIGINI_USE_DMA_MEM2MEM_FUNCTION                 DEF_ENABLED
