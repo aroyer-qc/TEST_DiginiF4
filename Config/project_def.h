@@ -54,18 +54,18 @@ const char OUR_FIRMWARE_DIGINI_VERSION  [7]  = { DIGINI_VERSION        };
 const char OUR_FIRMWARE_BUILD_DATE      [24] = { __DATE__ " " __TIME__ };
 
  #ifdef DEBUG
-char OEM_VENDOR_NAME                    []   = { "Digini"              };
+char OEM_VENDOR_NAME                    [8]  = { "Digini"              };
 
 #ifdef STM32F401xE
-char OEM_MODEL_NAME                     []   = { "STM32F401C-DISC"     };
+char OEM_MODEL_NAME                      []  = { "STM32F401C-DISC"     };
 #endif
 #ifdef STM32F407xx
-char OEM_MODEL_NAME                     []   = { "STM32F407G-DISC"     };
+char OEM_MODEL_NAME                      []  = { "STM32F407G-DISC"     };
 #endif
 #ifdef STM32F429xx
-char OEM_MODEL_NAME                     []   = { "NUCLEO_F429ZI"       };
+char OEM_MODEL_NAME                      []  = { "NUCLEO_F429ZI"       };
 #endif
-char OEM_SERIAL_NUMBER                  []   = { "00000000"            };
+char OEM_SERIAL_NUMBER [SERIAL_NUMBER_SIZE]  = { "00000000"             };
  #else
 char OEM_VENDOR_NAME                    []   = { "" };
 char OEM_MODEL_NAME                     []   = { "" };

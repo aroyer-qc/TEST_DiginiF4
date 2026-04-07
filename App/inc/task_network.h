@@ -128,12 +128,5 @@ class ClassNetwork
 #endif
 
 //-------------------------------------------------------------------------------------------------
-// Function prototype(s)
-//-------------------------------------------------------------------------------------------------
-
-//extern "C" void TaskWebServer_Wrapper       (void* pvParameters);
-//extern "C" void TaskNetwork_Wrapper         (void* pvParameters);
-
-//-------------------------------------------------------------------------------------------------
 
 #endif // (DIGINI_USE_ETHERNET == DEF_ENABLED)

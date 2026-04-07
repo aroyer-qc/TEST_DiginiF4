@@ -146,7 +146,7 @@ void TaskIdle(void)
       #if (DIGINI_USE_ETHERNET == DEF_ENABLED)
         //pTaskNetwork->Process();
       #endif
-        LIB_Delay_mSec(1000);
-        //nOS_Sleep(1);
+        //LIB_Delay_mSec(1000);
+        nOS_Sleep(1000);
     }
 }

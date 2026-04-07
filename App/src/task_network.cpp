@@ -278,7 +278,6 @@ void ClassNetwork::WebServer(void)
 for(;;)
 { nOS_Sleep(100);}
 
-//#if 0
     m_WebServerConn = netconn_new(NETCONN_TCP);                                     // Create a new TCP connection handle
 
     if(m_WebServerConn != nullptr)
@@ -301,8 +300,8 @@ for(;;)
             }
         }
     }
-//#endif
 }
+
 /**
   * @brief serve tcp connection
   * @param conn: pointer on connection structure
